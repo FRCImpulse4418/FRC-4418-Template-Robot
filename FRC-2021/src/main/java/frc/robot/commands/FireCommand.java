@@ -27,13 +27,13 @@ public class FireCommand extends CommandBase {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		SmartDashboard.putNumber("Top Fire", Robot.manipulatorsubsystem.getTopFireMotor());
-		SmartDashboard.putNumber("Bottom Fire", Robot.manipulatorsubsystem.getBottomFireMotor());
+		SmartDashboard.putNumber("Top Fire", Robot.manipulatorsubsystem.getOuterFireMotor());
+		SmartDashboard.putNumber("Bottom Fire", Robot.manipulatorsubsystem.getInnerFireMotor());
 		
-		Robot.manipulatorsubsystem.setInnerIntakeMotor(-1.);
+		Robot.manipulatorsubsystem.setInnerIntakeMotor(-.5);
 		
-		Robot.manipulatorsubsystem.setBottomFireMotor(-.7);
-		Robot.manipulatorsubsystem.setTopFireMotor(-.7);
+		Robot.manipulatorsubsystem.setInnerFireMotor(-7.);
+		Robot.manipulatorsubsystem.setOuterFireMotor(-1.);
 	}
 
 	// Called once the command ends or is interrupted.
@@ -41,8 +41,8 @@ public class FireCommand extends CommandBase {
 	public void end(boolean interrupted) {
 		Robot.manipulatorsubsystem.setInnerIntakeMotor(0.);
 
-		Robot.manipulatorsubsystem.setBottomFireMotor(0.);
-		Robot.manipulatorsubsystem.setTopFireMotor(0.);
+		Robot.manipulatorsubsystem.setInnerFireMotor(0.);
+		Robot.manipulatorsubsystem.setOuterFireMotor(0.);
 	}
 
 	// Returns true when the command should end.

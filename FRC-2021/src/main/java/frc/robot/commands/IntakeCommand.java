@@ -26,10 +26,10 @@ public class IntakeCommand extends CommandBase {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		SmartDashboard.putNumber("Top Intake Motor", Robot.manipulatorsubsystem.getTopIntakeMotor());
-		SmartDashboard.putNumber("Bottom Intake Motor", Robot.manipulatorsubsystem.getBottomIntakeMotor());
+		SmartDashboard.putNumber("Top Intake Motor", Robot.manipulatorsubsystem.getInnerIntakeMotor());
+		SmartDashboard.putNumber("Bottom Intake Motor", Robot.manipulatorsubsystem.getOuterIntakeMotor());
 		
-		Robot.manipulatorsubsystem.setOuterIntakeMotor(1.);
+		Robot.manipulatorsubsystem.setOuterIntakeMotor(6.);
 	}
 
 	// Called once the command ends or is interrupted.
