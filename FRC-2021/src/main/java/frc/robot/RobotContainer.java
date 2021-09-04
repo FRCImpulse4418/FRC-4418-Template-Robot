@@ -58,10 +58,11 @@ public class RobotContainer {
 	// Create and assign default buttons
 	public static JoystickButton toggleArcadeDriveButton = new JoystickButton(X3D_RIGHT, Constants.TOGGLE_ARCADE_DRIVE_BUTOON_ID);
 	public static JoystickButton driveStraightButton = new JoystickButton(X3D_RIGHT, Constants.DRIVE_STRAIGHT_BUTTON_ID);
-	public static JoystickButton testButton = new JoystickButton(X3D_RIGHT, Constants.TEST_BUTTON_ID);
-	public static JoystickButton launchButton = new JoystickButton(X3D_RIGHT, Constants.LAUNCH_BUTTON_ID);
+	
+	// public static JoystickButton testButton = new JoystickButton(X3D_RIGHT, Constants.TEST_BUTTON_ID);
+	
 	public static JoystickButton intakeButton = new JoystickButton(X3D_RIGHT, Constants.INTAKE_BUTTON_ID);
-	public static JoystickButton semiAutoButton = new JoystickButton(X3D_RIGHT, Constants.SEMI_AUTO_BUTTON_ID);
+	public static JoystickButton launchButton = new JoystickButton(X3D_RIGHT, Constants.LAUNCH_BUTTON_ID);
 
 
 	/**
@@ -81,10 +82,11 @@ public class RobotContainer {
 	private void configureButtonBindings() {
 		toggleArcadeDriveButton.whenPressed(new ToggleArcadeDriveCommand());
 		driveStraightButton.whileHeld(new DriveStraightCommand());
+
 		// testButton.whileHeld(new WaitTestCommand());
+		
 		intakeButton.whileHeld(new IntakeCommand());
 		launchButton.whileHeld(new FireCommand());
-		semiAutoButton.whileHeld(new SemiAutoFireCommand());
 	}
 
 

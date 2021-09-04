@@ -30,7 +30,7 @@ public class FireCommand extends CommandBase {
 		SmartDashboard.putNumber("Top Fire", Robot.manipulatorsubsystem.getTopFireMotor());
 		SmartDashboard.putNumber("Bottom Fire", Robot.manipulatorsubsystem.getBottomFireMotor());
 		
-		Robot.manipulatorsubsystem.setInnerIntakeMotor(-1.0);
+		Robot.manipulatorsubsystem.setInnerIntakeMotor(-1.);
 		
 		Robot.manipulatorsubsystem.setBottomFireMotor(-.7);
 		Robot.manipulatorsubsystem.setTopFireMotor(-.7);
@@ -39,10 +39,10 @@ public class FireCommand extends CommandBase {
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		Robot.manipulatorsubsystem.setInnerIntakeMotor(0.0);
+		Robot.manipulatorsubsystem.setInnerIntakeMotor(0.);
 
-		Robot.manipulatorsubsystem.setBottomFireMotor(0.0);
-		Robot.manipulatorsubsystem.setTopFireMotor(0.0);
+		Robot.manipulatorsubsystem.setBottomFireMotor(0.);
+		Robot.manipulatorsubsystem.setTopFireMotor(0.);
 	}
 
 	// Returns true when the command should end.

@@ -29,13 +29,13 @@ public class IntakeCommand extends CommandBase {
 		SmartDashboard.putNumber("Top Intake Motor", Robot.manipulatorsubsystem.getTopIntakeMotor());
 		SmartDashboard.putNumber("Bottom Intake Motor", Robot.manipulatorsubsystem.getBottomIntakeMotor());
 		
-		Robot.manipulatorsubsystem.setOuterIntakeMotor(1.0);
+		Robot.manipulatorsubsystem.setOuterIntakeMotor(1.);
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		Robot.manipulatorsubsystem.setOuterIntakeMotor(0.0);
+		Robot.manipulatorsubsystem.setOuterIntakeMotor(0.);
 	}
 
 	// Returns true when the command should end.
