@@ -83,8 +83,8 @@ public class RobotContainer {
     driveStraightButton.whileHeld(new DriveStraightCommand());
     // testButton.whileHeld(new WaitTestCommand());
     intakeButton.whileHeld(new IntakeCommand());
-    // launchButton.whileHeld(new FireCommand());
-    // semiAutoButton.whileHeld(new SemiAutoFireCommand());
+    launchButton.whileHeld(new FireCommand());
+    semiAutoButton.whileHeld(new SemiAutoFireCommand());
   }
 
 

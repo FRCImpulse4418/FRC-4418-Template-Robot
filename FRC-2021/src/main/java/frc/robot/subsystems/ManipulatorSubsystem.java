@@ -20,8 +20,8 @@ public class ManipulatorSubsystem extends SubsystemBase {
   private WPI_TalonSRX bottomFireMotor;
   private WPI_TalonSRX topFireMotor;
   private WPI_TalonSRX loadMotor;
-  private WPI_TalonSRX topIntakeMotor;
-  private WPI_TalonSRX bottomIntakeMotor;
+  private WPI_TalonSRX innerIntakeMotor;
+  private WPI_TalonSRX outerIntakeMotor;
 
   /* Encoder.getRate() returns distance per second
   distance per second * distance per pulse = pulse per second
@@ -43,24 +43,24 @@ public class ManipulatorSubsystem extends SubsystemBase {
     bottomFireMotor = new WPI_TalonSRX(Constants.MAN_FIRE_BOTTOM_TALONSRX_ID);
     topFireMotor = new WPI_TalonSRX(Constants.MAN_FIRE_TOP_TALONSRX_ID);
 
-    topIntakeMotor = new WPI_TalonSRX(Constants.MAN_INTAKE_TOP_TALONSRX_ID);
-    bottomIntakeMotor = new WPI_TalonSRX(Constants.MAN_INTAKE_BOTTOM_TALONSRX_ID);
+    innerIntakeMotor = new WPI_TalonSRX(Constants.MAN_INTAKE_TOP_TALONSRX_ID);
+    outerIntakeMotor = new WPI_TalonSRX(Constants.MAN_INTAKE_BOTTOM_TALONSRX_ID);
   }
 
   // set motors
   public void setBottomFireMotor(double motorValue) { bottomFireMotor.set(ControlMode.PercentOutput, motorValue); }
   public void setTopFireMotor(double motorValue) { topFireMotor.set(ControlMode.PercentOutput, motorValue); }
   public void setLoadMotor(double motorValue) { loadMotor.set(ControlMode.PercentOutput, motorValue); }
-  public void setTopIntakeMotor(double motorValue) { topIntakeMotor.set(ControlMode.PercentOutput, motorValue); }
-  public void setBottomIntakeMotor(double motorValue) { bottomIntakeMotor.set(ControlMode.PercentOutput, motorValue); }
+  public void setInnerIntakeMotor(double motorValue) { innerIntakeMotor.set(ControlMode.PercentOutput, motorValue); }
+  public void setOuterIntakeMotor(double motorValue) { outerIntakeMotor.set(ControlMode.PercentOutput, motorValue); }
 
   //read motors
 
   public double getBottomFireMotor() { return bottomFireMotor.getMotorOutputPercent(); }
   public double getTopFireMotor() { return topFireMotor.getMotorOutputPercent(); }
   public double getLoadMotor() { return loadMotor.getMotorOutputPercent(); }
-  public double getTopIntakeMotor() { return topIntakeMotor.getMotorOutputPercent(); }
-  public double getBottomIntakeMotor() { return bottomIntakeMotor.getMotorOutputPercent(); }
+  public double getTopIntakeMotor() { return innerIntakeMotor.getMotorOutputPercent(); }
+  public double getBottomIntakeMotor() { return outerIntakeMotor.getMotorOutputPercent(); }
 
   // read potentiometer
   public double getPivotPotentiometer() { return pivotPotentiometer.get(); }
