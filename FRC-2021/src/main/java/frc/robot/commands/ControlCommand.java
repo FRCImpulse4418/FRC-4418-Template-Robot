@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class ControlCommand extends CommandBase {
   private Boolean controlbutton;
   
-
   public ControlCommand() {
     addRequirements(Robot.controlSubsystem);
   }

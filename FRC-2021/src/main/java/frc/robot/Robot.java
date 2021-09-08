@@ -18,6 +18,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.ManipulatorSubsystem;
 // import frc.robot.subsystems.SensorsSubsystem;
+import frc.robot.subsystems.WinchSubsystem;
 
 
 /**
@@ -33,11 +34,12 @@ public class Robot extends TimedRobot {
 	private RobotContainer m_robotContainer;
 
 	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
-	public static ClimbSubsystem climbSubsystem = new ClimbSubsystem();
 	public static ManipulatorSubsystem manipulatorsubsystem = new ManipulatorSubsystem();
 	public static ControlSubsystem controlSubsystem = new ControlSubsystem();
-	public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static WinchSubsystem winchSubsystem = new WinchSubsystem();
+	public static ClimbSubsystem climbSubsystem = new ClimbSubsystem();
 	// public static SensorsSubsystem sensorsSubsystem = new SensorsSubsystem();
+	public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 
 
 	// run when robot is started, put initialization code here

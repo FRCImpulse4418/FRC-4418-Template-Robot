@@ -16,7 +16,7 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 
- 
+
 public final class Constants {
 	// Controller abstractions
 	private static final int
@@ -99,6 +99,7 @@ public static final int
 	// DRIVE_FRONT_DISTANCE_ECHO_ID = 11,
 	// DRIVE_BACK_DISTANCE_PING_ID = 12,
 	// DRIVE_BACK_DISTANCE_ECHO_ID = 13;
+
 public static final double DRIVE_ENCODER_DISTANCE_PER_PULSE  = (15.24 * Math.PI) / 256; // diameter * pi = circumference. circumference / 256 = distance per pulse
 public static final int DRIVE_ENCODER_DECODING_SCALE_FACTOR = 2;
 
@@ -114,7 +115,9 @@ public static final int
 public static final int
 	// CLIMBER_ENCODER_CHANNELA_ID = 2,
 	// CLIMBER_FRONT_ENCODER_CHANNELB_ID = 3,
+	WINCH_TALONFX_ID = 50,
 	CLIMBER_TALONSRX_ID = 30;
+
 //public static final double CLIMBER_ENCODER_DISTANCE_PER_PULSE = ;          tbd
 
 // Control Panel Arm Subsystem IDs
