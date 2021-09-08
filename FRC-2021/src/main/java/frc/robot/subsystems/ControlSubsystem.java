@@ -18,27 +18,27 @@ import frc.robot.Constants;
 
 
 public class ControlSubsystem extends SubsystemBase {
-  private WPI_TalonSRX controlSpinMotor;
-  
-  public ControlSubsystem() {
-    controlSpinMotor = new WPI_TalonSRX(Constants.CONTROLSPIN_TALONSRX_ID);
-  }
-  
-  // Spin control motors
-  public void setControlPanelArmMotor(double motorValue) {
-    controlSpinMotor.set(ControlMode.PercentOutput, motorValue);
+	private WPI_TalonSRX controlSpinMotor;
+	
+	public ControlSubsystem() {
+		controlSpinMotor = new WPI_TalonSRX(Constants.CONTROLSPIN_TALONSRX_ID);
+	}
+	
+	// Spin control motors
+	public void setControlPanelArmMotor(double motorValue) {
+		controlSpinMotor.set(ControlMode.PercentOutput, motorValue);
 
-    if (motorValue > 0.) {
-      SmartDashboard.putString("Control Panel Arm State", "FORWARD SPIN");
-    } else if (motorValue < 0.) {
-      SmartDashboard.putString("Control Panel Arm State", "BACKWARD SPIN");
-    } else {
-      SmartDashboard.putString("Control Panel Arm State", "NO SPIN");
-    }
-  }
+		if (motorValue > 0.) {
+			SmartDashboard.putString("Control Panel Arm State", "FORWARD SPIN");
+		} else if (motorValue < 0.) {
+			SmartDashboard.putString("Control Panel Arm State", "BACKWARD SPIN");
+		} else {
+			SmartDashboard.putString("Control Panel Arm State", "NO SPIN");
+		}
+	}
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
+	@Override
+	public void periodic() {
+		// This method will be called once per scheduler run
+	}
 }
