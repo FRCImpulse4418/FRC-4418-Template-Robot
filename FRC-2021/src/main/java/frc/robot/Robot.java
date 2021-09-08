@@ -7,11 +7,15 @@
 
 package frc.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.ClimbSubsystem;
+import frc.robot.subsystems.ControlSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.ManipulatorSubsystem;
 // import frc.robot.subsystems.SensorsSubsystem;
 
@@ -23,12 +27,16 @@ import frc.robot.subsystems.ManipulatorSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
+	private UsbCamera control_camera;
+
 	private Command m_autonomousCommand;
 	private RobotContainer m_robotContainer;
 
 	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
 	public static ClimbSubsystem climbSubsystem = new ClimbSubsystem();
 	public static ManipulatorSubsystem manipulatorsubsystem = new ManipulatorSubsystem();
+	public static ControlSubsystem controlSubsystem = new ControlSubsystem();
+	public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	// public static SensorsSubsystem sensorsSubsystem = new SensorsSubsystem();
 
 
@@ -37,6 +45,8 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		// create RobotContainer. Does our button bindings & puts autonomous chooser on dashboard
 		m_robotContainer = new RobotContainer();
+
+		control_camera = CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	// called every robot packet (good for diagnostics), after mode-specific periodics

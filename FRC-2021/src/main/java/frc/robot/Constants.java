@@ -15,42 +15,44 @@ package frc.robot;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
+
+ 
 public final class Constants {
-		// Controller abstractions
+	// Controller abstractions
 	private static final int
-	//GAMEPAD_AXIS_LEFT_X = 0, // Gamepad axis
-	GAMEPAD_AXIS_LEFT_Y = 1,
-	/*GAMEPAD_AXIS_RIGHT_X = 4,
-	GAMEPAD_AXIS_RIGHT_Y = 5,
-	GAMEPAD_AXIS_LEFT_TRIGGER = 2,
-	GAMEPAD_AXIS_RIGHT_TRIGGER = 3,
-	GAMEPAD_BUTTON_A = 1, // Gamepad buttons
-	GAMEPAD_BUTON_B = 2,
-	GAMEPAD_BUTON_X = 3,
-	GAMEPAD_BUTTON_Y = 4,
-	GAMEPAD_BUTON_LEFT_BUMPER = 5,
-	GAMEPAD_BUTON_RIGHT_BUMPER = 6,
-	GAMEPAD_BUTTON_BACK = 7,
-	GAMEPAD_BUTTON_START = 8,
-	GAMEPAD_BUTTON_LOGITECH = 9,
-	GAMEPAD_BUTTON_LEFT_JS = 10,
-	GAMEPAD_BUTTON_RIGHT_JS = 11,*/
-	X3D_AXIS_PITCH = 1, // X3d axis
-	X3D_AXIS_ROLL = 0,
-	/*X3D_AXIS_YAW = 2,
-	X3D_AXIS_OTHER = 3,*/
-	// X3D_BUTTON_TRIGGER = 1, // X3d buttons
-	X3D_BUTTON_GRIP = 2,
-	X3D_BUTTON_3 = 3,
-	X3D_BUTTON_4 = 4,
-	X3D_BUTTON_5 = 5,
-	X3D_BUTTON_6 = 6,
-	X3D_BUTTON_7 = 7
-	//X3D_BUTTON_8 = 8,
-	//X3D_BUTTON_9 = 9,
-	//X3D_BUTTON_10 = 10,
-	//X3D_BUTTON_11 = 11,
-	/*X3D_BUTTON_12 = 12*/;
+		//GAMEPAD_AXIS_LEFT_X = 0, // Gamepad axis
+		GAMEPAD_AXIS_LEFT_Y = 1,
+		/*GAMEPAD_AXIS_RIGHT_X = 4,
+		GAMEPAD_AXIS_RIGHT_Y = 5,
+		GAMEPAD_AXIS_LEFT_TRIGGER = 2,
+		GAMEPAD_AXIS_RIGHT_TRIGGER = 3,
+		GAMEPAD_BUTTON_A = 1, // Gamepad buttons
+		GAMEPAD_BUTON_B = 2,
+		GAMEPAD_BUTON_X = 3,
+		GAMEPAD_BUTTON_Y = 4,
+		GAMEPAD_BUTON_LEFT_BUMPER = 5,
+		GAMEPAD_BUTON_RIGHT_BUMPER = 6,
+		GAMEPAD_BUTTON_BACK = 7,
+		GAMEPAD_BUTTON_START = 8,
+		GAMEPAD_BUTTON_LOGITECH = 9,
+		GAMEPAD_BUTTON_LEFT_JS = 10,
+		GAMEPAD_BUTTON_RIGHT_JS = 11,*/
+		X3D_AXIS_PITCH = 1, // X3d axis
+		X3D_AXIS_ROLL = 0,
+		/*X3D_AXIS_YAW = 2,
+		X3D_AXIS_OTHER = 3,*/
+		// X3D_BUTTON_TRIGGER = 1, // X3d buttons
+		X3D_BUTTON_GRIP = 2,
+		// X3D_BUTTON_3 = 3,
+		X3D_BUTTON_4 = 4,
+		X3D_BUTTON_5 = 5,
+		X3D_BUTTON_6 = 6,
+		X3D_BUTTON_7 = 7,
+		//X3D_BUTTON_8 = 8,
+		X3D_BUTTON_9 = 9,
+		X3D_BUTTON_10 = 10
+		//X3D_BUTTON_11 = 11,
+		/*X3D_BUTTON_12 = 12*/;
 
 
 // Controller IDs
@@ -73,6 +75,10 @@ public static final int
 	// Manipulator buttons
 	LAUNCH_BUTTON_ID = X3D_BUTTON_6,
 	INTAKE_BUTTON_ID = X3D_BUTTON_4,
+
+	// Control panel arm buttons
+	CONTROL_SPIN_BUTTON_ID = X3D_BUTTON_9,
+	CONTROl_SPIN_REVERSE_BUTTON_ID = X3D_BUTTON_10,
 
 	// Other buttons
 	TEST_BUTTON_ID = X3D_BUTTON_7,
@@ -110,6 +116,10 @@ public static final int
 	// CLIMBER_FRONT_ENCODER_CHANNELB_ID = 3,
 	CLIMBER_TALONSRX_ID = 30;
 //public static final double CLIMBER_ENCODER_DISTANCE_PER_PULSE = ;          tbd
+
+// Control Panel Arm Subsystem IDs
+public static final int
+	CONTROLSPIN_TALONSRX_ID = 7;
 
 // RIO Post Info
 public static int[] expectedTalonIDs = {DRIVE_LEFT_A_TALON_SRX_ID, DRIVE_LEFT_B_TALON_SRX_ID, DRIVE_RIGHT_A_TALON_SRX_ID, DRIVE_RIGHT_B_TALON_SRX_ID};
