@@ -50,10 +50,9 @@ public final class Constants {
 		X3D_BUTTON_7 = 7,
 		//X3D_BUTTON_8 = 8,
 		X3D_BUTTON_9 = 9,
-		X3D_BUTTON_10 = 10
-		//X3D_BUTTON_11 = 11,
-		/*X3D_BUTTON_12 = 12*/;
-
+		X3D_BUTTON_10 = 10,
+		X3D_BUTTON_11 = 11,
+		X3D_BUTTON_12 = 12;
 
 // Controller IDs
 public static final int
@@ -80,6 +79,10 @@ public static final int
 	CONTROL_SPIN_BUTTON_ID = X3D_BUTTON_9,
 	CONTROl_SPIN_REVERSE_BUTTON_ID = X3D_BUTTON_10,
 
+	// Winch and climber buttons
+	TOGGLE_CLIMB_BUTTON_ID = X3D_BUTTON_11,
+	TOGGLE_WINCH_BUTTON_ID = X3D_BUTTON_12,
+
 	// Other buttons
 	TEST_BUTTON_ID = X3D_BUTTON_7,
 	CLIMB_AXIS_ID = GAMEPAD_AXIS_LEFT_Y;
@@ -100,9 +103,6 @@ public static final int
 	// DRIVE_BACK_DISTANCE_PING_ID = 12,
 	// DRIVE_BACK_DISTANCE_ECHO_ID = 13;
 
-public static final double DRIVE_ENCODER_DISTANCE_PER_PULSE  = (15.24 * Math.PI) / 256; // diameter * pi = circumference. circumference / 256 = distance per pulse
-public static final int DRIVE_ENCODER_DECODING_SCALE_FACTOR = 2;
-
 // Manipulator Subsystem IDs
 public static final int
 	MAN_FIRE_TOP_TALONSRX_ID = 3,
@@ -115,18 +115,39 @@ public static final int
 public static final int
 	// CLIMBER_ENCODER_CHANNELA_ID = 2,
 	// CLIMBER_FRONT_ENCODER_CHANNELB_ID = 3,
-	WINCH_TALONFX_ID = 50,
-	CLIMBER_TALONSRX_ID = 30;
+	WINCH_TALONFX_ID = 12,
+	CLIMBER_TALONSRX_ID = 9;
 
-//public static final double CLIMBER_ENCODER_DISTANCE_PER_PULSE = ;          tbd
-
-// Control Panel Arm Subsystem IDs
+// Control Subsystem IDs
 public static final int
 	CONTROLSPIN_TALONSRX_ID = 7;
 
+public static final double DRIVE_ENCODER_DISTANCE_PER_PULSE  = (15.24 * Math.PI) / 256; // diameter * pi = circumference. circumference / 256 = distance per pulse
+public static final int DRIVE_ENCODER_DECODING_SCALE_FACTOR = 2;
+
+//public static final double CLIMBER_ENCODER_DISTANCE_PER_PULSE = ;          tbd
+
 // RIO Post Info
-public static int[] expectedTalonIDs = {DRIVE_LEFT_A_TALON_SRX_ID, DRIVE_LEFT_B_TALON_SRX_ID, DRIVE_RIGHT_A_TALON_SRX_ID, DRIVE_RIGHT_B_TALON_SRX_ID};
-// public static int[] expectedDIOEncoders = {DRIVE_LEFT_ENCODER_CHANNELA_ID,DRIVE_LEFT_ENCODER_CHANNELB_ID, DRIVE_RIGHT_A_TALON_SRX_ID, DRIVE_RIGHT_B_TALON_SRX_ID};
+// public static int[] expectedTalonIDs = {
+// 	DRIVE_LEFT_A_TALON_SRX_ID,
+// 	DRIVE_LEFT_B_TALON_SRX_ID,
+// 	DRIVE_RIGHT_A_TALON_SRX_ID,
+// 	DRIVE_RIGHT_B_TALON_SRX_ID
+// };
+
+// public static int[] expectedDIOEncoders = {
+// 	DRIVE_LEFT_ENCODER_CHANNELA_ID,
+// 	DRIVE_LEFT_ENCODER_CHANNELB_ID,
+// 	DRIVE_RIGHT_A_TALON_SRX_ID,
+// 	DRIVE_RIGHT_B_TALON_SRX_ID
+// };
+
 // public static int expectedGyro = DRIVE_GYRO_ID;
-// public static int[] expectedDIOUltrasonic = {DRIVE_FRONT_DISTANCE_PING_ID,DRIVE_FRONT_DISTANCE_ECHO_ID,DRIVE_BACK_DISTANCE_PING_ID, DRIVE_BACK_DISTANCE_ECHO_ID};
+
+// public static int[] expectedDIOUltrasonic = {
+// 	DRIVE_FRONT_DISTANCE_PING_ID,
+// 	DRIVE_FRONT_DISTANCE_ECHO_ID,
+// 	DRIVE_BACK_DISTANCE_PING_ID,
+// 	DRIVE_BACK_DISTANCE_ECHO_ID
+// };
 }

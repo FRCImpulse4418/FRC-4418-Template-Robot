@@ -20,13 +20,11 @@ public class ClimbSubsystem extends SubsystemBase {
 	private Encoder climbEncoder;
 
 	//public double Distance(){return climbEncoder.getDistance();}
-	private double climbMaxDist;
-	private double climbMinDist;
+	private final double climbMaxDist = 1.0;
+	private final double climbMinDist = 0.0;
 
 	public ClimbSubsystem() {
 		climbMotor = new WPI_TalonSRX(Constants.CLIMBER_TALONSRX_ID);
-		climbMaxDist = 1;
-		climbMinDist = 0;
 	}
 
 	public void setClimb(double motorValue) {

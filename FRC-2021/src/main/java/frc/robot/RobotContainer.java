@@ -65,8 +65,10 @@ public class RobotContainer {
 	public static JoystickButton launchButton = new JoystickButton(X3D_RIGHT, Constants.LAUNCH_BUTTON_ID);
 
 	public static JoystickButton controlSpinButton = new JoystickButton(X3D_RIGHT, Constants.CONTROL_SPIN_BUTTON_ID);
-
 	public static JoystickButton controlSpinReverseButton = new JoystickButton(X3D_RIGHT, Constants.CONTROl_SPIN_REVERSE_BUTTON_ID);
+
+	public static JoystickButton toggleClimbButton = new JoystickButton(X3D_LEFT, Constants.TOGGLE_CLIMB_BUTTON_ID);
+	public static JoystickButton toggleWinchButton = new JoystickButton(X3D_LEFT, Constants.TOGGLE_WINCH_BUTTON_ID);
 
 	/**
 	 * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -93,6 +95,9 @@ public class RobotContainer {
 
 		controlSpinButton.whileHeld(new ControlCommand());
 		controlSpinReverseButton.whileHeld(new ReverseControlCommand());
+
+		toggleClimbButton.whenPressed(new ClimbCommand());
+		toggleWinchButton.whenPressed(new WinchCommand());
 	}
 
 
