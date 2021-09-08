@@ -35,7 +35,7 @@ public class RobotContainer {
 		X3D_RIGHT = new Joystick(Constants.X3D_RIGHT_JOYSTICK_ID),
 		GAMEPAD = new Joystick(Constants.GAMEPAD_JOYSTICK_ID);
 
-	// Get axis for specific functions
+	// Tank drive axes
 	public static double getLeftTankDriveAxis() {
 		return X3D_LEFT.getRawAxis(Constants.LEFT_TANK_DRIVE_AXIS_ID);
 	}
@@ -43,6 +43,7 @@ public class RobotContainer {
 		return X3D_RIGHT.getRawAxis(Constants.RIGHT_TANK_DRIVE_AXIS_ID);
 	}
 
+	// Arcade drive axes
 	public static double getForwardArcadeDriveAxis() {
 		return X3D_RIGHT.getRawAxis(Constants.FORWARD_ARCADE_DRIVE_AXIS_ID);
 	}
@@ -51,6 +52,7 @@ public class RobotContainer {
 		return X3D_RIGHT.getRawAxis(Constants.ANGLE_ARCADE_DRIVE_AXIS_ID);
 	}
 
+	// Climber axis
 	public static double getClimberAxis() {
 		return GAMEPAD.getRawAxis(Constants.CLIMB_AXIS_ID);
 	}
@@ -67,8 +69,8 @@ public class RobotContainer {
 	public static JoystickButton controlSpinButton = new JoystickButton(X3D_RIGHT, Constants.CONTROL_SPIN_BUTTON_ID);
 	public static JoystickButton controlSpinReverseButton = new JoystickButton(X3D_RIGHT, Constants.CONTROl_SPIN_REVERSE_BUTTON_ID);
 
-	public static JoystickButton toggleClimbButton = new JoystickButton(X3D_LEFT, Constants.TOGGLE_CLIMB_BUTTON_ID);
-	public static JoystickButton toggleWinchButton = new JoystickButton(X3D_LEFT, Constants.TOGGLE_WINCH_BUTTON_ID);
+	public static JoystickButton toggleClimbButton = new JoystickButton(X3D_RIGHT, Constants.TOGGLE_CLIMB_BUTTON_ID);
+	public static JoystickButton toggleWinchButton = new JoystickButton(X3D_RIGHT, Constants.TOGGLE_WINCH_BUTTON_ID);
 
 	/**
 	 * The container for the robot.  Contains subsystems, OI devices, and commands.

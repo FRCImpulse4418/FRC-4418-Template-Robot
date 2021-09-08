@@ -6,10 +6,14 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 import frc.robot.Constants;
 
 
@@ -25,6 +29,7 @@ public class ClimbSubsystem extends SubsystemBase {
 
 	public ClimbSubsystem() {
 		climbMotor = new WPI_TalonSRX(Constants.CLIMBER_TALONSRX_ID);
+		SmartDashboard.putString("Climber State", "NEUTRAL");
 	}
 
 	public void setClimb(double motorValue) {
@@ -34,10 +39,17 @@ public class ClimbSubsystem extends SubsystemBase {
 	public void toggleElevatorState() {
 		if (climberState == 0) {
 			climbMotor.set(ControlMode.PercentOutput, 0.0);
+
+			SmartDashboard.putString("Climber State", "NEUTRAL");
 		} else if (climberState == 1) {
-			climbMotor.set(ControlMode.PercentOutput, 0.6);
+			climbMotor.set(ControlMode.PercentOutput, 0.8);
+
+			SmartDashboard.putString("Climber State", "RETRACT");
 		} else if (climberState == 2) {
-			climbMotor.set(ControlMode.PercentOutput, -0.6);
+			climbMotor.set(ControlMode.PercentOutput, -0.8);
+
+			
+			SmartDashboard.putString("Climber State", "EXTEND");
 		}
 		
 		if (climberState == 2) {

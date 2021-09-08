@@ -5,13 +5,10 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
 public class ControlCommand extends CommandBase {
-  private Boolean controlbutton;
-  
   public ControlCommand() {
     addRequirements(Robot.controlSubsystem);
   }
@@ -19,35 +16,23 @@ public class ControlCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.controlSubsystem.SpinControl(1);
-    SmartDashboard.putBoolean("Is it spin", true);
-    controlbutton = true;
+    Robot.controlSubsystem.setControlPanelArmMotor(0.5);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    /*
-    Robot.controlSubsystem.SpinControl(0.2);
-    System.out.print("control spin");
-    controlbutton = true;
-    SmartDashboard.putString("CONTROL THINGIE", "control spin ACTIVE");
-    controlbutton = true;
-    */
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    SmartDashboard.putBoolean("Is it spin", false);
-    Robot.controlSubsystem.SpinControl(0);
-    controlbutton = false;
+    Robot.controlSubsystem.setControlPanelArmMotor(0.);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    SmartDashboard.updateValues();
     return false;
   }
 }

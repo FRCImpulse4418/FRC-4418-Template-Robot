@@ -24,6 +24,7 @@ public class WinchSubsystem extends SubsystemBase {
 
 	public WinchSubsystem() {
 		winchMotor = new WPI_TalonFX(Constants.WINCH_TALONFX_ID);
+		SmartDashboard.putString("Winch State", "NEUTRAL");
 	}
 
 	// public void DButtoneWinchState(int button){
@@ -38,23 +39,24 @@ public class WinchSubsystem extends SubsystemBase {
 
 	public void toggleWinchState() {
 		if (winchState == 0) {
-			System.out.print("NEUTRAL STATE");
-			SmartDashboard.putString("Winch State", "NEUTRAL");
-			
 			winchMotor.set(ControlMode.PercentOutput, 0.0);
-		} else if (winchState == 1) {
-			System.out.print("RETRACT STATE");
-			SmartDashboard.putString("Winch State", "RETRACT");
-			
-			winchMotor.set(ControlMode.PercentOutput, 0.6);
-		} else if (winchState == 2) {
-			System.out.print("EXTEND STATE");
-			SmartDashboard.putString("Winch State", "EXTEND");
 
+			SmartDashboard.putString("Winch State", "NEUTRAL");
+		} else if (winchState == 1) {
+			winchMotor.set(ControlMode.PercentOutput, 0.6);
+
+			SmartDashboard.putString("Winch State", "RETRACT");
+		} else if (winchState == 2) {
 			winchMotor.set(ControlMode.PercentOutput, -0.6);
+
+			SmartDashboard.putString("Winch State", "EXTEND");
 		}
 
-		winchState++;
+		if (winchState == 2) {
+			winchState = 0;
+		} else {
+			winchState++;
+		}
 	}
 
 	@Override

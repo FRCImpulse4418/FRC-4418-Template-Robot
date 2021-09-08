@@ -21,13 +21,14 @@ public class ReverseControlCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.controlSubsystem.SpinControl(-0.2);
-    System.out.print("spin goes backwards");
+    Robot.controlSubsystem.setControlPanelArmMotor(-0.5);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    Robot.controlSubsystem.setControlPanelArmMotor(0.);
+  }
 
   // Returns true when the command should end.
   @Override
