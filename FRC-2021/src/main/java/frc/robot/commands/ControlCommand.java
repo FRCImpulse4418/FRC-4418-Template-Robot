@@ -9,30 +9,30 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
 public class ControlCommand extends CommandBase {
-  public ControlCommand() {
-    addRequirements(Robot.controlSubsystem);
-  }
+	public ControlCommand() {
+		addRequirements(Robot.controlSubsystem);
+	}
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {
-    Robot.controlSubsystem.setControlPanelArmMotor(0.5);
-  }
+	// Called when the command is initially scheduled.
+	@Override
+	public void initialize() {
+		Robot.controlSubsystem.setControlPanelArmMotor(0.5);
+	}
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-  }
+	// Called every time the scheduler runs while the command is scheduled.
+	@Override
+	public void execute() {
+	}
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-    Robot.controlSubsystem.setControlPanelArmMotor(0.);
-  }
+	// Called once the command ends or is interrupted.
+	@Override
+	public void end(boolean interrupted) {
+		Robot.controlSubsystem.setControlPanelArmMotor(0.);
+	}
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+	// Returns true when the command should end.
+	@Override
+	public boolean isFinished() {
+		return false;
+	}
 }

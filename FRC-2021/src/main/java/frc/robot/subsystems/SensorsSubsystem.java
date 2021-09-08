@@ -10,15 +10,15 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class SensorsSubsystem extends SubsystemBase {
-    private static final ADIS16448_IMU imu = new ADIS16448_IMU();
+	private static final ADIS16448_IMU imu = new ADIS16448_IMU();
 
-    /** Creates a new SensorsSubsystem. */
-    public SensorsSubsystem() {
+	/** Creates a new SensorsSubsystem. */
+	public SensorsSubsystem() {
 
-    }
+	}
 
-    @Override
-    public void periodic() {
-        // This method will be called once per scheduler run
-    }
+	@Override
+	public void periodic() {
+		// This method will be called once per scheduler run
+	}
 }
