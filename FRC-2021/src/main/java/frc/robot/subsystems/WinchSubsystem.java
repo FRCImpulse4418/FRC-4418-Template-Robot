@@ -17,7 +17,6 @@ import frc.robot.Constants;
 
 public class WinchSubsystem extends SubsystemBase {
 	private WPI_TalonFX winchMotor;
-	private int winchState = 0;
 
 	private double winchMaxDist;
 	private double winchMinDist;
@@ -27,36 +26,8 @@ public class WinchSubsystem extends SubsystemBase {
 		SmartDashboard.putString("Winch State", "NEUTRAL");
 	}
 
-	// public void DButtoneWinchState(int button){
-	// 	if(button == 1) {
-	// 		winchMotor.set(ControlMode.PercentOutput, 0.1);
-	// 	} else if(button == 2) {
-	// 		winchMotor.set(ControlMode.PercentOutput, -0.1);
-	// 	} else {
-	// 		winchMotor.set(ControlMode.PercentOutput, 0.0);
-	// 	}
-	// }
-
-	public void toggleWinchState() {
-		if (winchState == 0) {
-			winchMotor.set(ControlMode.PercentOutput, 0.0);
-
-			SmartDashboard.putString("Winch State", "NEUTRAL");
-		} else if (winchState == 1) {
-			winchMotor.set(ControlMode.PercentOutput, 0.6);
-
-			SmartDashboard.putString("Winch State", "RETRACT");
-		} else if (winchState == 2) {
-			winchMotor.set(ControlMode.PercentOutput, -0.6);
-
-			SmartDashboard.putString("Winch State", "EXTEND");
-		}
-
-		if (winchState == 2) {
-			winchState = 0;
-		} else {
-			winchState++;
-		}
+	public void setWinchMotor(double motorValue) {
+		winchMotor.set(ControlMode.PercentOutput, motorValue);
 	}
 
 	@Override

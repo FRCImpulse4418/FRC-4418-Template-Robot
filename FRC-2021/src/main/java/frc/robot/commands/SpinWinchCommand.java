@@ -7,42 +7,39 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+import frc.robot.Robot;
 
-public class WaitTestCommand extends CommandBase {
-	private boolean testStart = false;
-	private boolean testFinish = false;
 
-	public WaitTestCommand() {
-		// Use addRequirements() here to declare subsystem dependencies.
+public class SpinWinchCommand extends CommandBase {
+	private boolean spooling;
+	
+	public SpinWinchCommand(boolean spooling) {
+		this.spooling = spooling;
+		addRequirements(Robot.winchSubsystem);
 	}
 
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
+		if (spooling) {
+			Robot.winchSubsystem.setWinchMotor(0.6);
+		} else {
+			Robot.winchSubsystem.setWinchMotor(-0.6);
+		}
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		SmartDashboard.putBoolean("Start", testStart);
-		SmartDashboard.putBoolean("Finish", testFinish);
-		testStart = true;
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		testFinish = true;
+		
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		testStart = false;
-		testFinish = false;
+		Robot.winchSubsystem.setWinchMotor(0.0);
 	}
 
 	// Returns true when the command should end.

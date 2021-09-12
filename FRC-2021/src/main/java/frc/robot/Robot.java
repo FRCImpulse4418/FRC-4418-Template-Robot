@@ -28,7 +28,7 @@ import frc.robot.subsystems.WinchSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-	private UsbCamera control_camera;
+	private UsbCamera panelCamera;
 
 	private Command m_autonomousCommand;
 	private RobotContainer m_robotContainer;
@@ -48,7 +48,7 @@ public class Robot extends TimedRobot {
 		// create RobotContainer. Does our button bindings & puts autonomous chooser on dashboard
 		m_robotContainer = new RobotContainer();
 
-		control_camera = CameraServer.getInstance().startAutomaticCapture();
+		panelCamera = CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	// called every robot packet (good for diagnostics), after mode-specific periodics

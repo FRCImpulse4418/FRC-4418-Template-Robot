@@ -7,27 +7,35 @@ package frc.robot.commands;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+
 /** An example command that uses an example subsystem. */
-public class ReverseControlCommand extends CommandBase {
-	public ReverseControlCommand() {
-		// Use addRequirements() here to declare subsystem dependencies.
+public class SpinPanelArmCommand extends CommandBase {
+	private boolean spinningForwards;
+
+	public SpinPanelArmCommand(boolean spinningForwards) {
+		this.spinningForwards = spinningForwards;
 		addRequirements(Robot.controlSubsystem);
 	}
 
 	// Called when the command is initially scheduled.
 	@Override
-	public void initialize() {}
+	public void initialize() {
+		if (spinningForwards) {
+			Robot.controlSubsystem.setControlPanelArmMotor(0.5);
+		} else {
+			Robot.controlSubsystem.setControlPanelArmMotor(-0.5);
+		}
+	}
 
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		Robot.controlSubsystem.setControlPanelArmMotor(-0.5);
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		Robot.controlSubsystem.setControlPanelArmMotor(0.);
+		Robot.controlSubsystem.setControlPanelArmMotor(0.0);
 	}
 
 	// Returns true when the command should end.

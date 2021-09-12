@@ -18,8 +18,6 @@ import frc.robot.Constants;
 
 
 public class ClimbSubsystem extends SubsystemBase {
-	private int climberState = 0;
-
 	private WPI_TalonSRX climbMotor;
 	private Encoder climbEncoder;
 
@@ -32,32 +30,11 @@ public class ClimbSubsystem extends SubsystemBase {
 		SmartDashboard.putString("Climber State", "NEUTRAL");
 	}
 
-	public void setClimb(double motorValue) {
+	public void setClimbMotor(double motorValue) {
 		climbMotor.set(ControlMode.PercentOutput, motorValue);
 	}
 
-	public void toggleElevatorState() {
-		if (climberState == 0) {
-			climbMotor.set(ControlMode.PercentOutput, 0.0);
-
-			SmartDashboard.putString("Climber State", "NEUTRAL");
-		} else if (climberState == 1) {
-			climbMotor.set(ControlMode.PercentOutput, 0.8);
-
-			SmartDashboard.putString("Climber State", "RETRACT");
-		} else if (climberState == 2) {
-			climbMotor.set(ControlMode.PercentOutput, -0.8);
-
-			
-			SmartDashboard.putString("Climber State", "EXTEND");
-		}
-		
-		if (climberState == 2) {
-			climberState = 0;
-		} else {
-			climberState++;
-		}
-
+	// public void toggleElevatorState() {
 		// if(state == true)
 		// {
 			//if(climbMinDist < Distance() && Distance() > climbMaxDist)
@@ -74,7 +51,7 @@ public class ClimbSubsystem extends SubsystemBase {
 		//		climbMotor.set(ControlMode.PercentOutput,0);
 		//	}
 		// }
-	}
+	// }
 
 	// public Encoder getClimbEncoder() { return climbEncoder; }
 

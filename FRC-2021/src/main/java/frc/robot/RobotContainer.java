@@ -11,10 +11,11 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.commands.*;
-//import frc.robot.subsystems.*;
+
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -52,9 +53,10 @@ public class RobotContainer {
 		return X3D_RIGHT.getRawAxis(Constants.ANGLE_ARCADE_DRIVE_AXIS_ID);
 	}
 
-	// Climber axis
-	public static double getClimberAxis() {
-		return GAMEPAD.getRawAxis(Constants.CLIMB_AXIS_ID);
+	// Climber axes or up/down buttons (buttons take priority over joystick)
+	public static double getClimberInput() {
+		
+		return GAMEPAD.getRawAxis(Constants.CLIMBER_JOYSTICK_AXIS_ID);
 	}
 
 	// Create and assign default buttons
@@ -65,12 +67,16 @@ public class RobotContainer {
 	
 	public static JoystickButton intakeButton = new JoystickButton(X3D_RIGHT, Constants.INTAKE_BUTTON_ID);
 	public static JoystickButton launchButton = new JoystickButton(X3D_RIGHT, Constants.LAUNCH_BUTTON_ID);
+	public static JoystickButton intakeAndLaunchButton = new JoystickButton(X3D_RIGHT, Constants.INTAKE_AND_LAUNCH_BUTTON_ID);
 
-	public static JoystickButton controlSpinButton = new JoystickButton(X3D_RIGHT, Constants.CONTROL_SPIN_BUTTON_ID);
-	public static JoystickButton controlSpinReverseButton = new JoystickButton(X3D_RIGHT, Constants.CONTROl_SPIN_REVERSE_BUTTON_ID);
+	public static JoystickButton controlSpinButton = new JoystickButton(X3D_RIGHT, Constants.PANEL_SPIN_BUTTON_ID);
+	public static JoystickButton controlSpinReverseButton = new JoystickButton(X3D_RIGHT, Constants.PANEL_SPIN_REVERSE_BUTTON_ID);
 
-	public static JoystickButton toggleClimbButton = new JoystickButton(X3D_RIGHT, Constants.TOGGLE_CLIMB_BUTTON_ID);
-	public static JoystickButton toggleWinchButton = new JoystickButton(X3D_RIGHT, Constants.TOGGLE_WINCH_BUTTON_ID);
+	public static JoystickButton extendClimberButton = new JoystickButton(X3D_RIGHT, Constants.EXTEND_CLIMBER_BUTTON_ID);
+	public static JoystickButton lowerClimberButton = new JoystickButton(X3D_RIGHT, Constants.LOWER_CLIMBER_BUTTON_ID);
+
+	public static JoystickButton spoolWinchButton = new JoystickButton(X3D_RIGHT, Constants.SPOOL_WINCH_BUTTON_ID);
+	public static JoystickButton unspoolWinchButton = new JoystickButton(X3D_RIGHT, Constants.UNSPOOL_WINCH_BUTTON_ID);
 
 	/**
 	 * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -89,17 +95,22 @@ public class RobotContainer {
 	private void configureButtonBindings() {
 		toggleArcadeDriveButton.whenPressed(new ToggleArcadeDriveCommand());
 		driveStraightButton.whileHeld(new DriveStraightCommand());
-
-		// testButton.whileHeld(new WaitTestCommand());
 		
 		intakeButton.whileHeld(new IntakeCommand());
 		launchButton.whileHeld(new FireCommand());
+		intakeAndLaunchButton.whileHeld(new ParallelCommandGroup(new IntakeCommand(), new FireCommand()));
+		
+		// true is forward spin, false is backward spin
+		controlSpinButton.whileHeld(new SpinPanelArmCommand(true));
+		controlSpinReverseButton.whileHeld(new SpinPanelArmCommand(false));
+		
+		// true is extending, false is lowering
+		extendClimberButton.whileHeld(new MoveClimberCommand(true));
+		lowerClimberButton.whileHeld(new MoveClimberCommand(false));
 
-		controlSpinButton.whileHeld(new ControlCommand());
-		controlSpinReverseButton.whileHeld(new ReverseControlCommand());
-
-		toggleClimbButton.whenPressed(new ClimbCommand());
-		toggleWinchButton.whenPressed(new WinchCommand());
+		// true is spooling, false is unspooling
+		spoolWinchButton.whileHeld(new SpinWinchCommand(true));
+		unspoolWinchButton.whileHeld(new SpinWinchCommand(false));
 	}
 
 

@@ -7,21 +7,27 @@
 
 package frc.robot.commands;
 
-//import javax.swing.plaf.TreeUI;
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.Robot;
 
-public class ClimbCommand extends CommandBase {
-	public ClimbCommand() {
-		// Use addRequirements() here to declare subsystem dependencies.
+
+public class MoveClimberCommand extends CommandBase {
+	private boolean extendingClimber;
+
+	public MoveClimberCommand(boolean extendingClimber) {
+		this.extendingClimber = extendingClimber;
 		addRequirements(Robot.climbSubsystem);
 	}
+
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
-		Robot.climbSubsystem.toggleElevatorState();
+		if (extendingClimber) {
+			Robot.climbSubsystem.setClimbMotor(-0.8);
+		} else {
+			Robot.climbSubsystem.setClimbMotor(0.8);
+		}
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
@@ -33,11 +39,12 @@ public class ClimbCommand extends CommandBase {
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
+		Robot.climbSubsystem.setClimbMotor(0.0);
 	}
 
 	// Returns true when the command should end.
 	@Override
 	public boolean isFinished() {
-		return true;
+		return false;
 	}
 }
