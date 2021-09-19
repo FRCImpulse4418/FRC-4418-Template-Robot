@@ -23,7 +23,6 @@ public class WinchSubsystem extends SubsystemBase {
 
 	public WinchSubsystem() {
 		winchMotor = new WPI_TalonFX(Constants.WINCH_TALONFX_ID);
-		SmartDashboard.putString("Winch State", "NEUTRAL");
 	}
 
 	public void setWinchMotor(double motorValue) {

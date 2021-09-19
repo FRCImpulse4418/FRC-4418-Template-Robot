@@ -154,8 +154,9 @@ public class RobotContainer {
 			lowerClimberButton.whileHeld(new MoveClimberCommand(false));
 	
 			// true is spooling, false is unspooling
-			spoolWinchButton.whileHeld(new SpinWinchCommand(true));
-			unspoolWinchButton.whileHeld(new SpinWinchCommand(false));
+			// TODO: No idea why, but the booleans for spotter's spool/unspool buttons need to be flipped
+			spoolWinchButton.whileHeld(new SpinWinchCommand(false));
+			unspoolWinchButton.whileHeld(new SpinWinchCommand(true));
 		}
 
 		// Tank drive axes

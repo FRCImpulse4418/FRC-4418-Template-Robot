@@ -10,7 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -27,14 +27,6 @@ public class ControlPanelSubsystem extends SubsystemBase {
 	// Spin control motors
 	public void setControlPanelArmMotor(double motorValue) {
 		controlSpinMotor.set(ControlMode.PercentOutput, motorValue);
-
-		if (motorValue > 0.) {
-			SmartDashboard.putString("Control Panel Arm State", "FORWARD SPIN");
-		} else if (motorValue < 0.) {
-			SmartDashboard.putString("Control Panel Arm State", "BACKWARD SPIN");
-		} else {
-			SmartDashboard.putString("Control Panel Arm State", "NO SPIN");
-		}
 	}
 
 	@Override

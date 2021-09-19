@@ -167,33 +167,32 @@ public class DriveSubsystem extends SubsystemBase {
 		arcadeDrive(values);
 	}
 
-	public void feedDominantAxesToArcadeDrive() {
-		teleopArcadeDriveWrapper(
-			RobotContainer.DriverControls.getForwardArcadeDriveAxis(), // forward
-			RobotContainer.DriverControls.getAngleArcadeDriveAxis());  // angle
-	}
-
-	public void feedDominantAxesToTankDrive() {
-		teleopTankDriveWrapper(
-			RobotContainer.DriverControls.getLeftTankDriveAxis(),  // left
-			RobotContainer.DriverControls.getRightTankDriveAxis());  // right
-	}
-
 	// ----------------------------------------------------------
 
 	// spotter overrides driver for dominant controls
-	public boolean dominantModeIsArcade() {
-		if (spotterIsInArcade()) {
-			if (RobotContainer.gamepadJoystickMagnitude(true) > Constants.ARCADE_AXIS_DOMINANCE_THRESHOLD) {
-				return true;
-			}
-		} else {
-			if (RobotContainer.gamepadJoystickMagnitude(true) > Constants.TANK_AXIS_DOMINANCE_THRESHOLD
-			|| RobotContainer.gamepadJoystickMagnitude(false) > Constants.TANK_AXIS_DOMINANCE_THRESHOLD) {
-				return false;
-			}
+	public void driveWithDominantControls() {
+		if (spotterIsInArcade()
+		&& (RobotContainer.gamepadJoystickMagnitude(true) > Constants.ARCADE_AXIS_DOMINANCE_THRESHOLD)) {
+			teleopArcadeDriveWrapper(
+				RobotContainer.SpotterControls.getForwardArcadeDriveAxis(),
+				RobotContainer.SpotterControls.getAngleArcadeDriveAxis());
+		} else if (!spotterIsInArcade()
+		&& (RobotContainer.gamepadJoystickMagnitude(true) > Constants.TANK_AXIS_DOMINANCE_THRESHOLD
+		|| RobotContainer.gamepadJoystickMagnitude(false) > Constants.TANK_AXIS_DOMINANCE_THRESHOLD)) {
+			teleopTankDriveWrapper(
+				RobotContainer.SpotterControls.getLeftTankDriveAxis(),
+				RobotContainer.SpotterControls.getRightTankDriveAxis());
 		}
-		return driverIsInArcade();
+
+		if (driverIsInArcade()) {
+			teleopArcadeDriveWrapper(
+				RobotContainer.DriverControls.getForwardArcadeDriveAxis(), // forward
+				RobotContainer.DriverControls.getAngleArcadeDriveAxis());  // angle
+		} else {
+			teleopTankDriveWrapper(
+			RobotContainer.DriverControls.getLeftTankDriveAxis(),  // left
+			RobotContainer.DriverControls.getRightTankDriveAxis());  // right
+		}
 	}
 
 	public void toggleDriverDriveMode() { driverIsInArcadeMode = !driverIsInArcadeMode; }
