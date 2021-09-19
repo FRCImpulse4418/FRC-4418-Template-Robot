@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 
-public class ToggleArcadeDriveCommand extends CommandBase {
-	public ToggleArcadeDriveCommand() {
+public class ToggleSpotterArcadeDriveCommand extends CommandBase {
+	public ToggleSpotterArcadeDriveCommand() {
 		// Use addRequirements() here to declare subsystem dependencies.
 		addRequirements(Robot.driveSubsystem);
 	}
@@ -21,7 +21,7 @@ public class ToggleArcadeDriveCommand extends CommandBase {
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
-		Robot.driveSubsystem.setArcadeDrive(!Robot.driveSubsystem.isArcadeDrive());
+		Robot.driveSubsystem.toggleSpotterDriveMode();
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.

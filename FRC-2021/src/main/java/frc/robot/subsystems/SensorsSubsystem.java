@@ -4,13 +4,13 @@
 
 package frc.robot.subsystems;
 
-import com.analog.adis16448.frc.ADIS16448_IMU;
+// import com.analog.adis16448.frc.ADIS16448_IMU;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class SensorsSubsystem extends SubsystemBase {
-	private static final ADIS16448_IMU imu = new ADIS16448_IMU();
+	// private static final ADIS16448_IMU imu = new ADIS16448_IMU();
 
 	/** Creates a new SensorsSubsystem. */
 	public SensorsSubsystem() {

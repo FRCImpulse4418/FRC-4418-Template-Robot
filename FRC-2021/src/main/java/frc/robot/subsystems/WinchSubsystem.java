@@ -18,8 +18,8 @@ import frc.robot.Constants;
 public class WinchSubsystem extends SubsystemBase {
 	private WPI_TalonFX winchMotor;
 
-	private double winchMaxDist;
-	private double winchMinDist;
+	// private double winchMaxDist;
+	// private double winchMinDist;
 
 	public WinchSubsystem() {
 		winchMotor = new WPI_TalonFX(Constants.WINCH_TALONFX_ID);

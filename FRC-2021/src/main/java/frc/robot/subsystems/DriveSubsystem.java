@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+// import edu.wpi.first.wpilibj.simulation.DriverStationSim;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -25,8 +26,10 @@ public class DriveSubsystem extends SubsystemBase {
 	private WPI_TalonSRX leftDriveMotorB;
 	private WPI_TalonSRX rightDriveMotorA;
 	private WPI_TalonSRX rightDriveMotorB;
+
 	private DifferentialDrive robotDrive;
-	private boolean arcadeDrive = true;
+	private boolean driverIsInArcadeMode = true;
+	private boolean spotterIsInArcadeMode = false;
 	
 	private Encoder leftDriveEncoder;
 	private Encoder rightDriveEncoder;
@@ -162,11 +165,11 @@ public class DriveSubsystem extends SubsystemBase {
 		arcadeDrive(values);
 	}
 
-	// set the robot to arcade drive or not
-	public void setArcadeDrive(boolean mode) { arcadeDrive = mode; }
+	public void toggleDriverDriveMode() { driverIsInArcadeMode = !driverIsInArcadeMode; }
+	public boolean getDriverDriveMode() { return driverIsInArcadeMode; }
 
-	// get whether the robot is in arcade drive mode or not
-	public boolean isArcadeDrive() { return arcadeDrive; }
+	public void toggleSpotterDriveMode() { spotterIsInArcadeMode = !spotterIsInArcadeMode; }
+	public boolean getSpotterDriveMode() { return spotterIsInArcadeMode; }
 
 	// ----------------------------------------------------------
 

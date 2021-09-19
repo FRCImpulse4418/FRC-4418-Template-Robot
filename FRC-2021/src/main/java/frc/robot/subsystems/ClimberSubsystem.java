@@ -10,22 +10,22 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.Encoder;
+// import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.Constants;
 
 
-public class ClimbSubsystem extends SubsystemBase {
+public class ClimberSubsystem extends SubsystemBase {
 	private WPI_TalonSRX climbMotor;
-	private Encoder climbEncoder;
+	// private Encoder climbEncoder;
 
 	//public double Distance(){return climbEncoder.getDistance();}
-	private final double climbMaxDist = 1.0;
-	private final double climbMinDist = 0.0;
+	// private final double climbMaxDist = 1.0;
+	// private final double climbMinDist = 0.0;
 
-	public ClimbSubsystem() {
+	public ClimberSubsystem() {
 		climbMotor = new WPI_TalonSRX(Constants.CLIMBER_TALONSRX_ID);
 		SmartDashboard.putString("Climber State", "NEUTRAL");
 	}

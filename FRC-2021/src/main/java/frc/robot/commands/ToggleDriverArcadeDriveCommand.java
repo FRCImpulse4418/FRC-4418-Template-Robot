@@ -12,22 +12,20 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 
-public class DriveStraightCommand extends CommandBase {
-	public DriveStraightCommand() {
+public class ToggleDriverArcadeDriveCommand extends CommandBase {
+	public ToggleDriverArcadeDriveCommand() {
 		addRequirements(Robot.driveSubsystem);
 	}
 
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
+		Robot.driveSubsystem.toggleDriverDriveMode();
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		Robot.driveSubsystem.brakeOrCoastMotors(false, false);
-		Robot.driveSubsystem.setLeftMotors(0.5);
-		Robot.driveSubsystem.setRightMotors(-0.5);
 	}
 
 	// Called once the command ends or is interrupted.
@@ -38,6 +36,6 @@ public class DriveStraightCommand extends CommandBase {
 	// Returns true when the command should end.
 	@Override
 	public boolean isFinished() {
-		return false;
+		return true;
 	}
 }

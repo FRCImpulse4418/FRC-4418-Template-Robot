@@ -16,7 +16,7 @@ import frc.robot.Robot;
 
 public class FireCommand extends CommandBase {
 	public FireCommand() {
-		// Use addRequirements() here to declare subsystem dependencies.
+		addRequirements(Robot.manipulatorsubsystem);		
 	}
 
 	// Called when the command is initially scheduled.
@@ -27,22 +27,22 @@ public class FireCommand extends CommandBase {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		SmartDashboard.putNumber("Top Fire", Robot.manipulatorsubsystem.getOuterFireMotor());
-		SmartDashboard.putNumber("Bottom Fire", Robot.manipulatorsubsystem.getInnerFireMotor());
+		SmartDashboard.putNumber("Wrist Fire", Robot.manipulatorsubsystem.getWristFireMotor());
+		SmartDashboard.putNumber("Elbow Fire", Robot.manipulatorsubsystem.getElbowFireMotor());
+		SmartDashboard.putNumber("Shoulder Fire", Robot.manipulatorsubsystem.getShoulderFireMotor());
 		
-		Robot.manipulatorsubsystem.setInnerIntakeMotor(-.5);
-		
-		Robot.manipulatorsubsystem.setInnerFireMotor(-7.);
-		Robot.manipulatorsubsystem.setOuterFireMotor(-1.);
+		Robot.manipulatorsubsystem.setShoulderFireMotor(-0.5);		
+		Robot.manipulatorsubsystem.setElbowFireMotor(-0.7);
+		Robot.manipulatorsubsystem.setWristFireMotor(-1.0);
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		Robot.manipulatorsubsystem.setInnerIntakeMotor(0.);
+		Robot.manipulatorsubsystem.setShoulderFireMotor(0.);
 
-		Robot.manipulatorsubsystem.setInnerFireMotor(0.);
-		Robot.manipulatorsubsystem.setOuterFireMotor(0.);
+		Robot.manipulatorsubsystem.setElbowFireMotor(0.);
+		Robot.manipulatorsubsystem.setWristFireMotor(0.);
 	}
 
 	// Returns true when the command should end.

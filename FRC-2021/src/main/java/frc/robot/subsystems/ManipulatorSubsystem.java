@@ -17,11 +17,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class ManipulatorSubsystem extends SubsystemBase {
-	private WPI_TalonSRX innerIntakeMotor;
-	private WPI_TalonSRX outerIntakeMotor;
-
-	private WPI_TalonSRX innerFireMotor;
-	private WPI_TalonSRX outerFireMotor;
+	private WPI_TalonSRX intakeMotor;
+	
+	private WPI_TalonSRX shoulderFireMotor;
+	private WPI_TalonSRX elbowFireMotor;
+	private WPI_TalonSRX wristFireMotor;
 
 	/* Encoder.getRate() returns distance per second
 	distance per second * distance per pulse = pulse per second
@@ -38,25 +38,26 @@ public class ManipulatorSubsystem extends SubsystemBase {
 	private boolean pivotUp = true;
 
 	public ManipulatorSubsystem() {
-		innerFireMotor = new WPI_TalonSRX(Constants.MAN_FIRE_BOTTOM_TALONSRX_ID);
-		outerFireMotor = new WPI_TalonSRX(Constants.MAN_FIRE_TOP_TALONSRX_ID);
+		intakeMotor = new WPI_TalonSRX(Constants.MAN_INTAKE_BOTTOM_TALONSRX_ID);
+		
+		shoulderFireMotor = new WPI_TalonSRX(Constants.MAN_INTAKE_TOP_TALONSRX_ID);
+		elbowFireMotor = new WPI_TalonSRX(Constants.MAN_FIRE_BOTTOM_TALONSRX_ID);
+		wristFireMotor = new WPI_TalonSRX(Constants.MAN_FIRE_TOP_TALONSRX_ID);
 
-		innerIntakeMotor = new WPI_TalonSRX(Constants.MAN_INTAKE_TOP_TALONSRX_ID);
-		outerIntakeMotor = new WPI_TalonSRX(Constants.MAN_INTAKE_BOTTOM_TALONSRX_ID);
 	}
 
 	// set motors
-	public void setInnerFireMotor(double motorValue) { innerFireMotor.set(ControlMode.PercentOutput, motorValue); }
-	public void setOuterFireMotor(double motorValue) { outerFireMotor.set(ControlMode.PercentOutput, motorValue); }
-	public void setInnerIntakeMotor(double motorValue) { innerIntakeMotor.set(ControlMode.PercentOutput, motorValue); }
-	public void setOuterIntakeMotor(double motorValue) { outerIntakeMotor.set(ControlMode.PercentOutput, motorValue); }
+	public void setElbowFireMotor(double motorValue) { elbowFireMotor.set(ControlMode.PercentOutput, motorValue); }
+	public void setWristFireMotor(double motorValue) { wristFireMotor.set(ControlMode.PercentOutput, motorValue); }
+	public void setShoulderFireMotor(double motorValue) { shoulderFireMotor.set(ControlMode.PercentOutput, motorValue); }
+	public void setIntakeMotor(double motorValue) { intakeMotor.set(ControlMode.PercentOutput, motorValue); }
 
 	//read motors
 
-	public double getInnerFireMotor() { return innerFireMotor.getMotorOutputPercent(); }
-	public double getOuterFireMotor() { return outerFireMotor.getMotorOutputPercent(); }
-	public double getInnerIntakeMotor() { return innerIntakeMotor.getMotorOutputPercent(); }
-	public double getOuterIntakeMotor() { return outerIntakeMotor.getMotorOutputPercent(); }
+	public double getShoulderFireMotor() { return shoulderFireMotor.getMotorOutputPercent(); }
+	public double getElbowFireMotor() { return elbowFireMotor.getMotorOutputPercent(); }
+	public double getWristFireMotor() { return wristFireMotor.getMotorOutputPercent(); }
+	public double getIntakeMotor() { return intakeMotor.getMotorOutputPercent(); }
 
 	// read potentiometer
 	public double getPivotPotentiometer() { return pivotPotentiometer.get(); }

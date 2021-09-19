@@ -7,13 +7,13 @@
 
 package frc.robot;
 
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.cameraserver.CameraServer;
+// import edu.wpi.cscore.UsbCamera;
+// import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.ClimbSubsystem;
-import frc.robot.subsystems.ControlSubsystem;
+import frc.robot.subsystems.ClimberSubsystem;
+import frc.robot.subsystems.ControlPanelSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.ManipulatorSubsystem;
@@ -28,17 +28,17 @@ import frc.robot.subsystems.WinchSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-	private UsbCamera frontShooterCamera;
-	private UsbCamera rightPanelCamera;
+	// private UsbCamera frontShooterCamera;
+	// private UsbCamera rightPanelCamera;
 
 	private Command m_autonomousCommand;
 	private RobotContainer m_robotContainer;
 
 	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
 	public static ManipulatorSubsystem manipulatorsubsystem = new ManipulatorSubsystem();
-	public static ControlSubsystem controlSubsystem = new ControlSubsystem();
+	public static ControlPanelSubsystem controlSubsystem = new ControlPanelSubsystem();
 	public static WinchSubsystem winchSubsystem = new WinchSubsystem();
-	public static ClimbSubsystem climbSubsystem = new ClimbSubsystem();
+	public static ClimberSubsystem climbSubsystem = new ClimberSubsystem();
 	// public static SensorsSubsystem sensorsSubsystem = new SensorsSubsystem();
 	public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 
@@ -49,8 +49,8 @@ public class Robot extends TimedRobot {
 		// create RobotContainer. Does our button bindings & puts autonomous chooser on dashboard
 		m_robotContainer = new RobotContainer();
 
-		frontShooterCamera = CameraServer.getInstance().startAutomaticCapture(0);
-		rightPanelCamera = CameraServer.getInstance().startAutomaticCapture(1);
+		// frontShooterCamera = CameraServer.getInstance().startAutomaticCapture(0);
+		// rightPanelCamera = CameraServer.getInstance().startAutomaticCapture(1);
 	}
 
 	// called every robot packet (good for diagnostics), after mode-specific periodics

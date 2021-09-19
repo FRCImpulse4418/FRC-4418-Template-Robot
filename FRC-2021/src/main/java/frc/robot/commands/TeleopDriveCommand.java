@@ -15,7 +15,6 @@ import frc.robot.Robot;
 
 public class TeleopDriveCommand extends CommandBase {
 	public TeleopDriveCommand() {
-		// Use addRequirements() here to declare subsystem dependencies
 		addRequirements(Robot.driveSubsystem);
 	}
 
@@ -28,15 +27,15 @@ public class TeleopDriveCommand extends CommandBase {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		if (Robot.driveSubsystem.isArcadeDrive()) {
+		if (Robot.driveSubsystem.driverIsInArcadeDrive()) {
 			Robot.driveSubsystem.teleopArcadeDriveWrapper(
-				RobotContainer.getForwardArcadeDriveAxis(), // forward
-				RobotContainer.getAngleArcadeDriveAxis()  // angle
+				RobotContainer.DriverControls.getForwardArcadeDriveAxis(), // forward
+				RobotContainer.DriverControls.getAngleArcadeDriveAxis()  // angle
 			);
 		} else {
 			Robot.driveSubsystem.teleopTankDriveWrapper(
-				RobotContainer.getLeftTankDriveAxis(),  // left
-				RobotContainer.getRightTankDriveAxis()  // right
+				RobotContainer.DriverControls.getLeftTankDriveAxis(),  // left
+				RobotContainer.DriverControls.getRightTankDriveAxis()  // right
 			);
 		}
 	}
