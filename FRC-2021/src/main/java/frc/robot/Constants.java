@@ -22,7 +22,7 @@ public final class Constants {
 	private static final int
 		// Gamepad axes
 		// GAMEPAD_AXIS_LEFT_X = 0,
-		// GAMEPAD_AXIS_LEFT_Y = 1,
+		GAMEPAD_AXIS_LEFT_Y = 1,
 		// GAMEPAD_AXIS_RIGHT_X = 4,
 		// GAMEPAD_AXIS_RIGHT_Y = 5,
 		// GAMEPAD_AXIS_LEFT_TRIGGER = 2,
