@@ -15,7 +15,7 @@ import frc.robot.Robot;
 
 public class PrintoutCommand extends CommandBase {
 	public PrintoutCommand() {
-		// Use addRequirements() here to declare subsystem dependencies.
+	
 	}
 
 	// Called when the command is initially scheduled.

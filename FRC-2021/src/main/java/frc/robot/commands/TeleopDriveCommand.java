@@ -15,7 +15,6 @@ import frc.robot.Robot;
 
 public class TeleopDriveCommand extends CommandBase {
 	public TeleopDriveCommand() {
-		// Use addRequirements() here to declare subsystem dependencies
 		addRequirements(Robot.driveSubsystem);
 	}
 

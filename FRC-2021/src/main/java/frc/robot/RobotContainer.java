@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.commands.*;
@@ -63,9 +62,9 @@ public class RobotContainer {
 		toggleArcadeDriveButton = new JoystickButton(X3D_RIGHT, Constants.TOGGLE_ARCADE_DRIVE_BUTOON_ID),
 		driveStraightButton = new JoystickButton(X3D_RIGHT, Constants.DRIVE_STRAIGHT_BUTTON_ID),
 	
-		intakeButton = new JoystickButton(X3D_RIGHT, Constants.INTAKE_BUTTON_ID),
+		forwardIntakeButton = new JoystickButton(X3D_RIGHT, Constants.FORWARD_INTAKE_BUTTON_ID),
+		backwardIntakeButton = new JoystickButton(X3D_RIGHT, Constants.BACKWARD_INTAKE_BUTTON_ID),
 		launchButton = new JoystickButton(X3D_RIGHT, Constants.LAUNCH_BUTTON_ID),
-		intakeAndLaunchButton = new JoystickButton(X3D_RIGHT, Constants.INTAKE_AND_LAUNCH_BUTTON_ID),
 
 		panelSpinButton = new JoystickButton(X3D_RIGHT, Constants.PANEL_SPIN_BUTTON_ID),
 		reversePanelSpinButton = new JoystickButton(X3D_RIGHT, Constants.PANEL_SPIN_REVERSE_BUTTON_ID),
@@ -94,9 +93,9 @@ public class RobotContainer {
 		toggleArcadeDriveButton.whenPressed(new ToggleArcadeDriveCommand());
 		driveStraightButton.whileHeld(new DriveStraightCommand());
 		
-		intakeButton.whileHeld(new IntakeCommand());
+		backwardIntakeButton.whileHeld(new IntakeCommand(true));
+		forwardIntakeButton.whileHeld(new IntakeCommand(false));
 		launchButton.whileHeld(new FireCommand());
-		intakeAndLaunchButton.whileHeld(new ParallelCommandGroup(new IntakeCommand(), new FireCommand()));
 		
 		// true is forward spin, false is backward spin
 		panelSpinButton.whileHeld(new SpinPanelArmCommand(true));

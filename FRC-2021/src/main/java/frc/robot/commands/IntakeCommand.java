@@ -14,8 +14,11 @@ import frc.robot.Robot;
 
 
 public class IntakeCommand extends CommandBase {
-	public IntakeCommand() {
-		// Use addRequirements() here to declare subsystem dependencies.
+	private boolean isReverseIntake;
+
+	public IntakeCommand(boolean isReverseIntake) {
+		this.isReverseIntake = isReverseIntake;
+		addRequirements(Robot.manipulatorsubsystem);
 	}
 
 	// Called when the command is initially scheduled.
@@ -26,16 +29,19 @@ public class IntakeCommand extends CommandBase {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		SmartDashboard.putNumber("Top Intake Motor", Robot.manipulatorsubsystem.getInnerIntakeMotor());
-		SmartDashboard.putNumber("Bottom Intake Motor", Robot.manipulatorsubsystem.getOuterIntakeMotor());
+		SmartDashboard.putNumber("Intake Motor", Robot.manipulatorsubsystem.getIntakeMotor());
 		
-		Robot.manipulatorsubsystem.setOuterIntakeMotor(.5);
+		if (!isReverseIntake) {
+			Robot.manipulatorsubsystem.setIntakeMotor(0.5);
+		} else {
+			Robot.manipulatorsubsystem.setIntakeMotor(-0.5);
+		}
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		Robot.manipulatorsubsystem.setOuterIntakeMotor(0.);
+		Robot.manipulatorsubsystem.setIntakeMotor(0.);
 	}
 
 	// Returns true when the command should end.

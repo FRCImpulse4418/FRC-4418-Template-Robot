@@ -14,7 +14,6 @@ import frc.robot.Robot;
 
 public class ToggleArcadeDriveCommand extends CommandBase {
 	public ToggleArcadeDriveCommand() {
-		// Use addRequirements() here to declare subsystem dependencies.
 		addRequirements(Robot.driveSubsystem);
 	}
 

@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 
-public class ClimbSubsystem extends SubsystemBase {
+public class ClimberSubsystem extends SubsystemBase {
 	private WPI_TalonSRX climbMotor;
 	private Encoder climbEncoder;
 
@@ -25,7 +25,7 @@ public class ClimbSubsystem extends SubsystemBase {
 	private final double climbMaxDist = 1.0;
 	private final double climbMinDist = 0.0;
 
-	public ClimbSubsystem() {
+	public ClimberSubsystem() {
 		climbMotor = new WPI_TalonSRX(Constants.CLIMBER_TALONSRX_ID);
 		SmartDashboard.putString("Climber State", "NEUTRAL");
 	}

@@ -17,10 +17,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 
-public class ControlSubsystem extends SubsystemBase {
+public class ControlPanelSubsystem extends SubsystemBase {
 	private WPI_TalonSRX controlSpinMotor;
 	
-	public ControlSubsystem() {
+	public ControlPanelSubsystem() {
 		controlSpinMotor = new WPI_TalonSRX(Constants.CONTROLSPIN_TALONSRX_ID);
 	}
 	
