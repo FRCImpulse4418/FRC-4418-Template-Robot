@@ -7,14 +7,20 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.buttons.POVButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.commands.*;
+
+import frc.robot.subsystems.ClimberSubsystem;
+import frc.robot.subsystems.ControlPanelSubsystem;
+import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.ManipulatorSubsystem;
+// import frc.robot.subsystems.SensorsSubsystem;
+import frc.robot.subsystems.WinchSubsystem;
 
 
 /**
@@ -24,17 +30,31 @@ import frc.robot.commands.*;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-	// The robot's subsystems and commands are defined here...
-	//private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-	//private final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
-
-	//private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
+	public static ManipulatorSubsystem manipulatorsubsystem = new ManipulatorSubsystem();
+	public static ControlPanelSubsystem controlSubsystem = new ControlPanelSubsystem();
+	public static WinchSubsystem winchSubsystem = new WinchSubsystem();
+	public static ClimberSubsystem climbSubsystem = new ClimberSubsystem();
+	// public static SensorsSubsystem sensorsSubsystem = new SensorsSubsystem();
+	public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 
 	// Create joysticks
 	private static final Joystick
 		X3D_LEFT = new Joystick(Constants.X3D_LEFT_JOYSTICK_ID),
 		X3D_RIGHT = new Joystick(Constants.X3D_RIGHT_JOYSTICK_ID),
 		GAMEPAD = new Joystick(Constants.GAMEPAD_JOYSTICK_ID);
+
+	public static double gamepadJoystickMagnitude(boolean isLeftJoystick) {
+		if (isLeftJoystick) {
+			return Math.sqrt(
+				Math.pow(GAMEPAD.getRawAxis(Constants.GAMEPAD_AXIS_LEFT_X), 2)
+				+ Math.pow(GAMEPAD.getRawAxis(Constants.GAMEPAD_AXIS_LEFT_Y), 2));
+		} else {
+			return Math.sqrt(
+				Math.pow(GAMEPAD.getRawAxis(Constants.GAMEPAD_AXIS_RIGHT_X), 2)
+				+ Math.pow(GAMEPAD.getRawAxis(Constants.GAMEPAD_AXIS_RIGHT_Y), 2));
+		}
+	}
 
 	// Climber axes or up/down buttons (buttons take priority over joystick)
 	// public static double getClimberAxis() {
@@ -46,9 +66,9 @@ public class RobotContainer {
 			toggleArcadeDriveButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.TOGGLE_ARCADE_DRIVE_BUTTON_ID),
 			driveStraightButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.DRIVE_STRAIGHT_BUTTON_ID),
 		
-			intakeButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.INTAKE_BUTTON_ID),
+			backwardIntakeButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.BACKWARD_INTAKE_BUTTON_ID),
+			forwardIntakeButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.FORWARD_INTAKE_BUTTON_ID),
 			launchButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.LAUNCH_BUTTON_ID),
-			intakeAndLaunchButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.INTAKE_AND_LAUNCH_BUTTON_ID),
 
 			panelSpinButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.PANEL_SPIN_BUTTON_ID),
 			reversePanelSpinButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.PANEL_SPIN_REVERSE_BUTTON_ID),
@@ -63,7 +83,8 @@ public class RobotContainer {
 			toggleArcadeDriveButton.whenPressed(new ToggleDriverArcadeDriveCommand());
 			driveStraightButton.whileHeld(new DriveStraightCommand());
 			
-			intakeButton.whileHeld(new IntakeCommand());
+			backwardIntakeButton.whileHeld(new IntakeCommand(true));
+			forwardIntakeButton.whileHeld(new IntakeCommand(false));
 			launchButton.whileHeld(new FireCommand());
 			
 			// true is forward spin, false is backward spin
@@ -121,7 +142,7 @@ public class RobotContainer {
 			toggleArcadeDriveButton.whenPressed(new ToggleSpotterArcadeDriveCommand());
 			driveStraightButton.whileHeld(new DriveStraightCommand());
 			
-			intakeButton.whileHeld(new IntakeCommand());
+			intakeButton.whileHeld(new IntakeCommand(false));
 			launchButton.whileHeld(new FireCommand());
 			
 			// true is forward spin, false is backward spin
@@ -162,15 +183,8 @@ public class RobotContainer {
 	public RobotContainer() {
 		// Configure the button bindings
 		DriverControls.configureButtonBindings();
+		SpotterControls.configureButtonBindings();
 	}
-
-	/**
-	 * Use this method to define your button->command mappings.  Buttons can be created by
-	 * instantiating a {@link GenericHID} or one of its subclasses ({@link
-	 * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a
-	 * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-	 */
-
 
 	/**
 	 * Use this to pass the autonomous command to the main {@link Robot} class.

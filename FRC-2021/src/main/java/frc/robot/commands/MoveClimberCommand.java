@@ -9,7 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 
 public class MoveClimberCommand extends CommandBase {
@@ -17,16 +17,16 @@ public class MoveClimberCommand extends CommandBase {
 
 	public MoveClimberCommand(boolean extendingClimber) {
 		this.extendingClimber = extendingClimber;
-		addRequirements(Robot.climbSubsystem);
+		addRequirements(RobotContainer.climbSubsystem);
 	}
 
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
 		if (extendingClimber) {
-			Robot.climbSubsystem.setClimbMotor(-0.8);
+			RobotContainer.climbSubsystem.setClimbMotor(-0.8);
 		} else {
-			Robot.climbSubsystem.setClimbMotor(0.8);
+			RobotContainer.climbSubsystem.setClimbMotor(0.8);
 		}
 	}
 
@@ -39,7 +39,7 @@ public class MoveClimberCommand extends CommandBase {
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		Robot.climbSubsystem.setClimbMotor(0.0);
+		RobotContainer.climbSubsystem.setClimbMotor(0.0);
 	}
 
 	// Returns true when the command should end.

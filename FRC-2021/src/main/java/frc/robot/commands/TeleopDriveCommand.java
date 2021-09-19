@@ -10,12 +10,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.RobotContainer;
-import frc.robot.Robot;
 
 
 public class TeleopDriveCommand extends CommandBase {
 	public TeleopDriveCommand() {
-		addRequirements(Robot.driveSubsystem);
+		addRequirements(RobotContainer.driveSubsystem);
 	}
 
 	// Called when the command is initially scheduled.
@@ -27,23 +26,17 @@ public class TeleopDriveCommand extends CommandBase {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		if (Robot.driveSubsystem.driverIsInArcadeDrive()) {
-			Robot.driveSubsystem.teleopArcadeDriveWrapper(
-				RobotContainer.DriverControls.getForwardArcadeDriveAxis(), // forward
-				RobotContainer.DriverControls.getAngleArcadeDriveAxis()  // angle
-			);
+		if (RobotContainer.driveSubsystem.dominantModeIsArcade()) {
+			RobotContainer.driveSubsystem.feedDominantAxesToArcadeDrive();
 		} else {
-			Robot.driveSubsystem.teleopTankDriveWrapper(
-				RobotContainer.DriverControls.getLeftTankDriveAxis(),  // left
-				RobotContainer.DriverControls.getRightTankDriveAxis()  // right
-			);
+			RobotContainer.driveSubsystem.feedDominantAxesToTankDrive();
 		}
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		Robot.driveSubsystem.stopDrive();
+		RobotContainer.driveSubsystem.stopDrive();
 	}
 
 	// Returns true when the command should end.

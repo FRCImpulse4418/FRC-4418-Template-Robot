@@ -10,12 +10,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 
 public class PrintoutCommand extends CommandBase {
 	public PrintoutCommand() {
-	
+		
 	}
 
 	// Called when the command is initially scheduled.
@@ -27,14 +27,14 @@ public class PrintoutCommand extends CommandBase {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		SmartDashboard.putNumber("Left Motor", Robot.driveSubsystem.getLeftPercent());
-		SmartDashboard.putNumber("Right Motor", Robot.driveSubsystem.getRightPercent());
+		SmartDashboard.putNumber("Left Motor", RobotContainer.driveSubsystem.getLeftPercent());
+		SmartDashboard.putNumber("Right Motor", RobotContainer.driveSubsystem.getRightPercent());
 
-		SmartDashboard.putNumber("Left Distance", Robot.driveSubsystem.getLeftDistance());
-		SmartDashboard.putNumber("Right Distance", Robot.driveSubsystem.getRightDistance());
+		SmartDashboard.putNumber("Left Distance", RobotContainer.driveSubsystem.getLeftDistance());
+		SmartDashboard.putNumber("Right Distance", RobotContainer.driveSubsystem.getRightDistance());
 
-		SmartDashboard.putNumber("Left RPM", Robot.driveSubsystem.getLeftDistance());
-		SmartDashboard.putNumber("Right RPM", Robot.driveSubsystem.getRightDistance());
+		SmartDashboard.putNumber("Left RPM", RobotContainer.driveSubsystem.getLeftDistance());
+		SmartDashboard.putNumber("Right RPM", RobotContainer.driveSubsystem.getRightDistance());
 
 		// SmartDashboard.putNumber("Gyro", Robot.sensorsSubsystem.getGyroValue());
 

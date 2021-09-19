@@ -4,14 +4,13 @@
 
 package frc.robot.commands;
 
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
 public class ExampleCommand extends CommandBase {
 	public ExampleCommand() {
-		// Use addRequirements() here to declare subsystem dependencies.
-		addRequirements(Robot.exampleSubsystem);
+		addRequirements(RobotContainer.exampleSubsystem);
 	}
 
 	// Called when the command is initially scheduled.

@@ -18,13 +18,19 @@ package frc.robot;
 
 
 public final class Constants {
-	// Controller abstractions
-	private static final int
+	public static final int
 		// Gamepad axes
 		GAMEPAD_AXIS_LEFT_X = 0,
 		GAMEPAD_AXIS_LEFT_Y = 1,
-		// GAMEPAD_AXIS_RIGHT_X = 4,
-		GAMEPAD_AXIS_RIGHT_Y = 5,
+		GAMEPAD_AXIS_RIGHT_X = 4,
+		GAMEPAD_AXIS_RIGHT_Y = 5;
+
+	public static final double
+		// Drive axis dominance thresholds
+		ARCADE_AXIS_DOMINANCE_THRESHOLD = 0.35,
+		TANK_AXIS_DOMINANCE_THRESHOLD = 0.21;
+
+	private static final int
 		// GAMEPAD_AXIS_LEFT_TRIGGER = 2,
 		// GAMEPAD_AXIS_RIGHT_TRIGGER = 3,
 
@@ -83,9 +89,9 @@ public static class DriverControlIDs {
 		DRIVE_STRAIGHT_BUTTON_ID = X3D_BUTTON_GRIP,
 
 		// Manipulator buttons
-		INTAKE_BUTTON_ID = X3D_BUTTON_4,
-		LAUNCH_BUTTON_ID = X3D_BUTTON_6,
-		INTAKE_AND_LAUNCH_BUTTON_ID = X3D_BUTTON_3,
+		BACKWARD_INTAKE_BUTTON_ID = X3D_BUTTON_6,
+		FORWARD_INTAKE_BUTTON_ID = X3D_BUTTON_4,
+		LAUNCH_BUTTON_ID = X3D_BUTTON_3,
 
 		// Control panel arm buttons
 		PANEL_SPIN_BUTTON_ID = X3D_BUTTON_12,

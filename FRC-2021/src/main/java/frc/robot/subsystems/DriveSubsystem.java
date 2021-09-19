@@ -17,6 +17,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
 import frc.robot.commands.TeleopDriveCommand;
 import frc.robot.teamlibraries.DriveInputPipeline;
 
@@ -27,12 +28,13 @@ public class DriveSubsystem extends SubsystemBase {
 	private WPI_TalonSRX rightDriveMotorA;
 	private WPI_TalonSRX rightDriveMotorB;
 
-	private DifferentialDrive robotDrive;
-	private boolean driverIsInArcadeMode = true;
-	private boolean spotterIsInArcadeMode = false;
-	
 	private Encoder leftDriveEncoder;
 	private Encoder rightDriveEncoder;
+
+	private DifferentialDrive robotDrive;
+
+	private boolean driverIsInArcadeMode = true;
+	private boolean spotterIsInArcadeMode = false;
 
 	public DriveSubsystem() {
 		// Drive Motors
@@ -165,11 +167,40 @@ public class DriveSubsystem extends SubsystemBase {
 		arcadeDrive(values);
 	}
 
+	public void feedDominantAxesToArcadeDrive() {
+		teleopArcadeDriveWrapper(
+			RobotContainer.DriverControls.getForwardArcadeDriveAxis(), // forward
+			RobotContainer.DriverControls.getAngleArcadeDriveAxis());  // angle
+	}
+
+	public void feedDominantAxesToTankDrive() {
+		teleopTankDriveWrapper(
+			RobotContainer.DriverControls.getLeftTankDriveAxis(),  // left
+			RobotContainer.DriverControls.getRightTankDriveAxis());  // right
+	}
+
+	// ----------------------------------------------------------
+
+	// spotter overrides driver for dominant controls
+	public boolean dominantModeIsArcade() {
+		if (spotterIsInArcade()) {
+			if (RobotContainer.gamepadJoystickMagnitude(true) > Constants.ARCADE_AXIS_DOMINANCE_THRESHOLD) {
+				return true;
+			}
+		} else {
+			if (RobotContainer.gamepadJoystickMagnitude(true) > Constants.TANK_AXIS_DOMINANCE_THRESHOLD
+			|| RobotContainer.gamepadJoystickMagnitude(false) > Constants.TANK_AXIS_DOMINANCE_THRESHOLD) {
+				return false;
+			}
+		}
+		return driverIsInArcade();
+	}
+
 	public void toggleDriverDriveMode() { driverIsInArcadeMode = !driverIsInArcadeMode; }
-	public boolean getDriverDriveMode() { return driverIsInArcadeMode; }
+	private boolean driverIsInArcade() { return driverIsInArcadeMode; }
 
 	public void toggleSpotterDriveMode() { spotterIsInArcadeMode = !spotterIsInArcadeMode; }
-	public boolean getSpotterDriveMode() { return spotterIsInArcadeMode; }
+	private boolean spotterIsInArcade() { return spotterIsInArcadeMode; }
 
 	// ----------------------------------------------------------
 

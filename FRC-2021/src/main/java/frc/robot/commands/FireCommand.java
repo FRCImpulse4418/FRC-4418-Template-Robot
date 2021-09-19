@@ -11,12 +11,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 
 public class FireCommand extends CommandBase {
 	public FireCommand() {
-		addRequirements(Robot.manipulatorsubsystem);		
+		addRequirements(RobotContainer.manipulatorsubsystem);		
 	}
 
 	// Called when the command is initially scheduled.
@@ -27,22 +27,22 @@ public class FireCommand extends CommandBase {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		SmartDashboard.putNumber("Wrist Fire", Robot.manipulatorsubsystem.getWristFireMotor());
-		SmartDashboard.putNumber("Elbow Fire", Robot.manipulatorsubsystem.getElbowFireMotor());
-		SmartDashboard.putNumber("Shoulder Fire", Robot.manipulatorsubsystem.getShoulderFireMotor());
+		SmartDashboard.putNumber("Wrist Fire", RobotContainer.manipulatorsubsystem.getWristFireMotor());
+		SmartDashboard.putNumber("Elbow Fire", RobotContainer.manipulatorsubsystem.getElbowFireMotor());
+		SmartDashboard.putNumber("Shoulder Fire", RobotContainer.manipulatorsubsystem.getShoulderFireMotor());
 		
-		Robot.manipulatorsubsystem.setShoulderFireMotor(-0.5);		
-		Robot.manipulatorsubsystem.setElbowFireMotor(-0.7);
-		Robot.manipulatorsubsystem.setWristFireMotor(-1.0);
+		RobotContainer.manipulatorsubsystem.setShoulderFireMotor(-0.5);		
+		RobotContainer.manipulatorsubsystem.setElbowFireMotor(-0.7);
+		RobotContainer.manipulatorsubsystem.setWristFireMotor(-1.0);
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		Robot.manipulatorsubsystem.setShoulderFireMotor(0.);
+		RobotContainer.manipulatorsubsystem.setShoulderFireMotor(0.);
 
-		Robot.manipulatorsubsystem.setElbowFireMotor(0.);
-		Robot.manipulatorsubsystem.setWristFireMotor(0.);
+		RobotContainer.manipulatorsubsystem.setElbowFireMotor(0.);
+		RobotContainer.manipulatorsubsystem.setWristFireMotor(0.);
 	}
 
 	// Returns true when the command should end.

@@ -12,13 +12,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.ClimberSubsystem;
-import frc.robot.subsystems.ControlPanelSubsystem;
-import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.ManipulatorSubsystem;
-// import frc.robot.subsystems.SensorsSubsystem;
-import frc.robot.subsystems.WinchSubsystem;
 
 
 /**
@@ -33,14 +26,6 @@ public class Robot extends TimedRobot {
 
 	private Command m_autonomousCommand;
 	private RobotContainer m_robotContainer;
-
-	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
-	public static ManipulatorSubsystem manipulatorsubsystem = new ManipulatorSubsystem();
-	public static ControlPanelSubsystem controlSubsystem = new ControlPanelSubsystem();
-	public static WinchSubsystem winchSubsystem = new WinchSubsystem();
-	public static ClimberSubsystem climbSubsystem = new ClimberSubsystem();
-	// public static SensorsSubsystem sensorsSubsystem = new SensorsSubsystem();
-	public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 
 
 	// run when robot is started, put initialization code here

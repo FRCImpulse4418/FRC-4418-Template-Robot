@@ -9,7 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 
 public class SpinWinchCommand extends CommandBase {
@@ -17,16 +17,16 @@ public class SpinWinchCommand extends CommandBase {
 	
 	public SpinWinchCommand(boolean spooling) {
 		this.spooling = spooling;
-		addRequirements(Robot.winchSubsystem);
+		addRequirements(RobotContainer.winchSubsystem);
 	}
 
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
 		if (spooling) {
-			Robot.winchSubsystem.setWinchMotor(-0.6);
+			RobotContainer.winchSubsystem.setWinchMotor(-0.6);
 		} else {
-			Robot.winchSubsystem.setWinchMotor(0.6);
+			RobotContainer.winchSubsystem.setWinchMotor(0.6);
 		}
 	}
 
@@ -39,7 +39,7 @@ public class SpinWinchCommand extends CommandBase {
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		Robot.winchSubsystem.setWinchMotor(0.0);
+		RobotContainer.winchSubsystem.setWinchMotor(0.0);
 	}
 
 	// Returns true when the command should end.

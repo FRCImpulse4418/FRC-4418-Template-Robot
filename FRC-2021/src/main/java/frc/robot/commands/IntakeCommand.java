@@ -10,7 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-import frc.robot.Robot;
+import frc.robot.RobotContainer;
 
 
 public class IntakeCommand extends CommandBase {
@@ -18,7 +18,7 @@ public class IntakeCommand extends CommandBase {
 
 	public IntakeCommand(boolean isReverseIntake) {
 		this.isReverseIntake = isReverseIntake;
-		addRequirements(Robot.manipulatorsubsystem);
+		addRequirements(RobotContainer.manipulatorsubsystem);
 	}
 
 	// Called when the command is initially scheduled.
@@ -29,19 +29,19 @@ public class IntakeCommand extends CommandBase {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		SmartDashboard.putNumber("Intake Motor", Robot.manipulatorsubsystem.getIntakeMotor());
+		SmartDashboard.putNumber("Intake Motor", RobotContainer.manipulatorsubsystem.getIntakeMotor());
 		
 		if (!isReverseIntake) {
-			Robot.manipulatorsubsystem.setIntakeMotor(0.5);
+			RobotContainer.manipulatorsubsystem.setIntakeMotor(0.5);
 		} else {
-			Robot.manipulatorsubsystem.setIntakeMotor(-0.5);
+			RobotContainer.manipulatorsubsystem.setIntakeMotor(-0.5);
 		}
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		Robot.manipulatorsubsystem.setIntakeMotor(0.);
+		RobotContainer.manipulatorsubsystem.setIntakeMotor(0.);
 	}
 
 	// Returns true when the command should end.
