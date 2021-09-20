@@ -51,8 +51,8 @@ public final class Constants {
 		GAMEPAD_POV_ANGLE_UP = 0,
 
 		// X3D Axes
-		X3D_AXIS_PITCH = 1,
 		X3D_AXIS_ROLL = 0,
+		X3D_AXIS_PITCH = 1,
 		/*X3D_AXIS_YAW = 2,
 		X3D_AXIS_OTHER = 3,*/
 
@@ -83,8 +83,8 @@ public static class DriverControlIDs {
 		RIGHT_TANK_DRIVE_AXIS_ID = X3D_AXIS_PITCH,
 
 		// Arcade drive axis
-		FORWARD_ARCADE_DRIVE_AXIS_ID = X3D_AXIS_PITCH,
-		ANGLE_ARCADE_DRIVE_AXIS_ID = X3D_AXIS_ROLL,
+		ARCADE_DRIVE_FORWARD_AXIS_ID = X3D_AXIS_PITCH,
+		ARCADE_DRIVE_ANGLE_AXIS_ID = X3D_AXIS_ROLL,
 		TOGGLE_ARCADE_DRIVE_BUTTON_ID = X3D_BUTTON_5,	// does not toggle drive mode for spotter
 		DRIVE_STRAIGHT_BUTTON_ID = X3D_BUTTON_GRIP,
 
@@ -113,12 +113,12 @@ public static class SpotterControlIDs {
 		RIGHT_TANK_DRIVE_AXIS_ID = GAMEPAD_AXIS_RIGHT_Y,
 
 		// Arcade drive axis
-		FORWARD_ARCADE_DRIVE_AXIS_ID = GAMEPAD_AXIS_LEFT_Y,
-		ANGLE_ARCADE_DRIVE_AXIS_ID = GAMEPAD_AXIS_LEFT_X,
+		ARCADE_DRIVE_FORWARD_AXIS_ID = GAMEPAD_AXIS_LEFT_Y,
+		ARCADE_DRIVE_ANGLE_AXIS_ID = GAMEPAD_AXIS_LEFT_X,
 		
 		// Drive mode function buttons
-		TOGGLE_ARCADE_DRIVE_BUTTON_ID = GAMEPAD_BUTTON_LEFT_JS,	// does not toggle drive mode for driver
 		DRIVE_STRAIGHT_POV_ANGLE = GAMEPAD_POV_ANGLE_UP,
+		TOGGLE_ARCADE_DRIVE_BUTTON_ID = GAMEPAD_BUTTON_LEFT_JS,	// does not toggle drive mode for driver
 		TOGGLE_SENSITIVITY_BUTTON_ID = GAMEPAD_BUTTON_RIGHT_JS,	// does not toggle motor sensitivities for driver
 
 		// Manipulator buttons

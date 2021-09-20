@@ -110,11 +110,11 @@ public class RobotContainer {
 
 		// Arcade drive axes
 		public static double getForwardArcadeDriveAxis() {
-			return X3D_RIGHT.getRawAxis(Constants.DriverControlIDs.FORWARD_ARCADE_DRIVE_AXIS_ID);
+			return X3D_RIGHT.getRawAxis(Constants.DriverControlIDs.ARCADE_DRIVE_FORWARD_AXIS_ID);
 		}
 
 		public static double getAngleArcadeDriveAxis() {
-			return X3D_RIGHT.getRawAxis(Constants.DriverControlIDs.ANGLE_ARCADE_DRIVE_AXIS_ID);
+			return X3D_RIGHT.getRawAxis(Constants.DriverControlIDs.ARCADE_DRIVE_ANGLE_AXIS_ID);
 		}
 	}
 	
@@ -162,19 +162,18 @@ public class RobotContainer {
 
 		// Tank drive axes
 		public static double getLeftTankDriveAxis() {
-			return X3D_LEFT.getRawAxis(Constants.DriverControlIDs.LEFT_TANK_DRIVE_AXIS_ID);
+			return GAMEPAD.getRawAxis(Constants.DriverControlIDs.LEFT_TANK_DRIVE_AXIS_ID);
 		}
 		public static double getRightTankDriveAxis() {
-			return X3D_RIGHT.getRawAxis(Constants.DriverControlIDs.RIGHT_TANK_DRIVE_AXIS_ID);
+			return GAMEPAD.getRawAxis(Constants.DriverControlIDs.RIGHT_TANK_DRIVE_AXIS_ID);
 		}
 
 		// Arcade drive axes
 		public static double getForwardArcadeDriveAxis() {
-			return X3D_RIGHT.getRawAxis(Constants.DriverControlIDs.FORWARD_ARCADE_DRIVE_AXIS_ID);
+			return GAMEPAD.getRawAxis(Constants.DriverControlIDs.ARCADE_DRIVE_FORWARD_AXIS_ID);
 		}
-
 		public static double getAngleArcadeDriveAxis() {
-			return X3D_RIGHT.getRawAxis(Constants.DriverControlIDs.ANGLE_ARCADE_DRIVE_AXIS_ID);
+			return GAMEPAD.getRawAxis(Constants.DriverControlIDs.ARCADE_DRIVE_ANGLE_AXIS_ID);
 		}
 	}
 		
