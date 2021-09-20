@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+
 public class ToggleSensitivityButtonCommand extends CommandBase {
 	public ToggleSensitivityButtonCommand() {
 		// Use addRequirements() here to declare subsystem dependencies.

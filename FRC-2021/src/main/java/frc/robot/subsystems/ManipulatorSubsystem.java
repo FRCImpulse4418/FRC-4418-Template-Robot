@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+
 public class ManipulatorSubsystem extends SubsystemBase {
 	private WPI_TalonSRX intakeMotor;
 	
