@@ -141,6 +141,7 @@ public class RobotContainer {
 		private static void configureButtonBindings() {
 			toggleArcadeDriveButton.whenPressed(new ToggleSpotterArcadeDriveCommand());
 			driveStraightButton.whileHeld(new DriveStraightCommand());
+			toggleSensitivityButton.whenPressed(new ToggleSensitivityButtonCommand());
 			
 			intakeButton.whileHeld(new IntakeCommand(false));
 			launchButton.whileHeld(new FireCommand());
