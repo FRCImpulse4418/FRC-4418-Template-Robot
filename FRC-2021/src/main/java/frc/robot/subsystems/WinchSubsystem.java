@@ -26,8 +26,8 @@ public class WinchSubsystem extends SubsystemBase {
 		winchMotor = new WPI_TalonFX(Constants.Climber.WINCH_TALONFX_ID);
 	}
 
-	public void setWinchMotor(double motorValue) {
-		winchMotor.set(ControlMode.PercentOutput, motorValue);
+	public void setWinchMotor(double velocity) {
+		winchMotor.set(ControlMode.Velocity, velocity);
 	}
 
 	@Override

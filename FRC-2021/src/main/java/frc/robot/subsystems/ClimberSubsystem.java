@@ -30,8 +30,8 @@ public class ClimberSubsystem extends SubsystemBase {
 		// SmartDashboard.putString("Climber State", "NEUTRAL");
 	}
 
-	public void setClimbMotor(double motorValue) {
-		climbMotor.set(ControlMode.PercentOutput, motorValue);
+	public void setClimbMotor(double velocity) {
+		climbMotor.set(ControlMode.Velocity, velocity);
 	}
 
 	// public void toggleElevatorState() {
@@ -39,16 +39,16 @@ public class ClimberSubsystem extends SubsystemBase {
 		// {
 			//if(climbMinDist < Distance() && Distance() > climbMaxDist)
 			//{
-			//	climbMotor.set(ControlMode.PercentOutput,0.5);
+			//	climbMotor.set(ControlMode.Velocity, 0.5);
 			//} else {
-			//	climbMotor.set(ControlMode.PercentOutput,0);
+			//	climbMotor.set(ControlMode.Velocity, 0.0);
 			//}
 		//} else {
 		//	if(climbMinDist < Distance() && Distance() > climbMaxDist)
 		//	{
-		//		climbMotor.set(ControlMode.PercentOutput,-0.5);
+		//		climbMotor.set(ControlMode.Velocity, -0.5);
 		//	} else {
-		//		climbMotor.set(ControlMode.PercentOutput,0);
+		//		climbMotor.set(ControlMode.Velocity, 0.0);
 		//	}
 		// }
 	// }

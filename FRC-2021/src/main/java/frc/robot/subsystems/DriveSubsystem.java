@@ -66,21 +66,22 @@ public class DriveSubsystem extends SubsystemBase {
 		// rightDriveEncoder.reset();
 	}
 
-	public void setLeftMotors(double negToPosPercentage){
-		leftDriveMotorA.set(ControlMode.PercentOutput, negToPosPercentage);
+	public void setLeftMotors(double velocity) {
+		leftDriveMotorA.set(ControlMode.Velocity, velocity);
 	}
 
-	public void setRightMotors(double negToPosPercentage){
-		rightDriveMotorA.set(ControlMode.PercentOutput, negToPosPercentage);
+	public void setRightMotors(double velocity) {
+		rightDriveMotorA.set(ControlMode.Velocity, velocity);
 	}
 
-	public double getLeftPercent(){
-		return leftDriveMotorA.getMotorOutputPercent();
-	}
+	// FIXME: Get motor velocities instead of -1 to 1 speed for drive motors
+	// public double getLeftPercent() {
+	// 	return leftDriveMotorA.getMotorOutputPercent();
+	// }
 
-	public double getRightPercent(){
-		return rightDriveMotorA.getMotorOutputPercent();
-	}
+	// public double getRightPercent() {
+	// 	return rightDriveMotorA.getMotorOutputPercent();
+	// }
 
 	// brake or coast left and right motors (true for braking)
 	public void brakeOrCoastMotors(boolean leftIsBraking, boolean rightIsBraking) {
@@ -126,8 +127,8 @@ public class DriveSubsystem extends SubsystemBase {
 
 	// stop driving
 	public void stopDrive(){
-		leftDriveMotorA.set(ControlMode.PercentOutput, 0);
-		rightDriveMotorA.set(ControlMode.PercentOutput, 0);
+		leftDriveMotorA.set(ControlMode.Velocity, 0.0);
+		rightDriveMotorA.set(ControlMode.Velocity, 0.0);
 	}
 
 	// a wrapper around tank drive that sets stuff up to be better optimized for teleop control

@@ -26,8 +26,8 @@ public class DriveStraightCommand extends CommandBase {
 	@Override
 	public void execute() {
 		RobotContainer.driveSubsystem.brakeOrCoastMotors(false, false);
-		RobotContainer.driveSubsystem.setLeftMotors(0.5);
-		RobotContainer.driveSubsystem.setRightMotors(-0.5);
+		RobotContainer.driveSubsystem.setLeftMotors(3.0);	// TODO: Config drive-straight left motors speed
+		RobotContainer.driveSubsystem.setRightMotors(-3.0);	// TODO: Config drive-straight right motors speed
 	}
 
 	// Called once the command ends or is interrupted.

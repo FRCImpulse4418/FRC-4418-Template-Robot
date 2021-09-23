@@ -31,18 +31,17 @@ public class FireCommand extends CommandBase {
 		// SmartDashboard.putNumber("Elbow Fire", RobotContainer.manipulatorsubsystem.getElbowFireMotor());
 		// SmartDashboard.putNumber("Shoulder Fire", RobotContainer.manipulatorsubsystem.getShoulderFireMotor());
 		
-		RobotContainer.manipulatorsubsystem.setShoulderFireMotor(-0.5);		
-		RobotContainer.manipulatorsubsystem.setElbowFireMotor(-0.7);
-		RobotContainer.manipulatorsubsystem.setWristFireMotor(-1.0);
+		RobotContainer.manipulatorsubsystem.setShoulderFireMotor(-0.5);	// TODO: Config shoulder fire motor speed
+		RobotContainer.manipulatorsubsystem.setElbowFireMotor(-0.7);	// TODO: Config elbow fire motor speed
+		RobotContainer.manipulatorsubsystem.setWristFireMotor(-1.0);	// TODO: Config wrist fire motor speed
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		RobotContainer.manipulatorsubsystem.setShoulderFireMotor(0.);
-
-		RobotContainer.manipulatorsubsystem.setElbowFireMotor(0.);
-		RobotContainer.manipulatorsubsystem.setWristFireMotor(0.);
+		RobotContainer.manipulatorsubsystem.setShoulderFireMotor(0.0);
+		RobotContainer.manipulatorsubsystem.setElbowFireMotor(0.0);
+		RobotContainer.manipulatorsubsystem.setWristFireMotor(0.0);
 	}
 
 	// Returns true when the command should end.

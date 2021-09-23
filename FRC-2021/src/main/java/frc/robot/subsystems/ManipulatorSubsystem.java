@@ -48,17 +48,17 @@ public class ManipulatorSubsystem extends SubsystemBase {
 	}
 
 	// set motors
-	public void setElbowFireMotor(double motorValue) { elbowFireMotor.set(ControlMode.PercentOutput, motorValue); }
-	public void setWristFireMotor(double motorValue) { wristFireMotor.set(ControlMode.PercentOutput, motorValue); }
-	public void setShoulderFireMotor(double motorValue) { shoulderFireMotor.set(ControlMode.PercentOutput, motorValue); }
-	public void setIntakeMotor(double motorValue) { intakeMotor.set(ControlMode.PercentOutput, motorValue); }
+	public void setElbowFireMotor(double velocity) { elbowFireMotor.set(ControlMode.Velocity, velocity); }
+	public void setWristFireMotor(double velocity) { wristFireMotor.set(ControlMode.Velocity, velocity); }
+	public void setShoulderFireMotor(double velocity) { shoulderFireMotor.set(ControlMode.Velocity, velocity); }
+	public void setIntakeMotor(double velocity) { intakeMotor.set(ControlMode.Velocity, velocity); }
 
 	//read motors
-
-	public double getShoulderFireMotor() { return shoulderFireMotor.getMotorOutputPercent(); }
-	public double getElbowFireMotor() { return elbowFireMotor.getMotorOutputPercent(); }
-	public double getWristFireMotor() { return wristFireMotor.getMotorOutputPercent(); }
-	public double getIntakeMotor() { return intakeMotor.getMotorOutputPercent(); }
+	// FIXME: Get motor velocities instead of -1 to 1 speed for manipulator motors
+	// public double getShoulderFireMotor() { return shoulderFireMotor.get(); }
+	// public double getElbowFireMotor() { return elbowFireMotor.get(); }
+	// public double getWristFireMotor() { return wristFireMotor.get(); }
+	// public double getIntakeMotor() { return intakeMotor.get(); }
 
 	// read potentiometer
 	public double getPivotPotentiometer() { return pivotPotentiometer.get(); }

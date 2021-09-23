@@ -149,7 +149,7 @@ public class RobotContainer {
 			lowerClimberButton.whileHeld(new MoveClimberCommand(false));
 	
 			// true is spooling, false is unspooling
-			// TODO: No idea why, but the booleans for spotter's spool/unspool buttons need to be flipped
+			// FIXME: No idea why, but the booleans for spotter's spool/unspool buttons need to be flipped
 			spoolWinchButton.whileHeld(new SpinWinchCommand(false));
 			unspoolWinchButton.whileHeld(new SpinWinchCommand(true));
 		}

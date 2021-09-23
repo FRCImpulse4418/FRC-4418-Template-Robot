@@ -168,7 +168,7 @@ public final class Constants {
 			WINCH_TALONFX_ID = 12,
 			CLIMBER_TALONSRX_ID = 9;
 		
-		// TODO: Figure out climber encoder distance per pulse
+		// FIXME: Figure out climber encoder distance per pulse
 		// public static final double CLIMBER_ENCODER_DISTANCE_PER_PULSE = SOME VALUE;
 	}
 

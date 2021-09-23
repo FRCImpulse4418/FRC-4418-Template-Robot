@@ -21,9 +21,9 @@ public class SpinPanelArmCommand extends CommandBase {
 	@Override
 	public void initialize() {
 		if (spinningForwards) {
-			RobotContainer.controlSubsystem.setControlPanelArmMotor(0.5);
+			RobotContainer.controlSubsystem.setControlPanelArmMotor(1.0);	// TODO: Config control panel motor forward spin speed
 		} else {
-			RobotContainer.controlSubsystem.setControlPanelArmMotor(-0.5);
+			RobotContainer.controlSubsystem.setControlPanelArmMotor(-1.0);	// TODO: Config control panel motor backward spin speed
 		}
 	}
 

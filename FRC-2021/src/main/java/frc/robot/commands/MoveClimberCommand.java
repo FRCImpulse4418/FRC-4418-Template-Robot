@@ -13,20 +13,20 @@ import frc.robot.RobotContainer;
 
 
 public class MoveClimberCommand extends CommandBase {
-	private boolean extendingClimber;
+	private boolean raisingClimber;
 
-	public MoveClimberCommand(boolean extendingClimber) {
-		this.extendingClimber = extendingClimber;
+	public MoveClimberCommand(boolean raisingClimber) {
+		this.raisingClimber = raisingClimber;
 		addRequirements(RobotContainer.climbSubsystem);
 	}
 
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
-		if (extendingClimber) {
-			RobotContainer.climbSubsystem.setClimbMotor(-0.8);
+		if (raisingClimber) {
+			RobotContainer.climbSubsystem.setClimbMotor(-1.0);	// TODO: Config raise climber speed
 		} else {
-			RobotContainer.climbSubsystem.setClimbMotor(0.8);
+			RobotContainer.climbSubsystem.setClimbMotor(1.0);	// TODO: Config lower climber speed
 		}
 	}
 

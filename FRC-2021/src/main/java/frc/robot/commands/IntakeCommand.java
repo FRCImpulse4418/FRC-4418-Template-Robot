@@ -32,16 +32,16 @@ public class IntakeCommand extends CommandBase {
 		// SmartDashboard.putNumber("Intake Motor", RobotContainer.manipulatorsubsystem.getIntakeMotor());
 		
 		if (!isReverseIntake) {
-			RobotContainer.manipulatorsubsystem.setIntakeMotor(0.5);
+			RobotContainer.manipulatorsubsystem.setIntakeMotor(1.0);	// TODO: Config normal intake motor speed
 		} else {
-			RobotContainer.manipulatorsubsystem.setIntakeMotor(-0.5);
+			RobotContainer.manipulatorsubsystem.setIntakeMotor(-0.5);	// TODO: Config reverse intake motor speed
 		}
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		RobotContainer.manipulatorsubsystem.setIntakeMotor(0.);
+		RobotContainer.manipulatorsubsystem.setIntakeMotor(0.0);
 	}
 
 	// Returns true when the command should end.

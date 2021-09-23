@@ -24,9 +24,9 @@ public class SpinWinchCommand extends CommandBase {
 	@Override
 	public void initialize() {
 		if (spooling) {
-			RobotContainer.winchSubsystem.setWinchMotor(-0.6);
+			RobotContainer.winchSubsystem.setWinchMotor(-1.0);	// TODO: Config winch spooling speed
 		} else {
-			RobotContainer.winchSubsystem.setWinchMotor(0.6);
+			RobotContainer.winchSubsystem.setWinchMotor(1.0);	// TODO: Config winch unspooling speed
 		}
 	}
 
