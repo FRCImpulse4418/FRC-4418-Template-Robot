@@ -66,19 +66,19 @@ public class DriveSubsystem extends SubsystemBase {
 		// rightDriveEncoder.reset();
 	}
 
-	public void setLeftMotors(double negToPosPercentage){
+	public void setLeftMotors(double negToPosPercentage) {
 		leftDriveMotorA.set(ControlMode.PercentOutput, negToPosPercentage);
 	}
 
-	public void setRightMotors(double negToPosPercentage){
+	public void setRightMotors(double negToPosPercentage) {
 		rightDriveMotorA.set(ControlMode.PercentOutput, negToPosPercentage);
 	}
 
-	public double getLeftPercent(){
+	public double getLeftPercent() {
 		return leftDriveMotorA.getMotorOutputPercent();
 	}
 
-	public double getRightPercent(){
+	public double getRightPercent() {
 		return rightDriveMotorA.getMotorOutputPercent();
 	}
 
