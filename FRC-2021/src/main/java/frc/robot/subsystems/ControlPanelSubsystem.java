@@ -21,7 +21,7 @@ public class ControlPanelSubsystem extends SubsystemBase {
 	private WPI_TalonSRX controlSpinMotor;
 	
 	public ControlPanelSubsystem() {
-		controlSpinMotor = new WPI_TalonSRX(Constants.CONTROLSPIN_TALONSRX_ID);
+		controlSpinMotor = new WPI_TalonSRX(Constants.ControlPanel.CONTROLSPIN_TALONSRX_ID);
 	}
 	
 	// Spin control motors

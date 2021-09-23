@@ -26,7 +26,7 @@ public class ClimberSubsystem extends SubsystemBase {
 	// private final double climbMinDist = 0.0;
 
 	public ClimberSubsystem() {
-		climbMotor = new WPI_TalonSRX(Constants.CLIMBER_TALONSRX_ID);
+		climbMotor = new WPI_TalonSRX(Constants.Climber.CLIMBER_TALONSRX_ID);
 		// SmartDashboard.putString("Climber State", "NEUTRAL");
 	}
 

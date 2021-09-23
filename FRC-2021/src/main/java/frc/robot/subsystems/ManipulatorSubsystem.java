@@ -39,11 +39,11 @@ public class ManipulatorSubsystem extends SubsystemBase {
 	private boolean pivotUp = true;
 
 	public ManipulatorSubsystem() {
-		intakeMotor = new WPI_TalonSRX(Constants.MAN_INTAKE_BOTTOM_TALONSRX_ID);
+		intakeMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_INTAKE_BOTTOM_TALONSRX_ID);
 		
-		shoulderFireMotor = new WPI_TalonSRX(Constants.MAN_INTAKE_TOP_TALONSRX_ID);
-		elbowFireMotor = new WPI_TalonSRX(Constants.MAN_FIRE_BOTTOM_TALONSRX_ID);
-		wristFireMotor = new WPI_TalonSRX(Constants.MAN_FIRE_TOP_TALONSRX_ID);
+		shoulderFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_INTAKE_TOP_TALONSRX_ID);
+		elbowFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_BOTTOM_TALONSRX_ID);
+		wristFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_TOP_TALONSRX_ID);
 
 	}
 

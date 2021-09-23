@@ -23,7 +23,7 @@ public class WinchSubsystem extends SubsystemBase {
 	// private double winchMinDist;
 
 	public WinchSubsystem() {
-		winchMotor = new WPI_TalonFX(Constants.WINCH_TALONFX_ID);
+		winchMotor = new WPI_TalonFX(Constants.Climber.WINCH_TALONFX_ID);
 	}
 
 	public void setWinchMotor(double motorValue) {
