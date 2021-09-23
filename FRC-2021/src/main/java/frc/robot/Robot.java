@@ -7,8 +7,8 @@
 
 package frc.robot;
 
-// import edu.wpi.cscore.UsbCamera;
-// import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -21,8 +21,8 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * project.
  */
 public class Robot extends TimedRobot {
-	// private UsbCamera frontShooterCamera;
-	// private UsbCamera rightPanelCamera;
+	private UsbCamera frontShooterCamera;
+	private UsbCamera rightPanelCamera;
 
 	private Command m_autonomousCommand;
 	private RobotContainer m_robotContainer;
@@ -34,8 +34,8 @@ public class Robot extends TimedRobot {
 		// create RobotContainer. Does our button bindings & puts autonomous chooser on dashboard
 		m_robotContainer = new RobotContainer();
 
-		// frontShooterCamera = CameraServer.getInstance().startAutomaticCapture(0);
-		// rightPanelCamera = CameraServer.getInstance().startAutomaticCapture(1);
+		frontShooterCamera = CameraServer.getInstance().startAutomaticCapture(0);
+		rightPanelCamera = CameraServer.getInstance().startAutomaticCapture(1);
 	}
 
 	// called every robot packet (good for diagnostics), after mode-specific periodics
