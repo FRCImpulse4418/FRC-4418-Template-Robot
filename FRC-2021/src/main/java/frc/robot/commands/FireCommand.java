@@ -32,8 +32,11 @@ public class FireCommand extends CommandBase {
 		// SmartDashboard.putNumber("Shoulder Fire", RobotContainer.manipulatorsubsystem.getShoulderFireMotor());
 		
 		RobotContainer.manipulatorsubsystem.setShoulderFireMotor(-0.5);		
-		RobotContainer.manipulatorsubsystem.setElbowFireMotor(-0.7);
-		RobotContainer.manipulatorsubsystem.setWristFireMotor(-1.0);
+		// Loader/Feeder
+		RobotContainer.manipulatorsubsystem.setElbowFireMotor(-0.4);
+		// Lower shooter
+		RobotContainer.manipulatorsubsystem.setWristFireMotor(-0.9);
+		// Higher shooter
 	}
 
 	// Called once the command ends or is interrupted.
