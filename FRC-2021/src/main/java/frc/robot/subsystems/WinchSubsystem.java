@@ -27,7 +27,7 @@ public class WinchSubsystem extends SubsystemBase {
 	}
 
 	public void setWinchMotor(double velocity) {
-		winchMotor.set(ControlMode.Velocity, velocity);
+		winchMotor.set(ControlMode.PercentOutput, velocity);
 	}
 
 	@Override

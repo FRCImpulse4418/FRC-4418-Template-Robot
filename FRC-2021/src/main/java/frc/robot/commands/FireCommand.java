@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.RobotContainer;
 
+	// Shoulder Motor = Loader/Feeder
+	// Elbow Motor = Lower shooter
+	// Wrist Motor = Higher shooter
 
 public class FireCommand extends CommandBase {
 	public FireCommand() {
@@ -22,6 +25,10 @@ public class FireCommand extends CommandBase {
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
+		int SpeedTolerance = 100;
+		int WristTargetSpeed = 2000; 		//in RPM, changed to counts/100ms in motor commands 	// TODO: Config wrist fire motor speed
+		int ElbowTargetSpeed = 2000;		// TODO: Config elbow fire motor speed
+		int CountsPerRev = 1024;
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
@@ -31,9 +38,13 @@ public class FireCommand extends CommandBase {
 		// SmartDashboard.putNumber("Elbow Fire", RobotContainer.manipulatorsubsystem.getElbowFireMotor());
 		// SmartDashboard.putNumber("Shoulder Fire", RobotContainer.manipulatorsubsystem.getShoulderFireMotor());
 		
-		RobotContainer.manipulatorsubsystem.setShoulderFireMotor(-0.5);	// TODO: Config shoulder fire motor speed
-		RobotContainer.manipulatorsubsystem.setElbowFireMotor(-0.7);	// TODO: Config elbow fire motor speed
-		RobotContainer.manipulatorsubsystem.setWristFireMotor(-1.0);	// TODO: Config wrist fire motor speed
+		RobotContainer.manipulatorsubsystem.setElbowFireMotor(-(WristTargetSpeed*(CountsPerRev/600)));	
+		RobotContainer.manipulatorsubsystem.setWristFireMotor(-(ElbowTargetSpeed*(CountsPerRev/600)));	
+
+		//need to wait until motors are up to speed
+		if ((WristTargetSpeed - abs(wristFireMotor.getSelectedSensorVelocity) <= SpeedTolerance) && (WristTargetSpeed - abs(elbowFireMotor.getSelectedSensorVelocity) <= SpeedTolerance)){
+			RobotContainer.manipulatorsubsystem.setShoulderFireMotor(-0.5);	// TODO: Config shoulder fire motor speed
+		}
 	}
 
 	// Called once the command ends or is interrupted.

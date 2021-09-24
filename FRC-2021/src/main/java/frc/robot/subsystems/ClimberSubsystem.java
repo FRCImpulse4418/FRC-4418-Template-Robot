@@ -31,7 +31,7 @@ public class ClimberSubsystem extends SubsystemBase {
 	}
 
 	public void setClimbMotor(double velocity) {
-		climbMotor.set(ControlMode.Velocity, velocity);
+		climbMotor.set(ControlMode.PercentOutput, velocity);
 	}
 
 	// public void toggleElevatorState() {

@@ -38,20 +38,42 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
 	private boolean pivotUp = true;
 
+		
+	// Shoulder Motor = Loader/Feeder
+	// Elbow Motor = Lower shooter
+	// Wrist Motor = Higher shooter
+
 	public ManipulatorSubsystem() {
 		intakeMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_INTAKE_BOTTOM_TALONSRX_ID);
 		
 		shoulderFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_INTAKE_TOP_TALONSRX_ID);
-		elbowFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_BOTTOM_TALONSRX_ID);
-		wristFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_TOP_TALONSRX_ID);
 
+		elbowFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_BOTTOM_TALONSRX_ID);
+		elbowFireMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+        elbowFireMotor.reverseSensor(false);
+        /* set closed loop gains in slot0 */
+        elbowFireMotor.setProfile(0);
+        elbowFireMotor.setF(0.1097);
+        elbowFireMotor.setP(0.22);
+        elbowFireMotor.setI(0); 
+        elbowFireMotor.setD(0);
+
+		wristFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_TOP_TALONSRX_ID);
+		wristFireMotor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+        wristFireMotor.reverseSensor(false);
+        /* set closed loop gains in slot0 */
+        wristFireMotor.setProfile(0);
+        wristFireMotor.setF(0.1097);
+        wristFireMotor.setP(0.22);
+        wristFireMotor.setI(0); 
+        wristFireMotor.setD(0);
 	}
 
 	// set motors
 	public void setElbowFireMotor(double velocity) { elbowFireMotor.set(ControlMode.Velocity, velocity); }
 	public void setWristFireMotor(double velocity) { wristFireMotor.set(ControlMode.Velocity, velocity); }
-	public void setShoulderFireMotor(double velocity) { shoulderFireMotor.set(ControlMode.Velocity, velocity); }
-	public void setIntakeMotor(double velocity) { intakeMotor.set(ControlMode.Velocity, velocity); }
+	public void setShoulderFireMotor(double velocity) { shoulderFireMotor.set(ControlMode.PercentOutput, velocity); }
+	public void setIntakeMotor(double velocity) { intakeMotor.set(ControlMode.PercentOutput, velocity); }
 
 	//read motors
 	// FIXME: Get motor velocities instead of -1 to 1 speed for manipulator motors

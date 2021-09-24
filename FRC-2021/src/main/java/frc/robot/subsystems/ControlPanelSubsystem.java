@@ -26,7 +26,7 @@ public class ControlPanelSubsystem extends SubsystemBase {
 	
 	// Spin control motors
 	public void setControlPanelArmMotor(double velocity) {
-		controlSpinMotor.set(ControlMode.Velocity, velocity);
+		controlSpinMotor.set(ControlMode.PercentOutput, velocity);
 	}
 
 	@Override

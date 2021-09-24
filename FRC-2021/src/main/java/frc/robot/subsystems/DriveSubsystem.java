@@ -67,11 +67,11 @@ public class DriveSubsystem extends SubsystemBase {
 	}
 
 	public void setLeftMotors(double velocity) {
-		leftDriveMotorA.set(ControlMode.Velocity, velocity);
+		leftDriveMotorA.set(ControlMode.PercentOutput, velocity);
 	}
 
 	public void setRightMotors(double velocity) {
-		rightDriveMotorA.set(ControlMode.Velocity, velocity);
+		rightDriveMotorA.set(ControlMode.PercentOutput, velocity);
 	}
 
 	// FIXME: Get motor velocities instead of -1 to 1 speed for drive motors
@@ -127,8 +127,8 @@ public class DriveSubsystem extends SubsystemBase {
 
 	// stop driving
 	public void stopDrive(){
-		leftDriveMotorA.set(ControlMode.Velocity, 0.0);
-		rightDriveMotorA.set(ControlMode.Velocity, 0.0);
+		leftDriveMotorA.set(ControlMode.PercentOutput, 0.0);
+		rightDriveMotorA.set(ControlMode.PercentOutput, 0.0);
 	}
 
 	// a wrapper around tank drive that sets stuff up to be better optimized for teleop control
