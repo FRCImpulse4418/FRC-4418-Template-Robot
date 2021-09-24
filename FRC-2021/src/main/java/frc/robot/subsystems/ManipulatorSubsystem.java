@@ -22,7 +22,7 @@ public class ManipulatorSubsystem extends SubsystemBase {
 	
 	private WPI_TalonSRX shoulderFireMotor;
 	private WPI_TalonSRX elbowFireMotor;
-	private WPI_TalonSRX wristFireMotor;
+	public WPI_TalonSRX wristFireMotor;
 
 	/* Encoder.getRate() returns distance per second
 	distance per second * distance per pulse = pulse per second
@@ -38,27 +38,47 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
 	private boolean pivotUp = true;
 
+		
+	// Shoulder Motor = Loader/Feeder
+	// Elbow Motor = Lower shooter
+	// Wrist Motor = Higher shooter
+
 	public ManipulatorSubsystem() {
 		intakeMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_INTAKE_BOTTOM_TALONSRX_ID);
 		
 		shoulderFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_INTAKE_TOP_TALONSRX_ID);
-		elbowFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_BOTTOM_TALONSRX_ID);
-		wristFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_TOP_TALONSRX_ID);
 
+		elbowFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_BOTTOM_TALONSRX_ID);
+		// elbowFireMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+        elbowFireMotor.setSensorPhase(false);
+        /* set closed loop gains in slot0 */
+        elbowFireMotor.config_kF(0, 0.1097);
+        elbowFireMotor.config_kP(0, 0.22);
+        elbowFireMotor.config_kI(0, 0); 
+        elbowFireMotor.config_kD(0, 0);
+
+		wristFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_TOP_TALONSRX_ID);
+		// wristFireMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+        wristFireMotor.setSensorPhase(false);
+        /* set closed loop gains in slot0 */
+        wristFireMotor.config_kF(0, 0.1097);
+        wristFireMotor.config_kP(0, 0.22);
+        wristFireMotor.config_kI(0, 0); 
+        wristFireMotor.config_kD(0, 0);
 	}
 
 	// set motors
-	public void setElbowFireMotor(double motorValue) { elbowFireMotor.set(ControlMode.PercentOutput, motorValue); }
-	public void setWristFireMotor(double motorValue) { wristFireMotor.set(ControlMode.PercentOutput, motorValue); }
-	public void setShoulderFireMotor(double motorValue) { shoulderFireMotor.set(ControlMode.PercentOutput, motorValue); }
-	public void setIntakeMotor(double motorValue) { intakeMotor.set(ControlMode.PercentOutput, motorValue); }
+	public void setElbowFireMotor(double velocity) { elbowFireMotor.set(ControlMode.Velocity, velocity); }
+	public void setWristFireMotor(double velocity) { wristFireMotor.set(ControlMode.Velocity, velocity); }
+	public void setShoulderFireMotor(double velocity) { shoulderFireMotor.set(ControlMode.PercentOutput, velocity); }
+	public void setIntakeMotor(double velocity) { intakeMotor.set(ControlMode.PercentOutput, velocity); }
 
 	//read motors
-
-	public double getShoulderFireMotor() { return shoulderFireMotor.getMotorOutputPercent(); }
-	public double getElbowFireMotor() { return elbowFireMotor.getMotorOutputPercent(); }
-	public double getWristFireMotor() { return wristFireMotor.getMotorOutputPercent(); }
-	public double getIntakeMotor() { return intakeMotor.getMotorOutputPercent(); }
+	// FIXME: Get motor velocities instead of -1 to 1 speed for manipulator motors
+	// public double getShoulderFireMotor() { return shoulderFireMotor.get(); }
+	// public double getElbowFireMotor() { return elbowFireMotor.get(); }
+	// public double getWristFireMotor() { return wristFireMotor.get(); }
+	// public double getIntakeMotor() { return intakeMotor.get(); }
 
 	// read potentiometer
 	public double getPivotPotentiometer() { return pivotPotentiometer.get(); }
