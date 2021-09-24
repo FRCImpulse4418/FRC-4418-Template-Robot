@@ -40,6 +40,7 @@ public class FireCommand extends CommandBase {
 		
 		RobotContainer.manipulatorsubsystem.setElbowFireMotor(-(WristTargetSpeed*(CountsPerRev/600)));	
 		RobotContainer.manipulatorsubsystem.setWristFireMotor(-(ElbowTargetSpeed*(CountsPerRev/600)));	
+		// System.out.println(elbowFireMotor.getSelectedSensorVelocity(0));
 
 		//need to wait until motors are up to speed
 		if ((WristTargetSpeed - abs(wristFireMotor.getSelectedSensorVelocity) <= SpeedTolerance) && (WristTargetSpeed - abs(elbowFireMotor.getSelectedSensorVelocity) <= SpeedTolerance)){
