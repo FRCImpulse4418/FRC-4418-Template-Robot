@@ -29,6 +29,7 @@ public class FireCommand extends CommandBase {
 		int WristTargetSpeed = 2000; 		//in RPM, changed to counts/100ms in motor commands 	// TODO: Config wrist fire motor speed
 		int ElbowTargetSpeed = 2000;		// TODO: Config elbow fire motor speed
 		int CountsPerRev = 1024;
+		int UnitsPerRev = CountsPerRev * 4;	//the talon counts every rising and falling edge
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
@@ -38,8 +39,8 @@ public class FireCommand extends CommandBase {
 		// SmartDashboard.putNumber("Elbow Fire", RobotContainer.manipulatorsubsystem.getElbowFireMotor());
 		// SmartDashboard.putNumber("Shoulder Fire", RobotContainer.manipulatorsubsystem.getShoulderFireMotor());
 		
-		RobotContainer.manipulatorsubsystem.setElbowFireMotor(-(WristTargetSpeed*(CountsPerRev/600)));	
-		RobotContainer.manipulatorsubsystem.setWristFireMotor(-(ElbowTargetSpeed*(CountsPerRev/600)));	
+		RobotContainer.manipulatorsubsystem.setElbowFireMotor(-(WristTargetSpeed*(UnitsPerRev/600)));	
+		RobotContainer.manipulatorsubsystem.setWristFireMotor(-(ElbowTargetSpeed*(UnitsPerRev/600)));	
 		// System.out.println(elbowFireMotor.getSelectedSensorVelocity(0));
 
 		//need to wait until motors are up to speed
