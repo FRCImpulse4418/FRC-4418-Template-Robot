@@ -34,19 +34,19 @@ public class RobotContainer {
 
 	// Create joysticks
 	private static final Joystick
-		X3D_LEFT = new Joystick(Constants.X3D_LEFT_JOYSTICK_ID),
-		X3D_RIGHT = new Joystick(Constants.X3D_RIGHT_JOYSTICK_ID),
-		GAMEPAD = new Joystick(Constants.GAMEPAD_JOYSTICK_ID);
+		X3D_LEFT = new Joystick(Constants.X3D.LEFT_JOYSTICK_ID),
+		X3D_RIGHT = new Joystick(Constants.X3D.RIGHT_JOYSTICK_ID),
+		GAMEPAD = new Joystick(Constants.Gamepad.JOYSTICK_ID);
 
 	public static double gamepadJoystickMagnitude(boolean isLeftJoystick) {
 		if (isLeftJoystick) {
 			return Math.sqrt(
-				Math.pow(GAMEPAD.getRawAxis(Constants.GAMEPAD_AXIS_LEFT_X), 2)
-				+ Math.pow(GAMEPAD.getRawAxis(Constants.GAMEPAD_AXIS_LEFT_Y), 2));
+				Math.pow(GAMEPAD.getRawAxis(Constants.Gamepad.LEFT_X_AXIS), 2)
+				+ Math.pow(GAMEPAD.getRawAxis(Constants.Gamepad.LEFT_Y_AXIS), 2));
 		} else {
 			return Math.sqrt(
-				Math.pow(GAMEPAD.getRawAxis(Constants.GAMEPAD_AXIS_RIGHT_X), 2)
-				+ Math.pow(GAMEPAD.getRawAxis(Constants.GAMEPAD_AXIS_RIGHT_Y), 2));
+				Math.pow(GAMEPAD.getRawAxis(Constants.Gamepad.RIGHT_X_AXIS), 2)
+				+ Math.pow(GAMEPAD.getRawAxis(Constants.Gamepad.RIGHT_Y_AXIS), 2));
 		}
 	}
 
@@ -135,7 +135,7 @@ public class RobotContainer {
 		private static void configureButtonBindings() {
 			toggleArcadeDriveButton.whenPressed(new ToggleSpotterArcadeDriveCommand());
 			driveStraightButton.whileHeld(new DriveStraightCommand());
-			toggleSensitivityButton.whenPressed(new ToggleSensitivityButtonCommand());
+			toggleSensitivityButton.whenPressed(new ToggleTeleopSensitivityMode());
 			
 			intakeButton.whileHeld(new IntakeCommand(false));
 			launchButton.whileHeld(new FireCommand());

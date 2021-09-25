@@ -172,13 +172,13 @@ public class DriveSubsystem extends SubsystemBase {
 	// spotter overrides driver for dominant controls
 	public void driveWithDominantControls() {
 		if (spotterIsInArcade()
-		&& (RobotContainer.gamepadJoystickMagnitude(true) > Constants.ARCADE_AXIS_DOMINANCE_THRESHOLD)) {
+		&& (RobotContainer.gamepadJoystickMagnitude(true) > Constants.AxisDominanceThresholds.ARCADE)) {
 			teleopArcadeDriveWrapper(
 				RobotContainer.SpotterControls.getForwardArcadeDriveAxis(),
 				RobotContainer.SpotterControls.getAngleArcadeDriveAxis());
 		} else if (!spotterIsInArcade()
-		&& (RobotContainer.gamepadJoystickMagnitude(true) > Constants.TANK_AXIS_DOMINANCE_THRESHOLD
-		|| RobotContainer.gamepadJoystickMagnitude(false) > Constants.TANK_AXIS_DOMINANCE_THRESHOLD)) {
+		&& (RobotContainer.gamepadJoystickMagnitude(true) > Constants.AxisDominanceThresholds.TANK
+		|| RobotContainer.gamepadJoystickMagnitude(false) > Constants.AxisDominanceThresholds.TANK)) {
 			teleopTankDriveWrapper(
 				RobotContainer.SpotterControls.getLeftTankDriveAxis(),
 				RobotContainer.SpotterControls.getRightTankDriveAxis());

@@ -7,126 +7,130 @@
 
 package frc.robot;
 
-
 public final class Constants {
-	public static final int
-		// Gamepad axes
-		GAMEPAD_AXIS_LEFT_X = 0,
-		GAMEPAD_AXIS_LEFT_Y = 1,
-		GAMEPAD_AXIS_RIGHT_X = 4,
-		GAMEPAD_AXIS_RIGHT_Y = 5;
+	public static class X3D {
+		public static final int
+			// ---Joystick IDs---
+			LEFT_JOYSTICK_ID = 0,
+			RIGHT_JOYSTICK_ID = 1,
 
-	public static final double
-		// Drive axis dominance thresholds
-		ARCADE_AXIS_DOMINANCE_THRESHOLD = 0.35,
-		TANK_AXIS_DOMINANCE_THRESHOLD = 0.21;
+			/// ---Axes---
+			ROLL_AXIS = 0,
+			PITCH_AXIS = 1,
+			// YAW_AXIS = 2,
+			// OTHER_AXIS = 3,
 
-	private static final int
-		// GAMEPAD_AXIS_LEFT_TRIGGER = 2,
-		// GAMEPAD_AXIS_RIGHT_TRIGGER = 3,
+			// ---Button IDs---
+			TRIGGER_BUTTON_ID = 1,
+			GRIP_BUTTON_ID = 2,
+			THREE_BUTTON_ID = 3,
+			FOUR_BUTTON_ID = 4,
+			FIVE_BUTTON_ID = 5,
+			SIX_BUTTON_ID = 6,
+			SEVEN_BUTTON_ID = 7,
+			EIGHT_BUTTON_ID = 8,
+			NINE_BUTTON_ID = 9,
+			TEN_BUTTON_ID = 10,
+			ELEVEN_BUTTON_ID = 11,
+			TWELVE_BUTTON_ID = 12;
+	}
 
-		// Gamepad buttons
-		GAMEPAD_BUTTON_A = 1,
-		GAMEPAD_BUTTON_B = 2,
-		GAMEPAD_BUTTON_X = 3,
-		GAMEPAD_BUTTON_Y = 4,
-		GAMEPAD_BUTTON_LEFT_BUMPER = 5,
-		GAMEPAD_BUTTON_RIGHT_BUMPER = 6,
-		GAMEPAD_BUTTON_BACK = 7,
-		GAMEPAD_BUTTON_START = 8,
-		// GAMEPAD_BUTTON_LOGITECH = 9,
-		GAMEPAD_BUTTON_LEFT_JS = 10,
-		GAMEPAD_BUTTON_RIGHT_JS = 11,
+	public static class Gamepad {
+		public static final int
+			JOYSTICK_ID = 2,
 
-		// Gamepad POV buttons
-		GAMEPAD_POV_ANGLE_UP = 0,
+			// ---Axes---
+			LEFT_X_AXIS = 0,
+			LEFT_Y_AXIS = 1,
+			RIGHT_X_AXIS = 4,
+			RIGHT_Y_AXIS = 5,
+			// LEFT_TRIGGER_AXIS = 2,
+			// RIGHT_TRIGGER_AXIS = 3,
 
-		// X3D Axes
-		X3D_AXIS_ROLL = 0,
-		X3D_AXIS_PITCH = 1,
-		/*X3D_AXIS_YAW = 2,
-		X3D_AXIS_OTHER = 3,*/
+			// ---Button IDs---
+			A_BUTTON_ID = 1,
+			B_BUTTON_ID = 2,
+			X_BUTTON_ID = 3,
+			Y_BUTTON_ID = 4,
+			LEFT_BUMPER_BUTTON_ID = 5,
+			RIGHT_BUMPER_BUTTON_ID = 6,
+			BACK_BUTTON_ID = 7,
+			START_BUTTON_ID = 8,
+			// LOGITECH_BUTTON_ID = 9,
+			LEFT_JOYSTICK_BUTTON_ID = 10,
+			RIGHT_JOYSTICK_BUTTON_ID = 11,
 
-		// X3D buttons
-		// X3D_BUTTON_TRIGGER = 1,
-		X3D_BUTTON_GRIP = 2,
-		X3D_BUTTON_3 = 3,
-		X3D_BUTTON_4 = 4,
-		X3D_BUTTON_5 = 5,
-		X3D_BUTTON_6 = 6,
-		X3D_BUTTON_7 = 7,
-		X3D_BUTTON_8 = 8,
-		X3D_BUTTON_9 = 9,
-		X3D_BUTTON_10 = 10,
-		X3D_BUTTON_11 = 11,
-		X3D_BUTTON_12 = 12;
+			// ---POV Indices---
+			ANGLE_UP_POV = 0;
+	}
 
-	public static final int
-		// Joysticks IDs
-		X3D_LEFT_JOYSTICK_ID = 0,
-		X3D_RIGHT_JOYSTICK_ID = 1,
-		GAMEPAD_JOYSTICK_ID = 2;
+	public static class AxisDominanceThresholds {
+		public static final double
+			// Drive axis dominance thresholds
+			ARCADE = 0.35,
+			TANK = 0.21;
+	}
 
 	public static class DriverControlIDs {
 		public static final int
 			// Tank drive axis
-			LEFT_TANK_DRIVE_AXIS_ID = X3D_AXIS_PITCH,
-			RIGHT_TANK_DRIVE_AXIS_ID = X3D_AXIS_PITCH,
+			LEFT_TANK_DRIVE_AXIS_ID = X3D.PITCH_AXIS,
+			RIGHT_TANK_DRIVE_AXIS_ID = X3D.PITCH_AXIS,
 
 			// Arcade drive axis
-			ARCADE_DRIVE_FORWARD_AXIS_ID = X3D_AXIS_PITCH,
-			ARCADE_DRIVE_ANGLE_AXIS_ID = X3D_AXIS_ROLL,
-			TOGGLE_ARCADE_DRIVE_BUTTON_ID = X3D_BUTTON_5,	// does not toggle drive mode for spotter
-			DRIVE_STRAIGHT_BUTTON_ID = X3D_BUTTON_GRIP,
+			ARCADE_DRIVE_FORWARD_AXIS_ID = X3D.PITCH_AXIS,
+			ARCADE_DRIVE_ANGLE_AXIS_ID = X3D.ROLL_AXIS,
+			TOGGLE_ARCADE_DRIVE_BUTTON_ID = X3D.FIVE_BUTTON_ID,	// does not toggle drive mode for spotter
+			DRIVE_STRAIGHT_BUTTON_ID = X3D.GRIP_BUTTON_ID,
 
 			// Manipulator buttons
-			BACKWARD_INTAKE_BUTTON_ID = X3D_BUTTON_6,
-			FORWARD_INTAKE_BUTTON_ID = X3D_BUTTON_4,
-			LAUNCH_BUTTON_ID = X3D_BUTTON_3,
+			BACKWARD_INTAKE_BUTTON_ID = X3D.SIX_BUTTON_ID,
+			FORWARD_INTAKE_BUTTON_ID = X3D.FOUR_BUTTON_ID,
+			LAUNCH_BUTTON_ID = X3D.THREE_BUTTON_ID,
 
 			// Control panel arm buttons
-			PANEL_SPIN_BUTTON_ID = X3D_BUTTON_12,
-			PANEL_SPIN_REVERSE_BUTTON_ID = X3D_BUTTON_11,
+			PANEL_SPIN_BUTTON_ID = X3D.TWELVE_BUTTON_ID,
+			PANEL_SPIN_REVERSE_BUTTON_ID = X3D.ELEVEN_BUTTON_ID,
 			
 			// Climber buttons
-			EXTEND_CLIMBER_BUTTON_ID = X3D_BUTTON_10,
-			LOWER_CLIMBER_BUTTON_ID = X3D_BUTTON_9,
+			EXTEND_CLIMBER_BUTTON_ID = X3D.TEN_BUTTON_ID,
+			LOWER_CLIMBER_BUTTON_ID = X3D.NINE_BUTTON_ID,
 
 			// Winch buttons
-			SPOOL_WINCH_BUTTON_ID = X3D_BUTTON_8,
-			UNSPOOL_WINCH_BUTTON_ID = X3D_BUTTON_7;
+			SPOOL_WINCH_BUTTON_ID = X3D.EIGHT_BUTTON_ID,
+			UNSPOOL_WINCH_BUTTON_ID = X3D.SEVEN_BUTTON_ID;
 	}
 
 	public static class SpotterControlIDs {
 		public static final int
 			// Tank drive axis
-			LEFT_TANK_DRIVE_AXIS_ID = GAMEPAD_AXIS_LEFT_Y,
-			RIGHT_TANK_DRIVE_AXIS_ID = GAMEPAD_AXIS_RIGHT_Y,
+			LEFT_TANK_DRIVE_AXIS_ID = Gamepad.LEFT_Y_AXIS,
+			RIGHT_TANK_DRIVE_AXIS_ID = Gamepad.RIGHT_Y_AXIS,
 
 			// Arcade drive axis
-			ARCADE_DRIVE_FORWARD_AXIS_ID = GAMEPAD_AXIS_LEFT_Y,
-			ARCADE_DRIVE_ANGLE_AXIS_ID = GAMEPAD_AXIS_LEFT_X,
+			ARCADE_DRIVE_FORWARD_AXIS_ID = Gamepad.LEFT_Y_AXIS,
+			ARCADE_DRIVE_ANGLE_AXIS_ID = Gamepad.LEFT_X_AXIS,
 			
 			// Drive mode function buttons
-			DRIVE_STRAIGHT_POV_ANGLE = GAMEPAD_POV_ANGLE_UP,
-			TOGGLE_ARCADE_DRIVE_BUTTON_ID = GAMEPAD_BUTTON_LEFT_JS,	// does not toggle drive mode for driver
-			TOGGLE_SENSITIVITY_BUTTON_ID = GAMEPAD_BUTTON_RIGHT_JS,	// does not toggle motor sensitivities for driver
+			DRIVE_STRAIGHT_POV_ANGLE = Gamepad.ANGLE_UP_POV,
+			TOGGLE_ARCADE_DRIVE_BUTTON_ID = Gamepad.LEFT_JOYSTICK_BUTTON_ID,	// does not toggle drive mode for driver
+			TOGGLE_SENSITIVITY_BUTTON_ID = Gamepad.RIGHT_JOYSTICK_BUTTON_ID,	// does not toggle motor sensitivities for driver
 
 			// Manipulator buttons
-			INTAKE_BUTTON_ID = GAMEPAD_BUTTON_X,
-			LAUNCH_BUTTON_ID = GAMEPAD_BUTTON_B,
+			INTAKE_BUTTON_ID = Gamepad.X_BUTTON_ID,
+			LAUNCH_BUTTON_ID = Gamepad.B_BUTTON_ID,
 
 			// Control panel arm trigger axes
-			PANEL_SPIN_BUTTON_ID = GAMEPAD_BUTTON_LEFT_BUMPER,
-			PANEL_SPIN_REVERSE_BUTTON_ID = GAMEPAD_BUTTON_RIGHT_BUMPER,
+			PANEL_SPIN_BUTTON_ID = Gamepad.LEFT_BUMPER_BUTTON_ID,
+			PANEL_SPIN_REVERSE_BUTTON_ID = Gamepad.RIGHT_BUMPER_BUTTON_ID,
 			
 			// Climber buttons
-			EXTEND_CLIMBER_BUTTON_ID = GAMEPAD_BUTTON_Y,
-			LOWER_CLIMBER_BUTTON_ID = GAMEPAD_BUTTON_A,
+			EXTEND_CLIMBER_BUTTON_ID = Gamepad.Y_BUTTON_ID,
+			LOWER_CLIMBER_BUTTON_ID = Gamepad.A_BUTTON_ID,
 
 			// Winch buttons
-			SPOOL_WINCH_BUTTON_ID = GAMEPAD_BUTTON_BACK,
-			UNSPOOL_WINCH_BUTTON_ID = GAMEPAD_BUTTON_START;
+			SPOOL_WINCH_BUTTON_ID = Gamepad.BACK_BUTTON_ID,
+			UNSPOOL_WINCH_BUTTON_ID = Gamepad.START_BUTTON_ID;
 	}
 
 	public static class Drive {

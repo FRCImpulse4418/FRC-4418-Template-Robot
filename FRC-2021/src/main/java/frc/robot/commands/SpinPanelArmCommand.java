@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.TeleopSensitivitySubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 
@@ -21,9 +22,9 @@ public class SpinPanelArmCommand extends CommandBase {
 	@Override
 	public void initialize() {
 		if (spinningForwards) {
-			RobotContainer.controlSubsystem.setControlPanelArmMotor(0.5);
+			RobotContainer.controlSubsystem.setControlPanelArmMotor(0.5 * TeleopSensitivitySubsystem.spinControlPanelInputRate);
 		} else {
-			RobotContainer.controlSubsystem.setControlPanelArmMotor(-0.5);
+			RobotContainer.controlSubsystem.setControlPanelArmMotor(-0.5 * TeleopSensitivitySubsystem.spinControlPanelInputRate);
 		}
 	}
 

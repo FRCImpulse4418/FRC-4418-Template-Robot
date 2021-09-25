@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.TeleopSensitivitySubsystem;
 
 
 public class MoveClimberCommand extends CommandBase {
@@ -24,9 +25,9 @@ public class MoveClimberCommand extends CommandBase {
 	@Override
 	public void initialize() {
 		if (extendingClimber) {
-			RobotContainer.climbSubsystem.setClimbMotor(-0.8);
+			RobotContainer.climbSubsystem.setClimbMotor(-0.8 * TeleopSensitivitySubsystem.moveClimberInputRate);
 		} else {
-			RobotContainer.climbSubsystem.setClimbMotor(0.8);
+			RobotContainer.climbSubsystem.setClimbMotor(0.8 * TeleopSensitivitySubsystem.moveClimberInputRate);
 		}
 	}
 
