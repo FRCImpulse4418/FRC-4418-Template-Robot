@@ -48,7 +48,7 @@ public class Robot extends TimedRobot {
 		FireCommand.toleranceSlider = FireCommand.smartDashboardTab
 			.add("Shooter Tolerance", 0)
 			.withWidget(BuiltInWidgets.kNumberSlider)
-			.withProperties(Map.of("min", 0, "max", 100, "block increment", 5))
+			.withProperties(Map.of("min", 0, "max", 500, "block increment", 5))
 			.getEntry();
 		
 		FireCommand.elbowRPMSlider = FireCommand.smartDashboardTab

@@ -59,9 +59,10 @@ public class FireCommand extends CommandBase {
 		SmartDashboard.putNumber("Wrist Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)));
 
 		SmartDashboard.putNumber("Elbow Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.elbowFireMotor.getSelectedSensorVelocity(0)));
-
+//toleranceSlider.getDouble(0))
 		//need to wait until motors are up to speed
-		if (wristTargetSpeed - Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)) <= toleranceSlider.getDouble(0)) {
+		double currentSpeed = Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)) * (600/unitsPerRev);
+		if ((wristTargetSpeed - currentSpeed) <= toleranceSlider.getDouble(0))  {
 			RobotContainer.manipulatorsubsystem.setShoulderFireMotor(-0.5);	
 		}
 	}
