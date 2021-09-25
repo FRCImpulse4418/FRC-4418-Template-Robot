@@ -21,8 +21,8 @@ import frc.robot.RobotContainer;
 public class ShooterCommand extends CommandBase {
 	public static final int
 		speedTolerance = 20,
-		wristTargetRPM = 4_000, // RPMs are changed to units/100ms in motor commands
-		elbowTargetRPM = 4_000,
+		elbowTargetRPM = 5_300,	// low shooter
+		wristTargetRPM = 5_000, // high shooter, RPMs are changed to units/100ms in motor commands
 		countsPerRev = 1024,
 		unitsPerRev = countsPerRev * 4;	//the talon counts every rising and falling edge
 
@@ -43,11 +43,11 @@ public class ShooterCommand extends CommandBase {
 	@Override
 	public void execute() {
 		RobotContainer.manipulatorsubsystem.setElbowFireMotor(
-			-(wristRPMSlider.getDouble(0.0)*(unitsPerRev/600)));
-			// -(wristTargetRPM*(unitsPerRev/600)));
+			// -(wristRPMSlider.getDouble(0.0)*(unitsPerRev/600)));
+			-(wristTargetRPM*(unitsPerRev/600)));
 		RobotContainer.manipulatorsubsystem.setWristFireMotor(
-			-(elbowRPMSlider.getDouble(0.0)*(unitsPerRev/600)));
-			// -(elbowTargetRPM*(unitsPerRev/600)));	
+			// -(elbowRPMSlider.getDouble(0.0)*(unitsPerRev/600)));
+			-(elbowTargetRPM*(unitsPerRev/600)));	
 		
 		SmartDashboard.putNumber("Wrist Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)));
 
