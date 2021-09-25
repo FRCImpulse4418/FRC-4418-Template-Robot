@@ -28,7 +28,7 @@ public class ShooterCommand extends CommandBase {
 
 	public static ShuffleboardTab smartDashboardTab;
 
-	public static NetworkTableEntry toleranceSlider;
+	// public static NetworkTableEntry toleranceSlider;
 	public static NetworkTableEntry elbowRPMSlider;
 	public static NetworkTableEntry wristRPMSlider;
 

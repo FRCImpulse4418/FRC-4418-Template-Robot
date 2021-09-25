@@ -44,10 +44,10 @@ public class Robot extends TimedRobot {
 
 		ShooterCommand.smartDashboardTab = Shuffleboard.getTab("SmartDashboard");
 
-		ShooterCommand.toleranceSlider = ShooterCommand.smartDashboardTab
-			.add("Shooter Tolerance", 0)
+		IntakeCommand.intakeRPMSlider = ShooterCommand.smartDashboardTab
+			.add("Intake RPM ", 0)
 			.withWidget(BuiltInWidgets.kNumberSlider)
-			.withProperties(Map.of("min", 0, "max", 500, "block increment", 5))
+			.withProperties(Map.of("min", 0, "max", 1, "block increment", 0.1))
 			.getEntry();
 		
 		ShooterCommand.elbowRPMSlider = ShooterCommand.smartDashboardTab

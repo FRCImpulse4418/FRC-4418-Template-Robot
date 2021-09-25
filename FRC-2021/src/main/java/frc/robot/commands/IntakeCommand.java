@@ -9,12 +9,17 @@ package frc.robot.commands;
 
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotContainer;
 
 
 public class IntakeCommand extends CommandBase {
 	private boolean isReverseIntake;
+
+	public static ShuffleboardTab smartDashboardTab;
+	public static NetworkTableEntry intakeRPMSlider;
 
 	public IntakeCommand(boolean isReverseIntake) {
 		this.isReverseIntake = isReverseIntake;
@@ -32,9 +37,9 @@ public class IntakeCommand extends CommandBase {
 		// SmartDashboard.putNumber("Intake Motor", RobotContainer.manipulatorsubsystem.getIntakeMotor());
 		
 		if (!isReverseIntake) {
-			RobotContainer.manipulatorsubsystem.setIntakeMotor(0.5);
+			RobotContainer.manipulatorsubsystem.setIntakeMotor(intakeRPMSlider.getDouble(0.5));
 		} else {
-			RobotContainer.manipulatorsubsystem.setIntakeMotor(-0.5);
+			RobotContainer.manipulatorsubsystem.setIntakeMotor(-intakeRPMSlider.getDouble(0.5));
 		}
 	}
 
