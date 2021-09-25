@@ -7,11 +7,17 @@
 
 package frc.robot;
 
+import java.util.Map;
+
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.ShooterCommand;
 
 
 /**
@@ -36,6 +42,26 @@ public class Robot extends TimedRobot {
 
 		frontShooterCamera = CameraServer.getInstance().startAutomaticCapture(0);
 		rightPanelCamera = CameraServer.getInstance().startAutomaticCapture(1);
+
+		ShooterCommand.smartDashboardTab = Shuffleboard.getTab("SmartDashboard");
+
+		ShooterCommand.toleranceSlider = ShooterCommand.smartDashboardTab
+			.add("Shooter Tolerance", 0)
+			.withWidget(BuiltInWidgets.kNumberSlider)
+			.withProperties(Map.of("min", 0, "max", 500, "block increment", 5))
+			.getEntry();
+		
+		ShooterCommand.elbowRPMSlider = ShooterCommand.smartDashboardTab
+			.add("High RPM", 0)
+			.withWidget(BuiltInWidgets.kNumberSlider)
+			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
+			.getEntry();
+
+		ShooterCommand.wristRPMSlider = ShooterCommand.smartDashboardTab
+			.add("Low RPM", 0)
+			.withWidget(BuiltInWidgets.kNumberSlider)
+			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
+			.getEntry();
 	}
 
 	// called every robot packet (good for diagnostics), after mode-specific periodics

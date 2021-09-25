@@ -60,6 +60,7 @@ public class RobotContainer {
 			toggleArcadeDriveButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.TOGGLE_ARCADE_DRIVE_BUTTON_ID),
 			driveStraightButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.DRIVE_STRAIGHT_BUTTON_ID),
 		
+			// feederButton = new JoystickButton(X3D_RIGHT, Constants.)
 			backwardIntakeButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.BACKWARD_INTAKE_BUTTON_ID),
 			forwardIntakeButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.FORWARD_INTAKE_BUTTON_ID),
 			launchButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.LAUNCH_BUTTON_ID),
@@ -79,7 +80,7 @@ public class RobotContainer {
 			
 			backwardIntakeButton.whileHeld(new IntakeCommand(true));
 			forwardIntakeButton.whileHeld(new IntakeCommand(false));
-			launchButton.whileHeld(new FireCommand());
+			launchButton.whileHeld(new ShooterCommand());
 			
 			// true is forward spin, false is backward spin
 			panelSpinButton.whileHeld(new SpinPanelArmCommand(true));
@@ -138,7 +139,7 @@ public class RobotContainer {
 			toggleSensitivityButton.whenPressed(new ToggleTeleopSensitivityMode());
 			
 			intakeButton.whileHeld(new IntakeCommand(false));
-			launchButton.whileHeld(new FireCommand());
+			launchButton.whileHeld(new ShooterCommand());
 			
 			// true is forward spin, false is backward spin
 			panelSpinButton.whileHeld(new SpinPanelArmCommand(true));
