@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotContainer;
 
 
-public class FireCommand extends CommandBase {
+public class ShooterCommand extends CommandBase {
 	public static final int
 		speedTolerance = 20,
 		wristTargetSpeed = 4000, 		//in RPM, changed to units/100ms in motor commands 	// TODO: Config wrist fire motor speed
@@ -32,7 +32,7 @@ public class FireCommand extends CommandBase {
 	public static NetworkTableEntry elbowRPMSlider;
 	public static NetworkTableEntry wristRPMSlider;
 
-	public FireCommand() {
+	public ShooterCommand() {
 		addRequirements(RobotContainer.manipulatorsubsystem);		
 	}
 
@@ -59,18 +59,16 @@ public class FireCommand extends CommandBase {
 		SmartDashboard.putNumber("Wrist Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)));
 
 		SmartDashboard.putNumber("Elbow Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.elbowFireMotor.getSelectedSensorVelocity(0)));
-//toleranceSlider.getDouble(0))
 		//need to wait until motors are up to speed
-		double currentSpeed = Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)) * (600/unitsPerRev);
-		if ((wristTargetSpeed - currentSpeed) <= toleranceSlider.getDouble(0))  {
-			RobotContainer.manipulatorsubsystem.setShoulderFireMotor(-0.5);	
-		}
+		// double currentSpeed = Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)) * (600/unitsPerRev);
+		// if ((wristTargetSpeed - currentSpeed) <= toleranceSlider.getDouble(0))  {
+		// 	RobotContainer.manipulatorsubsystem.setShoulderFireMotor(-0.5);	
+		// }
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		RobotContainer.manipulatorsubsystem.setShoulderFireMotor(0.0);
 		RobotContainer.manipulatorsubsystem.setElbowFireMotor(0.0);
 		RobotContainer.manipulatorsubsystem.setWristFireMotor(0.0);
 	}

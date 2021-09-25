@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.FireCommand;
+import frc.robot.commands.ShooterCommand;
 
 
 /**
@@ -43,21 +43,21 @@ public class Robot extends TimedRobot {
 		frontShooterCamera = CameraServer.getInstance().startAutomaticCapture(0);
 		rightPanelCamera = CameraServer.getInstance().startAutomaticCapture(1);
 
-		FireCommand.smartDashboardTab = Shuffleboard.getTab("SmartDashboard");
+		ShooterCommand.smartDashboardTab = Shuffleboard.getTab("SmartDashboard");
 
-		FireCommand.toleranceSlider = FireCommand.smartDashboardTab
+		ShooterCommand.toleranceSlider = ShooterCommand.smartDashboardTab
 			.add("Shooter Tolerance", 0)
 			.withWidget(BuiltInWidgets.kNumberSlider)
 			.withProperties(Map.of("min", 0, "max", 500, "block increment", 5))
 			.getEntry();
 		
-		FireCommand.elbowRPMSlider = FireCommand.smartDashboardTab
+		ShooterCommand.elbowRPMSlider = ShooterCommand.smartDashboardTab
 			.add("High RPM", 0)
 			.withWidget(BuiltInWidgets.kNumberSlider)
 			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
 			.getEntry();
 
-		FireCommand.wristRPMSlider = FireCommand.smartDashboardTab
+		ShooterCommand.wristRPMSlider = ShooterCommand.smartDashboardTab
 			.add("Low RPM", 0)
 			.withWidget(BuiltInWidgets.kNumberSlider)
 			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
