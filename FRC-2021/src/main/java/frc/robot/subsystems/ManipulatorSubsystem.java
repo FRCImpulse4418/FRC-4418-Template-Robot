@@ -21,7 +21,7 @@ public class ManipulatorSubsystem extends SubsystemBase {
 	private WPI_TalonSRX intakeMotor;
 	
 	private WPI_TalonSRX shoulderFireMotor;
-	private WPI_TalonSRX elbowFireMotor;
+	public WPI_TalonSRX elbowFireMotor;
 	public WPI_TalonSRX wristFireMotor;
 
 	/* Encoder.getRate() returns distance per second
@@ -38,16 +38,14 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
 	private boolean pivotUp = true;
 
-		
-	// Shoulder Motor = Loader/Feeder
-	// Elbow Motor = Lower shooter
-	// Wrist Motor = Higher shooter
-
 	public ManipulatorSubsystem() {
+		// loader, AKA feeder
 		intakeMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_INTAKE_BOTTOM_TALONSRX_ID);
 		
+		// lower shooter
 		shoulderFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_INTAKE_TOP_TALONSRX_ID);
 
+		// higher shooter
 		elbowFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_BOTTOM_TALONSRX_ID);
 		// elbowFireMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
         elbowFireMotor.setSensorPhase(false);

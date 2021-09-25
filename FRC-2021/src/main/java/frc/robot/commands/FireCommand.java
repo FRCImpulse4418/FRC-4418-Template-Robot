@@ -7,18 +7,31 @@
 
 package frc.robot.commands;
 
+import java.lang.Math;
+
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import java.lang.Math;
-
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotContainer;
 
-	// Shoulder Motor = Loader/Feeder
-	// Elbow Motor = Lower shooter
-	// Wrist Motor = Higher shooter
 
 public class FireCommand extends CommandBase {
+	public static final int
+		speedTolerance = 20,
+		wristTargetSpeed = 4000, 		//in RPM, changed to units/100ms in motor commands 	// TODO: Config wrist fire motor speed
+		elbowTargetSpeed = 4000,		// TODO: Config elbow fire motor speed
+		countsPerRev = 1024,
+		unitsPerRev = countsPerRev * 4;	//the talon counts every rising and falling edge
+
+	public static ShuffleboardTab smartDashboardTab;
+
+	public static NetworkTableEntry toleranceSlider;
+	public static NetworkTableEntry elbowRPMSlider;
+	public static NetworkTableEntry wristRPMSlider;
+
 	public FireCommand() {
 		addRequirements(RobotContainer.manipulatorsubsystem);		
 	}
@@ -26,27 +39,29 @@ public class FireCommand extends CommandBase {
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
-		
+
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		int SpeedTolerance = 100;
-		int WristTargetSpeed = 4000; 		//in RPM, changed to units/100ms in motor commands 	// TODO: Config wrist fire motor speed
-		int ElbowTargetSpeed = 4000;		// TODO: Config elbow fire motor speed
-		int CountsPerRev = 1024;
-		int UnitsPerRev = CountsPerRev * 4;	//the talon counts every rising and falling edge
+		
+
 		// SmartDashboard.putNumber("Wrist Fire", RobotContainer.manipulatorsubsystem.getWristFireMotor());
 		// SmartDashboard.putNumber("Elbow Fire", RobotContainer.manipulatorsubsystem.getElbowFireMotor());
 		// SmartDashboard.putNumber("Shoulder Fire", RobotContainer.manipulatorsubsystem.getShoulderFireMotor());
 		
-		RobotContainer.manipulatorsubsystem.setElbowFireMotor(-(WristTargetSpeed*(UnitsPerRev/600)));	
-		RobotContainer.manipulatorsubsystem.setWristFireMotor(-(ElbowTargetSpeed*(UnitsPerRev/600)));	
-		// System.out.println(elbowFireMotor.getSelectedSensorVelocity(0));
+		RobotContainer.manipulatorsubsystem.setElbowFireMotor(
+			-(wristRPMSlider.getDouble(0.0)*(unitsPerRev/600)));	
+		RobotContainer.manipulatorsubsystem.setWristFireMotor(
+			-(elbowRPMSlider.getDouble(0.0)*(unitsPerRev/600)));	
+		
+		SmartDashboard.putNumber("Wrist Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)));
+
+		SmartDashboard.putNumber("Elbow Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.elbowFireMotor.getSelectedSensorVelocity(0)));
 
 		//need to wait until motors are up to speed
-		if (WristTargetSpeed - Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)) <= SpeedTolerance){
+		if (wristTargetSpeed - Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)) <= toleranceSlider.getDouble(0)) {
 			RobotContainer.manipulatorsubsystem.setShoulderFireMotor(-0.5);	
 		}
 	}
