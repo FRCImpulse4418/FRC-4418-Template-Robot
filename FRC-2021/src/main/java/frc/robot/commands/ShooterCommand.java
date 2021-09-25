@@ -13,20 +13,18 @@ import java.lang.Math;
 //import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import frc.robot.RobotContainer;
 
 
 public class ShooterCommand extends CommandBase {
 	public static final int
 		speedTolerance = 20,
-		wristTargetRPM = 150, // RPMs are changed to units/100ms in motor commands
-		elbowTargetRPM = 2_500,
+		wristTargetRPM = 4_000, // RPMs are changed to units/100ms in motor commands
+		elbowTargetRPM = 4_000,
 		countsPerRev = 1024,
 		unitsPerRev = countsPerRev * 4;	//the talon counts every rising and falling edge
-
-	public static ShuffleboardTab smartDashboardTab;
 
 	public static NetworkTableEntry elbowRPMSlider;
 	public static NetworkTableEntry wristRPMSlider;
@@ -44,14 +42,12 @@ public class ShooterCommand extends CommandBase {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		// SmartDashboard.putNumber("Wrist Fire", RobotContainer.manipulatorsubsystem.getWristFireMotor());
-		// SmartDashboard.putNumber("Elbow Fire", RobotContainer.manipulatorsubsystem.getElbowFireMotor());
-		// SmartDashboard.putNumber("Shoulder Fire", RobotContainer.manipulatorsubsystem.getShoulderFireMotor());
-		
 		RobotContainer.manipulatorsubsystem.setElbowFireMotor(
 			-(wristRPMSlider.getDouble(0.0)*(unitsPerRev/600)));
+			// -(wristTargetRPM*(unitsPerRev/600)));
 		RobotContainer.manipulatorsubsystem.setWristFireMotor(
-			-(elbowRPMSlider.getDouble(0.0)*(unitsPerRev/600)));	
+			-(elbowRPMSlider.getDouble(0.0)*(unitsPerRev/600)));
+			// -(elbowTargetRPM*(unitsPerRev/600)));	
 		
 		SmartDashboard.putNumber("Wrist Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)));
 

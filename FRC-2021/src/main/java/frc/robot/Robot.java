@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-import java.sql.DriverPropertyInfo;
 import java.util.Map;
 
 import edu.wpi.cscore.UsbCamera;
@@ -17,11 +16,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+
 import frc.robot.commands.DriveStraightCommand;
-import frc.robot.commands.DumbShitAutonomousCommand;
-import frc.robot.commands.FeederCommand;
+import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ShooterCommand;
-import frc.robot.commands.TeleopDriveCommand;
 
 
 /**
@@ -34,40 +33,39 @@ public class Robot extends TimedRobot {
 	private UsbCamera m_frontShooterCamera;
 	private UsbCamera m_rightPanelCamera;
 
-	private Command m_teleopCommand;
 	private Command m_autonomousCommand;
 
 	private RobotContainer m_robotContainer;
 
+	public static ShuffleboardTab statusDisplayTab;
 
 	// run when robot is started, put initialization code here
 	@Override
 	public void robotInit() {
 		m_robotContainer = new RobotContainer();
 		m_autonomousCommand = new DriveStraightCommand(true);
-		m_teleopCommand = new TeleopDriveCommand();
 
 		m_frontShooterCamera = CameraServer.getInstance().startAutomaticCapture(0);
 		m_rightPanelCamera = CameraServer.getInstance().startAutomaticCapture(1);
 
-		ShooterCommand.smartDashboardTab = Shuffleboard.getTab("SmartDashboard");
+		statusDisplayTab = Shuffleboard.getTab("4418 Status Display");
 
-		FeederCommand.intakeRPMSlider = ShooterCommand.smartDashboardTab
-			.add("Intake RPM ", 0.4)
+		ShooterCommand.elbowRPMSlider = statusDisplayTab
+			.add("High Shooter RPM", ShooterCommand.elbowTargetRPM)
 			.withWidget(BuiltInWidgets.kNumberSlider)
-			.withProperties(Map.of("min", 0, "max", 1, "block increment", 0.1))
+			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
 			.getEntry();
 		
-		ShooterCommand.elbowRPMSlider = ShooterCommand.smartDashboardTab
-			.add("High RPM", 2_500)
+		ShooterCommand.wristRPMSlider = statusDisplayTab
+			.add("Low Shooter RPM", ShooterCommand.wristTargetRPM)
 			.withWidget(BuiltInWidgets.kNumberSlider)
 			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
 			.getEntry();
-
-		ShooterCommand.wristRPMSlider = ShooterCommand.smartDashboardTab
-			.add("Low RPM", 150)
+		
+		IntakeCommand.intakePercentOutputSlider = statusDisplayTab
+			.add("Intake % Output ", 0.4)
 			.withWidget(BuiltInWidgets.kNumberSlider)
-			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
+			.withProperties(Map.of("min", 0.0, "max", 1.0, "block increment", 0.05))
 			.getEntry();
 	}
 
@@ -108,9 +106,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void teleopPeriodic() {
-		// if (!m_teleopCommand.isScheduled()) {
-		// 	m_teleopCommand.schedule();
-		// }
+		
 	}
 
 	@Override

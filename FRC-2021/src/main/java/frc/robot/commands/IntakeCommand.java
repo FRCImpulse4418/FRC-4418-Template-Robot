@@ -9,16 +9,17 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import frc.robot.RobotContainer;
 
 
 public class IntakeCommand extends CommandBase {
+	public static final double intakePercentOutput = 0.4;
+	
 	private boolean isReverseIntake;
 
-	public static ShuffleboardTab smartDashboardTab;
-	public static NetworkTableEntry intakeRPMSlider;
+	public static NetworkTableEntry intakePercentOutputSlider;
 
 	public IntakeCommand(boolean isReverseIntake) {
 		this.isReverseIntake = isReverseIntake;
@@ -27,6 +28,7 @@ public class IntakeCommand extends CommandBase {
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
+		
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
@@ -35,16 +37,18 @@ public class IntakeCommand extends CommandBase {
 		// SmartDashboard.putNumber("Intake Motor", RobotContainer.manipulatorsubsystem.getIntakeMotor());
 		
 		if (!isReverseIntake) {
-			RobotContainer.manipulatorsubsystem.setIntakeMotor(intakeRPMSlider.getDouble(0.5));
+			RobotContainer.manipulatorsubsystem.setIntakeMotor(intakePercentOutputSlider.getDouble(0.5));
+			// RobotContainer.manipulatorsubsystem.setIntakeMotor(intakePercentOutput);
 		} else {
-			RobotContainer.manipulatorsubsystem.setIntakeMotor(-intakeRPMSlider.getDouble(0.5));
+			RobotContainer.manipulatorsubsystem.setIntakeMotor(-intakePercentOutputSlider.getDouble(0.5));
+			// RobotContainer.manipulatorsubsystem.setIntakeMotor(intakePercentOutput);
 		}
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
-		RobotContainer.manipulatorsubsystem.setIntakeMotor(0.);
+		RobotContainer.manipulatorsubsystem.setIntakeMotor(0.0);
 	}
 
 	// Returns true when the command should end.

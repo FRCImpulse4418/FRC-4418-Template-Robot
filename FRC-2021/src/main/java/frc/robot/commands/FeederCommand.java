@@ -4,16 +4,14 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+
 import frc.robot.RobotContainer;
 
 
 public class FeederCommand extends CommandBase {
-	public static NetworkTableEntry intakeRPMSlider;
-
 	public FeederCommand() {
-
+		
 	}
 
 	@Override
@@ -21,7 +19,7 @@ public class FeederCommand extends CommandBase {
 
 	@Override
 	public void execute() {
-		RobotContainer.manipulatorsubsystem.setShoulderFireMotor(-0.5);	
+		RobotContainer.manipulatorsubsystem.setShoulderFireMotor(-0.5);
 	}
 
 	@Override
