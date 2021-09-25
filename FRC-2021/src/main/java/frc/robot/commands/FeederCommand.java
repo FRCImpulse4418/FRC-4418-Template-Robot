@@ -10,7 +10,7 @@ import frc.robot.RobotContainer;
 
 public class FeederCommand extends CommandBase {
 	public FeederCommand() {
-		addRequirements(RobotContainer.manipulatorsubsystem);
+		// addRequirements(RobotContainer.manipulatorsubsystem);
 	}
 
 	@Override
