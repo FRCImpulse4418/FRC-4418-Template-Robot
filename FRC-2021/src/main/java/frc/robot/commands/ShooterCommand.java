@@ -32,7 +32,7 @@ public class ShooterCommand extends CommandBase {
 	public static NetworkTableEntry wristRPMSlider;
 
 	public ShooterCommand() {
-		// addRequirements(RobotContainer.manipulatorsubsystem);		
+
 	}
 
 	// Called when the command is initially scheduled.

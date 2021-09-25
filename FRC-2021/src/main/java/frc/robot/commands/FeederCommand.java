@@ -13,7 +13,7 @@ public class FeederCommand extends CommandBase {
 	public static NetworkTableEntry intakeRPMSlider;
 
 	public FeederCommand() {
-		// addRequirements(RobotContainer.manipulatorsubsystem);
+
 	}
 
 	@Override

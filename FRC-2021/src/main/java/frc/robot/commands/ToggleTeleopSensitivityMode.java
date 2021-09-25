@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class ToggleTeleopSensitivityMode extends CommandBase {
 	public ToggleTeleopSensitivityMode() {
-		// Use addRequirements() here to declare subsystem dependencies.
+
 	}
 
 	// Called when the command is initially scheduled.

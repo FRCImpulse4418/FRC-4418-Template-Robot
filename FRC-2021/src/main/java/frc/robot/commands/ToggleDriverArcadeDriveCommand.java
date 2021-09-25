@@ -14,7 +14,7 @@ import frc.robot.RobotContainer;
 
 public class ToggleDriverArcadeDriveCommand extends CommandBase {
 	public ToggleDriverArcadeDriveCommand() {
-		addRequirements(RobotContainer.driveSubsystem);
+		
 	}
 
 	// Called when the command is initially scheduled.

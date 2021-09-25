@@ -9,7 +9,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.commands.*;
@@ -76,7 +75,7 @@ public class RobotContainer {
 
 		private static void configureButtonBindings() {
 			toggleArcadeDriveButton.whenPressed(new ToggleDriverArcadeDriveCommand());
-			driveStraightButton.whileHeld(new DriveStraightCommand());
+			driveStraightButton.whileHeld(new DriveStraightCommand(false));
 			
 			backwardIntakeButton.whileHeld(new IntakeCommand(true));
 			forwardIntakeButton.whileHeld(new IntakeCommand(false));
@@ -136,7 +135,7 @@ public class RobotContainer {
 
 		private static void configureButtonBindings() {
 			toggleArcadeDriveButton.whenPressed(new ToggleSpotterArcadeDriveCommand());
-			driveStraightButton.whileHeld(new DriveStraightCommand());
+			driveStraightButton.whileHeld(new DriveStraightCommand(false));
 			toggleSensitivityButton.whenPressed(new ToggleTeleopSensitivityMode());
 			
 			intakeButton.whileHeld(new IntakeCommand(false));
@@ -181,16 +180,5 @@ public class RobotContainer {
 		// Configure the button bindings
 		DriverControls.configureButtonBindings();
 		SpotterControls.configureButtonBindings();
-	}
-
-	/**
-	 * Use this to pass the autonomous command to the main {@link Robot} class.
-	 *
-	 * @return the command to run in autonomous
-	 */
-	public Command getAutonomousCommand() {
-		return null;
-		// An ExampleCommand will run in autonomous
-		//return m_autoCommand;
 	}
 }

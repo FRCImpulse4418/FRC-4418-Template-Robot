@@ -22,7 +22,6 @@ public class IntakeCommand extends CommandBase {
 
 	public IntakeCommand(boolean isReverseIntake) {
 		this.isReverseIntake = isReverseIntake;
-		addRequirements(RobotContainer.manipulatorsubsystem);
 	}
 
 	// Called when the command is initially scheduled.

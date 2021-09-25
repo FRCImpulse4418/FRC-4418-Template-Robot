@@ -7,19 +7,27 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Counter;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.RobotContainer;
 
 
 public class DriveStraightCommand extends CommandBase {
-	public DriveStraightCommand() {
+	private boolean isTimed;
+	private int counter;
+	private final int counterMax = 150;
+
+	public DriveStraightCommand(boolean isTimed) {
 		addRequirements(RobotContainer.driveSubsystem);
+		this.isTimed = isTimed;
 	}
 
 	// Called when the command is initially scheduled.
 	@Override
 	public void initialize() {
+		counter = 0;
 	}
 
 	// Called every time the scheduler runs while the command is scheduled.
@@ -28,16 +36,25 @@ public class DriveStraightCommand extends CommandBase {
 		RobotContainer.driveSubsystem.brakeOrCoastMotors(false, false);
 		RobotContainer.driveSubsystem.setLeftMotors(0.5);
 		RobotContainer.driveSubsystem.setRightMotors(-0.5);
+
+		if (isTimed) {
+			counter++;
+			SmartDashboard.putNumber("AUTO PRINT COUNTER", counter);
+		}
 	}
 
 	// Called once the command ends or is interrupted.
 	@Override
 	public void end(boolean interrupted) {
+		RobotContainer.driveSubsystem.stopDrive();
 	}
 
 	// Returns true when the command should end.
 	@Override
 	public boolean isFinished() {
+		if (isTimed) {
+			return counter >= counterMax;
+		}
 		return false;
 	}
 }
