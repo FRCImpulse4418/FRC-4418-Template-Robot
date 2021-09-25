@@ -60,10 +60,10 @@ public class RobotContainer {
 			toggleArcadeDriveButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.TOGGLE_ARCADE_DRIVE_BUTTON_ID),
 			driveStraightButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.DRIVE_STRAIGHT_BUTTON_ID),
 		
-			// feederButton = new JoystickButton(X3D_RIGHT, Constants.)
 			backwardIntakeButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.BACKWARD_INTAKE_BUTTON_ID),
 			forwardIntakeButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.FORWARD_INTAKE_BUTTON_ID),
-			launchButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.LAUNCH_BUTTON_ID),
+			feederButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.FEEDER_BUTTON_ID),
+			launchButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.SHOOT_BUTTON_ID),
 
 			panelSpinButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.PANEL_SPIN_BUTTON_ID),
 			reversePanelSpinButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.PANEL_SPIN_REVERSE_BUTTON_ID),
@@ -80,6 +80,7 @@ public class RobotContainer {
 			
 			backwardIntakeButton.whileHeld(new IntakeCommand(true));
 			forwardIntakeButton.whileHeld(new IntakeCommand(false));
+			feederButton.whileHeld(new FeederCommand());
 			launchButton.whileHeld(new ShooterCommand());
 			
 			// true is forward spin, false is backward spin
@@ -122,7 +123,7 @@ public class RobotContainer {
 			toggleSensitivityButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.TOGGLE_SENSITIVITY_BUTTON_ID),
 
 			intakeButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.INTAKE_BUTTON_ID),
-			launchButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.LAUNCH_BUTTON_ID),
+			feederButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.FEEDER_BUTTON_ID),
 
 			panelSpinButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.PANEL_SPIN_BUTTON_ID),
 			reversePanelSpinButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.PANEL_SPIN_REVERSE_BUTTON_ID),
@@ -139,7 +140,7 @@ public class RobotContainer {
 			toggleSensitivityButton.whenPressed(new ToggleTeleopSensitivityMode());
 			
 			intakeButton.whileHeld(new IntakeCommand(false));
-			launchButton.whileHeld(new ShooterCommand());
+			feederButton.whileHeld(new ShooterCommand());
 			
 			// true is forward spin, false is backward spin
 			panelSpinButton.whileHeld(new SpinPanelArmCommand(true));

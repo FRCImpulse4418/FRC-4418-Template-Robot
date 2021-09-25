@@ -84,9 +84,10 @@ public final class Constants {
 			DRIVE_STRAIGHT_BUTTON_ID = X3D.GRIP_BUTTON_ID,
 
 			// Manipulator buttons
+			FEEDER_BUTTON_ID = X3D.TRIGGER_BUTTON_ID,
 			BACKWARD_INTAKE_BUTTON_ID = X3D.SIX_BUTTON_ID,
 			FORWARD_INTAKE_BUTTON_ID = X3D.FOUR_BUTTON_ID,
-			LAUNCH_BUTTON_ID = X3D.THREE_BUTTON_ID,
+			SHOOT_BUTTON_ID = X3D.THREE_BUTTON_ID,
 
 			// Control panel arm buttons
 			PANEL_SPIN_BUTTON_ID = X3D.TWELVE_BUTTON_ID,
@@ -118,7 +119,7 @@ public final class Constants {
 
 			// Manipulator buttons
 			INTAKE_BUTTON_ID = Gamepad.X_BUTTON_ID,
-			LAUNCH_BUTTON_ID = Gamepad.B_BUTTON_ID,
+			FEEDER_BUTTON_ID = Gamepad.B_BUTTON_ID,
 
 			// Control panel arm trigger axes
 			PANEL_SPIN_BUTTON_ID = Gamepad.LEFT_BUMPER_BUTTON_ID,
