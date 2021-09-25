@@ -19,6 +19,7 @@ import frc.robot.subsystems.ControlPanelSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.ManipulatorSubsystem;
+import frc.robot.subsystems.TeleopSensitivitySubsystem;
 // import frc.robot.subsystems.SensorsSubsystem;
 import frc.robot.subsystems.WinchSubsystem;
 
@@ -29,6 +30,7 @@ public class RobotContainer {
 	public static ControlPanelSubsystem controlSubsystem = new ControlPanelSubsystem();
 	public static WinchSubsystem winchSubsystem = new WinchSubsystem();
 	public static ClimberSubsystem climbSubsystem = new ClimberSubsystem();
+	public static TeleopSensitivitySubsystem teleopSensitivitySubsystem = new TeleopSensitivitySubsystem();
 	// public static SensorsSubsystem sensorsSubsystem = new SensorsSubsystem();
 	public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 
@@ -63,7 +65,7 @@ public class RobotContainer {
 			backwardIntakeButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.BACKWARD_INTAKE_BUTTON_ID),
 			forwardIntakeButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.FORWARD_INTAKE_BUTTON_ID),
 			feederButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.FEEDER_BUTTON_ID),
-			launchButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.SHOOT_BUTTON_ID),
+			shooterButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.SHOOT_BUTTON_ID),
 
 			panelSpinButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.PANEL_SPIN_BUTTON_ID),
 			reversePanelSpinButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.PANEL_SPIN_REVERSE_BUTTON_ID),
@@ -81,7 +83,7 @@ public class RobotContainer {
 			backwardIntakeButton.whileHeld(new IntakeCommand(true));
 			forwardIntakeButton.whileHeld(new IntakeCommand(false));
 			feederButton.whileHeld(new FeederCommand());
-			launchButton.whileHeld(new ShooterCommand());
+			shooterButton.whileHeld(new ShooterCommand());
 			
 			// true is forward spin, false is backward spin
 			panelSpinButton.whileHeld(new SpinPanelArmCommand(true));

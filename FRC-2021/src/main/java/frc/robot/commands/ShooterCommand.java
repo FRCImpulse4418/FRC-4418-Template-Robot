@@ -21,8 +21,8 @@ import frc.robot.RobotContainer;
 public class ShooterCommand extends CommandBase {
 	public static final int
 		speedTolerance = 20,
-		wristTargetSpeed = 4000, 		//in RPM, changed to units/100ms in motor commands 	// TODO: Config wrist fire motor speed
-		elbowTargetSpeed = 4000,		// TODO: Config elbow fire motor speed
+		wristTargetSpeed = 150, 		//in RPM, changed to units/100ms in motor commands 	// TODO: Config wrist fire motor speed
+		elbowTargetSpeed = 2_500,		// TODO: Config elbow fire motor speed
 		countsPerRev = 1024,
 		unitsPerRev = countsPerRev * 4;	//the talon counts every rising and falling edge
 
@@ -45,14 +45,12 @@ public class ShooterCommand extends CommandBase {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		
-
 		// SmartDashboard.putNumber("Wrist Fire", RobotContainer.manipulatorsubsystem.getWristFireMotor());
 		// SmartDashboard.putNumber("Elbow Fire", RobotContainer.manipulatorsubsystem.getElbowFireMotor());
 		// SmartDashboard.putNumber("Shoulder Fire", RobotContainer.manipulatorsubsystem.getShoulderFireMotor());
 		
 		RobotContainer.manipulatorsubsystem.setElbowFireMotor(
-			-(wristRPMSlider.getDouble(0.0)*(unitsPerRev/600)));	
+			-(wristRPMSlider.getDouble(0.0)*(unitsPerRev/600)));
 		RobotContainer.manipulatorsubsystem.setWristFireMotor(
 			-(elbowRPMSlider.getDouble(0.0)*(unitsPerRev/600)));	
 		

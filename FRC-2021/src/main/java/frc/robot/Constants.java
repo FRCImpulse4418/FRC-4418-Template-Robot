@@ -84,9 +84,9 @@ public final class Constants {
 			DRIVE_STRAIGHT_BUTTON_ID = X3D.GRIP_BUTTON_ID,
 
 			// Manipulator buttons
-			FEEDER_BUTTON_ID = X3D.TRIGGER_BUTTON_ID,
 			BACKWARD_INTAKE_BUTTON_ID = X3D.SIX_BUTTON_ID,
 			FORWARD_INTAKE_BUTTON_ID = X3D.FOUR_BUTTON_ID,
+			FEEDER_BUTTON_ID = X3D.TRIGGER_BUTTON_ID,
 			SHOOT_BUTTON_ID = X3D.THREE_BUTTON_ID,
 
 			// Control panel arm buttons
@@ -136,45 +136,52 @@ public final class Constants {
 
 	public static class Drive {
 		public static final int
-			DRIVE_LEFT_A_TALON_SRX_ID = 10,
-			DRIVE_LEFT_B_TALON_SRX_ID = 2,
-			DRIVE_RIGHT_A_TALON_SRX_ID = 6,
-			DRIVE_RIGHT_B_TALON_SRX_ID = 5;
-			// DRIVE_LEFT_ENCODER_CHANNELA_ID = 6,
-			// DRIVE_LEFT_ENCODER_CHANNELB_ID = 7,
-			// DRIVE_RIGHT_ENCODER_CHANNELA_ID = 8,
-			// DRIVE_RIGHT_ENCODER_CHANNELB_ID = 9,
-			// DRIVE_GYRO_ID = 0,
-			// DRIVE_FRONT_DISTANCE_PING_ID = 10,
-			// DRIVE_FRONT_DISTANCE_ECHO_ID = 11,
-			// DRIVE_BACK_DISTANCE_PING_ID = 12,
-			// DRIVE_BACK_DISTANCE_ECHO_ID = 13;
+			LEFT_A_TALON_SRX_ID = 10,
+			LEFT_B_TALON_SRX_ID = 2,
+			RIGHT_A_TALON_SRX_ID = 6,
+			RIGHT_B_TALON_SRX_ID = 5;
+
+			// LEFT_ENCODER_CHANNELA_ID = 6,
+			// LEFT_ENCODER_CHANNELB_ID = 7,
+			// RIGHT_ENCODER_CHANNELA_ID = 8,
+			// RIGHT_ENCODER_CHANNELB_ID = 9,
+
+			// GYRO_ID = 0,
+
+			// FRONT_DISTANCE_PING_ID = 10,
+			// FRONT_DISTANCE_ECHO_ID = 11,
+			// BACK_DISTANCE_PING_ID = 12,
+			// BACK_DISTANCE_ECHO_ID = 13;
 
 		public static final double
 			ENCODER_DISTANCE_PER_PULSE  = (15.24 * Math.PI) / 256; // diameter * pi = circumference. circumference / 256 = distance per pulse
 
 		public static final int
-			DRIVE_ENCODER_DECODING_SCALE_FACTOR = 2;
+			ENCODER_DECODING_SCALE_FACTOR = 2;
 	}
 
 	public static class Manipulator {
 		public static final int
-			MAN_FIRE_TOP_TALONSRX_ID = 3,
-			MAN_FIRE_BOTTOM_TALONSRX_ID = 1,
+			WRIST_FIRE_TALONSRX_ID = 3,
+			ELBOW_FIRE_TALONSRX_ID = 1,
+			SHOULDER_FIRE_TALONSRX_ID = 11,
 
-			MAN_INTAKE_TOP_TALONSRX_ID = 11,
-			MAN_INTAKE_BOTTOM_TALONSRX_ID = 8;
+			BOTTOM_INTAKE_TALONSRX_ID = 8;
 	}
 
 	public static class Climber {
 		public static final int
-			// CLIMBER_ENCODER_CHANNELA_ID = 2,
-			// CLIMBER_FRONT_ENCODER_CHANNELB_ID = 3,
-			WINCH_TALONFX_ID = 12,
-			CLIMBER_TALONSRX_ID = 9;
+			// ENCODER_CHANNELA_ID = 2,
+			// FRONT_ENCODER_CHANNELB_ID = 3,
+			TALONSRX_ID = 9;
 		
 		// TODO: Figure out climber encoder distance per pulse
 		// public static final double CLIMBER_ENCODER_DISTANCE_PER_PULSE = SOME VALUE;
+	}
+
+	public static class Winch {
+		public static final int
+			TALONFX_ID = 12;
 	}
 
 	public static class ControlPanel {

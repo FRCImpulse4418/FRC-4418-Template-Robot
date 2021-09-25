@@ -51,13 +51,13 @@ public class Robot extends TimedRobot {
 			.getEntry();
 		
 		ShooterCommand.elbowRPMSlider = ShooterCommand.smartDashboardTab
-			.add("High RPM", 0)
+			.add("High RPM", 2_500)
 			.withWidget(BuiltInWidgets.kNumberSlider)
 			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
 			.getEntry();
 
 		ShooterCommand.wristRPMSlider = ShooterCommand.smartDashboardTab
-			.add("Low RPM", 0)
+			.add("Low RPM", 150)
 			.withWidget(BuiltInWidgets.kNumberSlider)
 			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
 			.getEntry();

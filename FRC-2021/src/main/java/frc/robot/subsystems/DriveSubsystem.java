@@ -38,10 +38,10 @@ public class DriveSubsystem extends SubsystemBase {
 
 	public DriveSubsystem() {
 		// Drive Motors
-		leftDriveMotorA = new WPI_TalonSRX(Constants.Drive.DRIVE_LEFT_A_TALON_SRX_ID);
-		leftDriveMotorB = new WPI_TalonSRX(Constants.Drive.DRIVE_LEFT_B_TALON_SRX_ID);
-		rightDriveMotorA = new WPI_TalonSRX(Constants.Drive.DRIVE_RIGHT_A_TALON_SRX_ID);
-		rightDriveMotorB = new WPI_TalonSRX(Constants.Drive.DRIVE_RIGHT_B_TALON_SRX_ID);
+		leftDriveMotorA = new WPI_TalonSRX(Constants.Drive.LEFT_A_TALON_SRX_ID);
+		leftDriveMotorB = new WPI_TalonSRX(Constants.Drive.LEFT_B_TALON_SRX_ID);
+		rightDriveMotorA = new WPI_TalonSRX(Constants.Drive.RIGHT_A_TALON_SRX_ID);
+		rightDriveMotorB = new WPI_TalonSRX(Constants.Drive.RIGHT_B_TALON_SRX_ID);
 
 		leftDriveMotorB.follow(leftDriveMotorA);
 		rightDriveMotorB.follow(rightDriveMotorA);

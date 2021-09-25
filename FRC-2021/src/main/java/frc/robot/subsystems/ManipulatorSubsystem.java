@@ -40,13 +40,13 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
 	public ManipulatorSubsystem() {
 		// loader, AKA feeder
-		intakeMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_INTAKE_BOTTOM_TALONSRX_ID);
+		intakeMotor = new WPI_TalonSRX(Constants.Manipulator.BOTTOM_INTAKE_TALONSRX_ID);
 		
 		// lower shooter
-		shoulderFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_INTAKE_TOP_TALONSRX_ID);
+		shoulderFireMotor = new WPI_TalonSRX(Constants.Manipulator.SHOULDER_FIRE_TALONSRX_ID);
 
 		// higher shooter
-		elbowFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_BOTTOM_TALONSRX_ID);
+		elbowFireMotor = new WPI_TalonSRX(Constants.Manipulator.ELBOW_FIRE_TALONSRX_ID);
 		// elbowFireMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
         elbowFireMotor.setSensorPhase(false);
         /* set closed loop gains in slot0 */
@@ -55,19 +55,19 @@ public class ManipulatorSubsystem extends SubsystemBase {
         elbowFireMotor.config_kI(0, 0); 
         elbowFireMotor.config_kD(0, 0);
 
-		wristFireMotor = new WPI_TalonSRX(Constants.Manipulator.MAN_FIRE_TOP_TALONSRX_ID);
+		wristFireMotor = new WPI_TalonSRX(Constants.Manipulator.WRIST_FIRE_TALONSRX_ID);
 		// wristFireMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
         wristFireMotor.setSensorPhase(false);
         /* set closed loop gains in slot0 */
         wristFireMotor.config_kF(0, 0.1097);
         wristFireMotor.config_kP(0, 0.22);
-        wristFireMotor.config_kI(0, 0); 
+        wristFireMotor.config_kI(0, 0);
         wristFireMotor.config_kD(0, 0);
 	}
 
 	// set motors
-	public void setElbowFireMotor(double velocity) { elbowFireMotor.set(ControlMode.Velocity, velocity); }
-	public void setWristFireMotor(double velocity) { wristFireMotor.set(ControlMode.Velocity, velocity); }
+	public void setElbowFireMotor(double velocity) { elbowFireMotor.set(ControlMode.PercentOutput, velocity); }
+	public void setWristFireMotor(double velocity) { wristFireMotor.set(ControlMode.PercentOutput, velocity); }
 	public void setShoulderFireMotor(double velocity) { shoulderFireMotor.set(ControlMode.PercentOutput, velocity); }
 	public void setIntakeMotor(double velocity) { intakeMotor.set(ControlMode.PercentOutput, velocity); }
 
