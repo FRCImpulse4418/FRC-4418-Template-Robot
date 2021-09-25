@@ -21,14 +21,13 @@ import frc.robot.RobotContainer;
 public class ShooterCommand extends CommandBase {
 	public static final int
 		speedTolerance = 20,
-		wristTargetSpeed = 150, 		//in RPM, changed to units/100ms in motor commands 	// TODO: Config wrist fire motor speed
-		elbowTargetSpeed = 2_500,		// TODO: Config elbow fire motor speed
+		wristTargetRPM = 150, // RPMs are changed to units/100ms in motor commands
+		elbowTargetRPM = 2_500,
 		countsPerRev = 1024,
 		unitsPerRev = countsPerRev * 4;	//the talon counts every rising and falling edge
 
 	public static ShuffleboardTab smartDashboardTab;
 
-	// public static NetworkTableEntry toleranceSlider;
 	public static NetworkTableEntry elbowRPMSlider;
 	public static NetworkTableEntry wristRPMSlider;
 

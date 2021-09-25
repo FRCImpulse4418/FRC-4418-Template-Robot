@@ -17,7 +17,6 @@ import frc.robot.commands.*;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.ControlPanelSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.ManipulatorSubsystem;
 import frc.robot.subsystems.TeleopSensitivitySubsystem;
 // import frc.robot.subsystems.SensorsSubsystem;
@@ -32,7 +31,6 @@ public class RobotContainer {
 	public static ClimberSubsystem climbSubsystem = new ClimberSubsystem();
 	public static TeleopSensitivitySubsystem teleopSensitivitySubsystem = new TeleopSensitivitySubsystem();
 	// public static SensorsSubsystem sensorsSubsystem = new SensorsSubsystem();
-	public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 
 	// Create joysticks
 	private static final Joystick

@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import frc.robot.commands.FeederCommand;
 import frc.robot.commands.ShooterCommand;
 
 
@@ -44,7 +45,7 @@ public class Robot extends TimedRobot {
 
 		ShooterCommand.smartDashboardTab = Shuffleboard.getTab("SmartDashboard");
 
-		IntakeCommand.intakeRPMSlider = ShooterCommand.smartDashboardTab
+		FeederCommand.intakeRPMSlider = ShooterCommand.smartDashboardTab
 			.add("Intake RPM ", 0.4)
 			.withWidget(BuiltInWidgets.kNumberSlider)
 			.withProperties(Map.of("min", 0, "max", 1, "block increment", 0.1))
