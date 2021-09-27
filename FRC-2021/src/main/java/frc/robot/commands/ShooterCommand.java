@@ -21,8 +21,8 @@ import frc.robot.RobotContainer;
 public class ShooterCommand extends CommandBase {
 	public static final int
 		speedTolerance = 20,
-		elbowTargetRPM = 5_300,	// low shooter
-		wristTargetRPM = 5_000, // high shooter, RPMs are changed to units/100ms in motor commands
+		elbowTargetRPM = 4_550,	// low shooter
+		wristTargetRPM = 4_545, // high shooter, RPMs are changed to units/100ms in motor commands
 		countsPerRev = 1024,
 		unitsPerRev = countsPerRev * 4;	//the talon counts every rising and falling edge
 

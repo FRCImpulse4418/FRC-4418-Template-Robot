@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import frc.robot.commands.*;
-
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.ControlPanelSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
@@ -150,9 +149,8 @@ public class RobotContainer {
 			lowerClimberButton.whileHeld(new MoveClimberCommand(false));
 	
 			// true is spooling, false is unspooling
-			// TODO: No idea why, but the booleans for spotter's spool/unspool buttons need to be flipped
-			spoolWinchButton.whileHeld(new SpinWinchCommand(false));
-			unspoolWinchButton.whileHeld(new SpinWinchCommand(true));
+			spoolWinchButton.whileHeld(new SpinWinchCommand(true));
+			unspoolWinchButton.whileHeld(new SpinWinchCommand(false));
 		}
 
 		// Tank drive axes
