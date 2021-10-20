@@ -7,20 +7,15 @@
 
 package frc.robot;
 
-import java.util.Map;
-
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 
 import frc.robot.commands.DriveStraightCommand;
-import frc.robot.commands.IntakeCommand;
-import frc.robot.commands.ShooterCommand;
 
 
 /**
@@ -37,7 +32,7 @@ public class Robot extends TimedRobot {
 
 	private RobotContainer m_robotContainer;
 
-	public static ShuffleboardTab statusDisplayTab;
+	public static ShuffleboardTab statusDisplayTab = Shuffleboard.getTab("4418 Status Display");;
 
 	// run when robot is started, put initialization code here
 	@Override
@@ -48,25 +43,7 @@ public class Robot extends TimedRobot {
 		m_frontShooterCamera = CameraServer.getInstance().startAutomaticCapture(0);
 		m_rightPanelCamera = CameraServer.getInstance().startAutomaticCapture(1);
 
-		statusDisplayTab = Shuffleboard.getTab("4418 Status Display");
-
-		ShooterCommand.elbowRPMSlider = statusDisplayTab
-			.add("High Shooter RPM", ShooterCommand.elbowTargetRPM)
-			.withWidget(BuiltInWidgets.kNumberSlider)
-			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
-			.getEntry();
 		
-		ShooterCommand.wristRPMSlider = statusDisplayTab
-			.add("Low Shooter RPM", ShooterCommand.wristTargetRPM)
-			.withWidget(BuiltInWidgets.kNumberSlider)
-			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
-			.getEntry();
-		
-		IntakeCommand.intakePercentOutputSlider = statusDisplayTab
-			.add("Intake % Output ", 0.4)
-			.withWidget(BuiltInWidgets.kNumberSlider)
-			.withProperties(Map.of("min", 0.0, "max", 1.0, "block increment", 0.05))
-			.getEntry();
 	}
 
 	// called every robot packet (good for diagnostics), after mode-specific periodics

@@ -7,22 +7,34 @@
 
 package frc.robot.subsystems;
 
+import java.util.Map;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 // import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
 //import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
 import frc.robot.Constants;
+import frc.robot.Robot;
+import jdk.internal.loader.BuiltinClassLoader;
 
 
 public class ManipulatorSubsystem extends SubsystemBase {
-	private WPI_TalonSRX intakeMotor;
-	
-	private WPI_TalonSRX shoulderFireMotor;
-	public WPI_TalonSRX elbowFireMotor;
-	public WPI_TalonSRX wristFireMotor;
+	public boolean inTuningMode = false;
+
+	private WPI_TalonSRX outerIntakeMotor;
+	private WPI_TalonSRX innerIntakeMotor;
+	public NetworkTableEntry intakePercentOutputTextField;
+
+	public WPI_TalonSRX lowShooterMotor;
+	public NetworkTableEntry lowShooterRPMTextField;
+	public WPI_TalonSRX highShooterMotor;
+	public NetworkTableEntry highShooterRPMTextField;
 
 	/* Encoder.getRate() returns distance per second
 	distance per second * distance per pulse = pulse per second
@@ -40,38 +52,71 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
 	public ManipulatorSubsystem() {
 		// loader, AKA feeder
-		intakeMotor = new WPI_TalonSRX(Constants.Manipulator.BOTTOM_INTAKE_TALONSRX_ID);
+		outerIntakeMotor = new WPI_TalonSRX(Constants.Manipulator.BOTTOM_INTAKE_TALONSRX_ID);
 		
 		// lower shooter
-		shoulderFireMotor = new WPI_TalonSRX(Constants.Manipulator.SHOULDER_FIRE_TALONSRX_ID);
+		innerIntakeMotor = new WPI_TalonSRX(Constants.Manipulator.SHOULDER_FIRE_TALONSRX_ID);
 
 		// higher shooter
-		elbowFireMotor = new WPI_TalonSRX(Constants.Manipulator.ELBOW_FIRE_TALONSRX_ID);
+		lowShooterMotor = new WPI_TalonSRX(Constants.Manipulator.ELBOW_FIRE_TALONSRX_ID);
 		// elbowFireMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
-        elbowFireMotor.setSensorPhase(false);
+        lowShooterMotor.setSensorPhase(false);
         /* set closed loop gains in slot0 */
-        elbowFireMotor.config_kF(0, 0.1097);
-        elbowFireMotor.config_kP(0, 0.22);
-        elbowFireMotor.config_kI(0, 0); 
-        elbowFireMotor.config_kD(0, 0);
+        lowShooterMotor.config_kF(0, 0.1097);
+        lowShooterMotor.config_kP(0, 0.22);
+        lowShooterMotor.config_kI(0, 0); 
+        lowShooterMotor.config_kD(0, 0);
 
-		wristFireMotor = new WPI_TalonSRX(Constants.Manipulator.WRIST_FIRE_TALONSRX_ID);
+		highShooterMotor = new WPI_TalonSRX(Constants.Manipulator.WRIST_FIRE_TALONSRX_ID);
 		// wristFireMotor.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
-        wristFireMotor.setSensorPhase(false);
+        highShooterMotor.setSensorPhase(false);
         /* set closed loop gains in slot0 */
-        wristFireMotor.config_kF(0, 0.1097);
-        wristFireMotor.config_kP(0, 0.22);
-        wristFireMotor.config_kI(0, 0);
-        wristFireMotor.config_kD(0, 0);
+        highShooterMotor.config_kF(0, 0.1097);
+        highShooterMotor.config_kP(0, 0.22);
+        highShooterMotor.config_kI(0, 0);
+        highShooterMotor.config_kD(0, 0);
+	}
+
+	public void PutManipulatorDisplays() {
+		toggleTuningModeBooleanBox = Robot.statusDisplayTab
+			.add("Motor Tuning Mode", false)
+			.withWidget(BuiltInWidgets.kBooleanBox)
+			.withPosition(0, 0)
+			.withSize(2, 1)
+			.withProperties(Map.Of)
+
+		highShooterRPMTextField = Robot.statusDisplayTab
+			.add("Low Shooter RPM", Constants.Manipulator.WRIST_TARGET_RPM)
+			.withWidget(BuiltInWidgets.kTextView)
+			.withPosition(0, 1)
+			.withSize(2, 1)
+			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
+			.getEntry();
+		
+		lowShooterRPMTextField = Robot.statusDisplayTab
+			.add("High Shooter RPM", Constants.Manipulator.ELBOW_TARGET_RPM)
+			.withWidget(BuiltInWidgets.kTextView)
+			.withPosition(0, 2)
+			.withSize(2, 1)
+			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
+			.getEntry();
+
+		intakePercentOutputTextField = Robot.statusDisplayTab
+			.add("Intake % Output ", 0.4)
+			.withWidget(BuiltInWidgets.kTextView)
+			.withPosition(0, 3)
+			.withSize(2, 1)
+			.withProperties(Map.of("min", 0.0, "max", 1.0, "block increment", 0.05))
+			.getEntry();
 	}
 
 	// set motors by velocity
-	public void setElbowFireMotor(double velocity) { elbowFireMotor.set(ControlMode.Velocity, velocity); }
-	public void setWristFireMotor(double velocity) { wristFireMotor.set(ControlMode.Velocity, velocity); }
+	public void setElbowFireMotor(double velocity) { lowShooterMotor.set(ControlMode.Velocity, velocity); }
+	public void setWristFireMotor(double velocity) { highShooterMotor.set(ControlMode.Velocity, velocity); }
 	
 	// set motors by percent output
-	public void setShoulderFireMotor(double percentOutput) { shoulderFireMotor.set(ControlMode.PercentOutput, percentOutput); }
-	public void setIntakeMotor(double percentOutput) { intakeMotor.set(ControlMode.PercentOutput, percentOutput); }
+	public void setShoulderFireMotor(double percentOutput) { innerIntakeMotor.set(ControlMode.PercentOutput, percentOutput); }
+	public void setIntakeMotor(double percentOutput) { outerIntakeMotor.set(ControlMode.PercentOutput, percentOutput); }
 
 	// read potentiometer
 	public double getPivotPotentiometer() { return pivotPotentiometer.get(); }

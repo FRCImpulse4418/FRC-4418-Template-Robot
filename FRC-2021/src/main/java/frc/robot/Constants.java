@@ -168,6 +168,16 @@ public final class Constants {
 			SHOULDER_FIRE_TALONSRX_ID = 11,
 
 			BOTTOM_INTAKE_TALONSRX_ID = 8;
+
+		public static final double
+			INTAKE_PERCENT_OUTPUT = 0.5;
+
+		public static final int
+			SHOOTER_SPEED_TOLERANCE = 20,
+			ELBOW_TARGET_RPM = 4_550,	// low shooter
+			WRIST_TARGET_RPM = 4_545, // high shooter, RPMs are changed to units/100ms in motor commands
+			COUNTS_PER_REVOLUTION = 1024,
+			UNITS_PER_REVOLUTION = COUNTS_PER_REVOLUTION * 4;	//the talon counts every rising and falling edge
 	}
 
 	public static class Climber {

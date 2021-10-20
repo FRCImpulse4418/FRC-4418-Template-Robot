@@ -12,25 +12,21 @@ import java.lang.Math;
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import frc.robot.Constants;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.ManipulatorSubsystem;
 
 
 public class ShooterCommand extends CommandBase {
-	public static final int
-		speedTolerance = 20,
-		elbowTargetRPM = 4_550,	// low shooter
-		wristTargetRPM = 4_545, // high shooter, RPMs are changed to units/100ms in motor commands
-		countsPerRev = 1024,
-		unitsPerRev = countsPerRev * 4;	//the talon counts every rising and falling edge
+	// shorthand reference to RobotContainer's ManipulatorSubsystem singleton
+	private ManipulatorSubsystem ms;
 
-	public static NetworkTableEntry elbowRPMSlider;
-	public static NetworkTableEntry wristRPMSlider;
+	private final double rpmToVelocity = -Constants.Manipulator.UNITS_PER_REVOLUTION/600;
 
 	public ShooterCommand() {
-
+		ms = RobotContainer.manipulatorsubsystem;
 	}
 
 	// Called when the command is initially scheduled.
@@ -42,16 +38,17 @@ public class ShooterCommand extends CommandBase {
 	// Called every time the scheduler runs while the command is scheduled.
 	@Override
 	public void execute() {
-		RobotContainer.manipulatorsubsystem.setElbowFireMotor(
-			// -(wristRPMSlider.getDouble(0.0)*(unitsPerRev/600)));
-			-(wristTargetRPM*(unitsPerRev/600)));
-		RobotContainer.manipulatorsubsystem.setWristFireMotor(
-			// -(elbowRPMSlider.getDouble(0.0)*(unitsPerRev/600)));
-			-(elbowTargetRPM*(unitsPerRev/600)));	
+		if (ms.inTuningMode) {
+			ms.setElbowFireMotor(ms.highShooterRPMTextField.getDouble(0.0) * rpmToVelocity);
+			ms.setWristFireMotor(ms.lowShooterRPMTextField.getDouble(0.0) * rpmToVelocity);
+		} else {
+			ms.setElbowFireMotor(Constants.Manipulator.WRIST_TARGET_RPM * rpmToVelocity);
+			ms.setWristFireMotor(Constants.Manipulator.ELBOW_TARGET_RPM * rpmToVelocity);
+		}
 		
-		SmartDashboard.putNumber("Wrist Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)));
+		SmartDashboard.putNumber("Wrist Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.highShooterMotor.getSelectedSensorVelocity(0)));
 
-		SmartDashboard.putNumber("Elbow Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.elbowFireMotor.getSelectedSensorVelocity(0)));
+		SmartDashboard.putNumber("Elbow Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.lowShooterMotor.getSelectedSensorVelocity(0)));
 		//need to wait until motors are up to speed
 		// double currentSpeed = Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)) * (600/unitsPerRev);
 		// if ((wristTargetSpeed - currentSpeed) <= toleranceSlider.getDouble(0))  {
