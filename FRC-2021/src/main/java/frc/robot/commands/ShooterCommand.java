@@ -7,12 +7,9 @@
 
 package frc.robot.commands;
 
-import java.lang.Math;
-
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
@@ -46,9 +43,9 @@ public class ShooterCommand extends CommandBase {
 			ms.setWristFireMotor(Constants.Manipulator.ELBOW_TARGET_RPM * rpmToVelocity);
 		}
 		
-		SmartDashboard.putNumber("Wrist Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.highShooterMotor.getSelectedSensorVelocity(0)));
+		// SmartDashboard.putNumber("Wrist Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.highShooterMotor.getSelectedSensorVelocity(0)));
 
-		SmartDashboard.putNumber("Elbow Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.lowShooterMotor.getSelectedSensorVelocity(0)));
+		// SmartDashboard.putNumber("Elbow Motor Velocity", Math.abs(RobotContainer.manipulatorsubsystem.lowShooterMotor.getSelectedSensorVelocity(0)));
 		//need to wait until motors are up to speed
 		// double currentSpeed = Math.abs(RobotContainer.manipulatorsubsystem.wristFireMotor.getSelectedSensorVelocity(0)) * (600/unitsPerRev);
 		// if ((wristTargetSpeed - currentSpeed) <= toleranceSlider.getDouble(0))  {

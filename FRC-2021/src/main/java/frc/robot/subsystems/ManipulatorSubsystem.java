@@ -22,8 +22,8 @@ import frc.robot.Robot;
 
 
 public class ManipulatorSubsystem extends SubsystemBase {
-	public boolean inTuningMode = false;
-	public NetworkTableEntry toggleTuningModeBooleanBox;
+	public boolean inTuningMode;
+	public NetworkTableEntry tuningModeBooleanBox;
 
 	private WPI_TalonSRX outerIntakeMotor;
 	private WPI_TalonSRX innerIntakeMotor;
@@ -75,8 +75,8 @@ public class ManipulatorSubsystem extends SubsystemBase {
         highShooterMotor.config_kD(0, 0);
 	}
 
-	public void PutManipulatorDisplays() {
-		toggleTuningModeBooleanBox = Robot.statusDisplayTab
+	public void putManipulatorDisplays() {
+		tuningModeBooleanBox = Robot.statusDisplayTab
 			.add("Motor Tuning Mode", false)
 			.withWidget(BuiltInWidgets.kBooleanBox)
 			.withPosition(0, 0)
@@ -123,7 +123,7 @@ public class ManipulatorSubsystem extends SubsystemBase {
 
 	// get whether the pivot is up
 	public boolean pivotIsUp(){
-		if( getPivotPotentiometer() > 13){
+		if (getPivotPotentiometer() > 13) {
 			return pivotUp;
 		} else {
 			return !pivotUp;
@@ -131,5 +131,7 @@ public class ManipulatorSubsystem extends SubsystemBase {
 	}
 
 	@Override
-	public void periodic() {}
+	public void periodic() {
+		inTuningMode = tuningModeBooleanBox.getBoolean(false);
+	}
 }
