@@ -7,8 +7,6 @@
 
 package frc.robot.subsystems;
 
-import java.util.Map;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 // import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
@@ -21,11 +19,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import frc.robot.Constants;
 import frc.robot.Robot;
-import jdk.internal.loader.BuiltinClassLoader;
 
 
 public class ManipulatorSubsystem extends SubsystemBase {
 	public boolean inTuningMode = false;
+	public NetworkTableEntry toggleTuningModeBooleanBox;
 
 	private WPI_TalonSRX outerIntakeMotor;
 	private WPI_TalonSRX innerIntakeMotor;
@@ -83,14 +81,13 @@ public class ManipulatorSubsystem extends SubsystemBase {
 			.withWidget(BuiltInWidgets.kBooleanBox)
 			.withPosition(0, 0)
 			.withSize(2, 1)
-			.withProperties(Map.Of)
+			.getEntry();
 
 		highShooterRPMTextField = Robot.statusDisplayTab
 			.add("Low Shooter RPM", Constants.Manipulator.WRIST_TARGET_RPM)
 			.withWidget(BuiltInWidgets.kTextView)
 			.withPosition(0, 1)
 			.withSize(2, 1)
-			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
 			.getEntry();
 		
 		lowShooterRPMTextField = Robot.statusDisplayTab
@@ -98,7 +95,6 @@ public class ManipulatorSubsystem extends SubsystemBase {
 			.withWidget(BuiltInWidgets.kTextView)
 			.withPosition(0, 2)
 			.withSize(2, 1)
-			.withProperties(Map.of("min", 0, "max", 10_000, "block increment", 10))
 			.getEntry();
 
 		intakePercentOutputTextField = Robot.statusDisplayTab
@@ -106,7 +102,6 @@ public class ManipulatorSubsystem extends SubsystemBase {
 			.withWidget(BuiltInWidgets.kTextView)
 			.withPosition(0, 3)
 			.withSize(2, 1)
-			.withProperties(Map.of("min", 0.0, "max", 1.0, "block increment", 0.05))
 			.getEntry();
 	}
 
