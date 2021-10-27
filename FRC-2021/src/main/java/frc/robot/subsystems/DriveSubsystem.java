@@ -184,19 +184,19 @@ public class DriveSubsystem extends SubsystemBase {
 				RobotContainer.SpotterControls.getRightTankDriveAxis());
 		}
 
-		if (driverIsInArcade()) {
-			teleopArcadeDriveWrapper(
-				RobotContainer.DriverControls.getForwardArcadeDriveAxis(), // forward
-				RobotContainer.DriverControls.getAngleArcadeDriveAxis());  // angle
-		} else {
-			teleopTankDriveWrapper(
-			RobotContainer.DriverControls.getLeftTankDriveAxis(),  // left
-			RobotContainer.DriverControls.getRightTankDriveAxis());  // right
-		}
+		// if (driverIsInArcade()) {
+		teleopArcadeDriveWrapper(
+			RobotContainer.DriverControls.getForwardArcadeDriveAxis(), // forward
+			RobotContainer.DriverControls.getAngleArcadeDriveAxis());  // angle
+		// } else {
+		// 	teleopTankDriveWrapper(
+		// 	RobotContainer.DriverControls.getLeftTankDriveAxis(),  // left
+		// 	RobotContainer.DriverControls.getRightTankDriveAxis());  // right
+		// }
 	}
 
 	public void toggleDriverDriveMode() { driverIsInArcadeMode = !driverIsInArcadeMode; }
-	private boolean driverIsInArcade() { return driverIsInArcadeMode; }
+	// private boolean driverIsInArcade() { return driverIsInArcadeMode; }
 
 	public void toggleSpotterDriveMode() { spotterIsInArcadeMode = !spotterIsInArcadeMode; }
 	private boolean spotterIsInArcade() { return spotterIsInArcadeMode; }

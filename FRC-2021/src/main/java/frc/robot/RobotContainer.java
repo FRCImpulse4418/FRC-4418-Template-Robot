@@ -33,7 +33,7 @@ public class RobotContainer {
 	// Create joysticks
 	private static final Joystick
 		X3D_LEFT = new Joystick(Constants.X3D.LEFT_JOYSTICK_ID),
-		X3D_RIGHT = new Joystick(Constants.X3D.RIGHT_JOYSTICK_ID),
+		// X3D_RIGHT = new Joystick(Constants.X3D.RIGHT_JOYSTICK_ID),
 		GAMEPAD = new Joystick(Constants.Gamepad.JOYSTICK_ID);
 
 	public static double gamepadJoystickMagnitude(boolean isLeftJoystick) {
@@ -55,22 +55,22 @@ public class RobotContainer {
 
 	public static class DriverControls {
 		public static JoystickButton
-			toggleArcadeDriveButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.TOGGLE_ARCADE_DRIVE_BUTTON_ID),
-			driveStraightButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.DRIVE_STRAIGHT_BUTTON_ID),
+			toggleArcadeDriveButton = new JoystickButton(X3D_LEFT, Constants.DriverControlIDs.TOGGLE_ARCADE_DRIVE_BUTTON_ID),
+			driveStraightButton = new JoystickButton(X3D_LEFT, Constants.DriverControlIDs.DRIVE_STRAIGHT_BUTTON_ID),
 		
-			backwardIntakeButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.BACKWARD_INTAKE_BUTTON_ID),
-			forwardIntakeButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.FORWARD_INTAKE_BUTTON_ID),
-			feederButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.FEEDER_BUTTON_ID),
-			shooterButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.SHOOT_BUTTON_ID),
+			backwardIntakeButton = new JoystickButton(X3D_LEFT, Constants.DriverControlIDs.BACKWARD_INTAKE_BUTTON_ID),
+			forwardIntakeButton = new JoystickButton(X3D_LEFT, Constants.DriverControlIDs.FORWARD_INTAKE_BUTTON_ID),
+			feederButton = new JoystickButton(X3D_LEFT, Constants.DriverControlIDs.FEEDER_BUTTON_ID),
+			shooterButton = new JoystickButton(X3D_LEFT, Constants.DriverControlIDs.SHOOT_BUTTON_ID),
 
-			panelSpinButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.PANEL_SPIN_BUTTON_ID),
-			reversePanelSpinButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.PANEL_SPIN_REVERSE_BUTTON_ID),
+			panelSpinButton = new JoystickButton(X3D_LEFT, Constants.DriverControlIDs.PANEL_SPIN_BUTTON_ID),
+			reversePanelSpinButton = new JoystickButton(X3D_LEFT, Constants.DriverControlIDs.PANEL_SPIN_REVERSE_BUTTON_ID),
 
-			extendClimberButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.EXTEND_CLIMBER_BUTTON_ID),
-			lowerClimberButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.LOWER_CLIMBER_BUTTON_ID),
+			extendClimberButton = new JoystickButton(X3D_LEFT, Constants.DriverControlIDs.EXTEND_CLIMBER_BUTTON_ID),
+			lowerClimberButton = new JoystickButton(X3D_LEFT, Constants.DriverControlIDs.LOWER_CLIMBER_BUTTON_ID),
 
-			spoolWinchButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.SPOOL_WINCH_BUTTON_ID),
-			unspoolWinchButton = new JoystickButton(X3D_RIGHT, Constants.DriverControlIDs.UNSPOOL_WINCH_BUTTON_ID);
+			spoolWinchButton = new JoystickButton(X3D_LEFT, Constants.DriverControlIDs.SPOOL_WINCH_BUTTON_ID),
+			unspoolWinchButton = new JoystickButton(X3D_LEFT, Constants.DriverControlIDs.UNSPOOL_WINCH_BUTTON_ID);
 
 		private static void configureButtonBindings() {
 			toggleArcadeDriveButton.whenPressed(new ToggleDriverArcadeDriveCommand());
@@ -95,20 +95,20 @@ public class RobotContainer {
 		}
 		
 		// Tank drive axes
-		public static double getLeftTankDriveAxis() {
-			return X3D_LEFT.getRawAxis(Constants.DriverControlIDs.LEFT_TANK_DRIVE_AXIS_ID);
-		}
-		public static double getRightTankDriveAxis() {
-			return X3D_RIGHT.getRawAxis(Constants.DriverControlIDs.RIGHT_TANK_DRIVE_AXIS_ID);
-		}
+		// public static double getLeftTankDriveAxis() {
+		// 	return X3D_LEFT.getRawAxis(Constants.DriverControlIDs.LEFT_TANK_DRIVE_AXIS_ID);
+		// }
+		// public static double getRightTankDriveAxis() {
+		// 	return X3D_RIGHT.getRawAxis(Constants.DriverControlIDs.RIGHT_TANK_DRIVE_AXIS_ID);
+		// }
 
 		// Arcade drive axes
 		public static double getForwardArcadeDriveAxis() {
-			return X3D_RIGHT.getRawAxis(Constants.DriverControlIDs.ARCADE_DRIVE_FORWARD_AXIS_ID);
+			return X3D_LEFT.getRawAxis(Constants.DriverControlIDs.ARCADE_DRIVE_FORWARD_AXIS_ID);
 		}
 
 		public static double getAngleArcadeDriveAxis() {
-			return X3D_RIGHT.getRawAxis(Constants.DriverControlIDs.ARCADE_DRIVE_ANGLE_AXIS_ID);
+			return X3D_LEFT.getRawAxis(Constants.DriverControlIDs.ARCADE_DRIVE_ANGLE_AXIS_ID);
 		}
 	}
 	
@@ -155,18 +155,18 @@ public class RobotContainer {
 
 		// Tank drive axes
 		public static double getLeftTankDriveAxis() {
-			return GAMEPAD.getRawAxis(Constants.DriverControlIDs.LEFT_TANK_DRIVE_AXIS_ID);
+			return GAMEPAD.getRawAxis(Constants.SpotterControlIDs.LEFT_TANK_DRIVE_AXIS_ID);
 		}
 		public static double getRightTankDriveAxis() {
-			return GAMEPAD.getRawAxis(Constants.DriverControlIDs.RIGHT_TANK_DRIVE_AXIS_ID);
+			return GAMEPAD.getRawAxis(Constants.SpotterControlIDs.RIGHT_TANK_DRIVE_AXIS_ID);
 		}
 
 		// Arcade drive axes
 		public static double getForwardArcadeDriveAxis() {
-			return GAMEPAD.getRawAxis(Constants.DriverControlIDs.ARCADE_DRIVE_FORWARD_AXIS_ID);
+			return GAMEPAD.getRawAxis(Constants.SpotterControlIDs.ARCADE_DRIVE_FORWARD_AXIS_ID);
 		}
 		public static double getAngleArcadeDriveAxis() {
-			return GAMEPAD.getRawAxis(Constants.DriverControlIDs.ARCADE_DRIVE_ANGLE_AXIS_ID);
+			return GAMEPAD.getRawAxis(Constants.SpotterControlIDs.ARCADE_DRIVE_ANGLE_AXIS_ID);
 		}
 	}
 		
