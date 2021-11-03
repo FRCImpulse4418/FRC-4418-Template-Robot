@@ -12,14 +12,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.RobotContainer;
 
-public class DriveStraightCommandVarient extends CommandBase {
-	private boolean isTimed;
+public class AutonomousCommand extends CommandBase {
 	private int counter;
-	private final int counterMax = 150;
+	private final int counterMax = 150;	// TODO: Make autonomous timer use seconds
 
-	public DriveStraightCommandVarient(boolean isTimed) {
+	public AutonomousCommand() {
 		addRequirements(RobotContainer.driveSubsystem);
-		this.isTimed = isTimed;
 	}
 
 	// Called when the command is initially scheduled.
@@ -35,10 +33,8 @@ public class DriveStraightCommandVarient extends CommandBase {
 		RobotContainer.driveSubsystem.setLeftMotors(0.5);
 		RobotContainer.driveSubsystem.setRightMotors(-0.5);
 
-		if (isTimed) {
-			counter++;
-			SmartDashboard.putNumber("AUTO PRINT COUNTER", counter);
-		}
+		counter++;
+		SmartDashboard.putNumber("AUTO PRINT COUNTER", counter);
 	}
 
 	// Called once the command ends or is interrupted.
@@ -50,9 +46,6 @@ public class DriveStraightCommandVarient extends CommandBase {
 	// Returns true when the command should end.
 	@Override
 	public boolean isFinished() {
-		if (isTimed) {
-			return counter >= counterMax;
-		}
-		return false;
+		return counter >= counterMax;
 	}
 }

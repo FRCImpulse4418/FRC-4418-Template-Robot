@@ -15,7 +15,7 @@ import frc.robot.RobotContainer;
 
 public class DriveStraightCommand extends CommandBase {
 	private int counter;
-	private final int counterMax = 150;
+	private final int counterMax = 150;	// TODO: Make drive-straight timer use seconds
 
 	public DriveStraightCommand() {
 		addRequirements(RobotContainer.driveSubsystem);
