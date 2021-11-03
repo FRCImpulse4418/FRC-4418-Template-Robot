@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 
-import frc.robot.commands.DriveStraightCommand;
+import frc.robot.commands.AutonomousCommand;
 
 
 /**
@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_robotContainer = new RobotContainer();
-		m_autonomousCommand = new DriveStraightCommand(true);
+		m_autonomousCommand = new AutonomousCommand();
 
 		m_frontShooterCamera = CameraServer.getInstance().startAutomaticCapture(0);
 		m_rightPanelCamera = CameraServer.getInstance().startAutomaticCapture(1);

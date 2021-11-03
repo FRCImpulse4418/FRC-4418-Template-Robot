@@ -12,12 +12,11 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 import frc.robot.RobotContainer;
 
-
-public class DriveStraightCommand extends CommandBase {
+public class AutonomousCommand extends CommandBase {
 	private int counter;
-	private final int counterMax = 150;	// TODO: Make drive-straight timer use seconds
+	private final int counterMax = 150;	// TODO: Make autonomous timer use seconds
 
-	public DriveStraightCommand() {
+	public AutonomousCommand() {
 		addRequirements(RobotContainer.driveSubsystem);
 	}
 
@@ -33,6 +32,7 @@ public class DriveStraightCommand extends CommandBase {
 		RobotContainer.driveSubsystem.brakeOrCoastMotors(false, false);
 		RobotContainer.driveSubsystem.setLeftMotors(0.5);
 		RobotContainer.driveSubsystem.setRightMotors(-0.5);
+
 		counter++;
 		SmartDashboard.putNumber("AUTO PRINT COUNTER", counter);
 	}
