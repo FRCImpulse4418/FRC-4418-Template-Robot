@@ -10,24 +10,19 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-
 import frc.robot.commands.*;
 import frc.robot.subsystems.ClimberSubsystem;
-import frc.robot.subsystems.ControlPanelSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ManipulatorSubsystem;
-import frc.robot.subsystems.TeleopSensitivitySubsystem;
+import frc.robot.subsystems.TeleopInput;
 // import frc.robot.subsystems.SensorsSubsystem;
-import frc.robot.subsystems.WinchSubsystem;
 
 
 public class RobotContainer {
 	public static DriveSubsystem driveSubsystem = new DriveSubsystem();
 	public static ManipulatorSubsystem manipulatorsubsystem = new ManipulatorSubsystem();
-	public static ControlPanelSubsystem controlSubsystem = new ControlPanelSubsystem();
-	public static WinchSubsystem winchSubsystem = new WinchSubsystem();
 	public static ClimberSubsystem climbSubsystem = new ClimberSubsystem();
-	public static TeleopSensitivitySubsystem teleopSensitivitySubsystem = new TeleopSensitivitySubsystem();
+	public static TeleopInput teleopSensitivitySubsystem = new TeleopInput();
 	// public static SensorsSubsystem sensorsSubsystem = new SensorsSubsystem();
 
 	// Create joysticks
@@ -81,17 +76,12 @@ public class RobotContainer {
 			feederButton.whileHeld(new FeederCommand());
 			shooterButton.whileHeld(new ShooterCommand());
 			
-			// true is forward spin, false is backward spin
-			panelSpinButton.whileHeld(new SpinPanelArmCommand(true));
-			reversePanelSpinButton.whileHeld(new SpinPanelArmCommand(false));
 			
 			// true is extending, false is lowering
 			extendClimberButton.whileHeld(new MoveClimberCommand(true));
 			lowerClimberButton.whileHeld(new MoveClimberCommand(false));
 	
-			// true is spooling, false is unspooling
-			spoolWinchButton.whileHeld(new SpinWinchCommand(true));
-			unspoolWinchButton.whileHeld(new SpinWinchCommand(false));
+			
 		}
 		
 		// Tank drive axes
@@ -119,18 +109,10 @@ public class RobotContainer {
 		public static JoystickButton
 			toggleArcadeDriveButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.TOGGLE_ARCADE_DRIVE_BUTTON_ID),
 			toggleSensitivityButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.TOGGLE_SENSITIVITY_BUTTON_ID),
-
 			intakeButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.INTAKE_BUTTON_ID),
 			feederButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.FEEDER_BUTTON_ID),
-
-			panelSpinButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.PANEL_SPIN_BUTTON_ID),
-			reversePanelSpinButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.PANEL_SPIN_REVERSE_BUTTON_ID),
-
 			extendClimberButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.EXTEND_CLIMBER_BUTTON_ID),
-			lowerClimberButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.LOWER_CLIMBER_BUTTON_ID),
-
-			spoolWinchButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.SPOOL_WINCH_BUTTON_ID),
-			unspoolWinchButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.UNSPOOL_WINCH_BUTTON_ID);
+			lowerClimberButton = new JoystickButton(GAMEPAD, Constants.SpotterControlIDs.LOWER_CLIMBER_BUTTON_ID);
 
 		private static void configureButtonBindings() {
 			toggleArcadeDriveButton.whenPressed(new ToggleSpotterArcadeDriveCommand());
@@ -140,17 +122,12 @@ public class RobotContainer {
 			intakeButton.whileHeld(new IntakeCommand(false));
 			feederButton.whileHeld(new ShooterCommand());
 			
-			// true is forward spin, false is backward spin
-			panelSpinButton.whileHeld(new SpinPanelArmCommand(true));
-			reversePanelSpinButton.whileHeld(new SpinPanelArmCommand(false));
 			
 			// true is extending, false is lowering
 			extendClimberButton.whileHeld(new MoveClimberCommand(true));
 			lowerClimberButton.whileHeld(new MoveClimberCommand(false));
 	
-			// true is spooling, false is unspooling
-			spoolWinchButton.whileHeld(new SpinWinchCommand(true));
-			unspoolWinchButton.whileHeld(new SpinWinchCommand(false));
+
 		}
 
 		// Tank drive axes

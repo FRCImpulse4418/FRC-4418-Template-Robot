@@ -7,38 +7,39 @@
 
 package frc.robot;
 
+//TODO: Set ID constants
 
 public final class Constants {
 	public static class X3D {
 		public static final int
 			// ---Joystick IDs---
-			LEFT_JOYSTICK_ID = 0,
+			LEFT_JOYSTICK_ID = -1,   //Set ID constants
 			// RIGHT_JOYSTICK_ID = 1,
 
 			/// ---Axes---
-			ROLL_AXIS = 0,
+			ROLL_AXIS = 0, 
 			PITCH_AXIS = 1,
 			// YAW_AXIS = 2,
 			// OTHER_AXIS = 3,
 
 			// ---Button IDs---
-			TRIGGER_BUTTON_ID = 1,
-			GRIP_BUTTON_ID = 2,
-			THREE_BUTTON_ID = 3,
-			FOUR_BUTTON_ID = 4,
-			FIVE_BUTTON_ID = 5,
-			SIX_BUTTON_ID = 6,
-			SEVEN_BUTTON_ID = 7,
-			EIGHT_BUTTON_ID = 8,
-			NINE_BUTTON_ID = 9,
-			TEN_BUTTON_ID = 10,
-			ELEVEN_BUTTON_ID = 11,
-			TWELVE_BUTTON_ID = 12;
+			TRIGGER_BUTTON_ID = -1,//Set ID constants
+			GRIP_BUTTON_ID = -1,//Set ID constants
+			THREE_BUTTON_ID = -1, //Set ID constants
+			FOUR_BUTTON_ID = -1, //Set ID constants 
+			FIVE_BUTTON_ID = -1, //Set ID constants
+			SIX_BUTTON_ID = -1, //Set ID constants
+			SEVEN_BUTTON_ID = -1, //Set ID constants
+			EIGHT_BUTTON_ID = -1, //Set ID constants
+			NINE_BUTTON_ID = -1, //Set ID constants
+			TEN_BUTTON_ID = -1, //Set ID constants
+			ELEVEN_BUTTON_ID = -1, //Set ID constants
+			TWELVE_BUTTON_ID = -1; //Set ID constants
 	}
 
 	public static class Gamepad {
 		public static final int
-			JOYSTICK_ID = 2,
+			JOYSTICK_ID = -1, //Set ID constants
 
 			// ---Axes---
 			LEFT_X_AXIS = 0,
@@ -49,17 +50,17 @@ public final class Constants {
 			// RIGHT_TRIGGER_AXIS = 3,
 
 			// ---Button IDs---
-			A_BUTTON_ID = 1,
-			B_BUTTON_ID = 2,
-			X_BUTTON_ID = 3,
-			Y_BUTTON_ID = 4,
-			LEFT_BUMPER_BUTTON_ID = 5,
-			RIGHT_BUMPER_BUTTON_ID = 6,
-			BACK_BUTTON_ID = 7,
-			START_BUTTON_ID = 8,
+			A_BUTTON_ID = -1, //Set ID constants
+			B_BUTTON_ID = -1, //Set ID constants
+			X_BUTTON_ID = -1, //Set ID constants
+			Y_BUTTON_ID = -1, //Set ID constants
+			LEFT_BUMPER_BUTTON_ID = -1, //Set ID constants
+			RIGHT_BUMPER_BUTTON_ID = -1, //Set ID constants
+			BACK_BUTTON_ID = -1, //Set ID constants
+			START_BUTTON_ID = -1, //Set ID constants
 			// LOGITECH_BUTTON_ID = 9,
-			LEFT_JOYSTICK_BUTTON_ID = 10,
-			RIGHT_JOYSTICK_BUTTON_ID = 11,
+			LEFT_JOYSTICK_BUTTON_ID = -1, //Set ID constants
+			RIGHT_JOYSTICK_BUTTON_ID = -1, //Set ID constants
 
 			// ---POV Indices---
 			ANGLE_UP_POV = 0;
@@ -122,25 +123,18 @@ public final class Constants {
 			INTAKE_BUTTON_ID = Gamepad.X_BUTTON_ID,
 			FEEDER_BUTTON_ID = Gamepad.B_BUTTON_ID,
 
-			// Control panel arm trigger axes
-			PANEL_SPIN_BUTTON_ID = Gamepad.LEFT_BUMPER_BUTTON_ID,
-			PANEL_SPIN_REVERSE_BUTTON_ID = Gamepad.RIGHT_BUMPER_BUTTON_ID,
-			
 			// Climber buttons
 			EXTEND_CLIMBER_BUTTON_ID = Gamepad.Y_BUTTON_ID,
-			LOWER_CLIMBER_BUTTON_ID = Gamepad.A_BUTTON_ID,
+			LOWER_CLIMBER_BUTTON_ID = Gamepad.A_BUTTON_ID;
 
-			// Winch buttons
-			SPOOL_WINCH_BUTTON_ID = Gamepad.BACK_BUTTON_ID,
-			UNSPOOL_WINCH_BUTTON_ID = Gamepad.START_BUTTON_ID;
 	}
 
 	public static class Drive {
 		public static final int
-			LEFT_A_TALON_SRX_ID = 10,
-			LEFT_B_TALON_SRX_ID = 2,
-			RIGHT_A_TALON_SRX_ID = 6,
-			RIGHT_B_TALON_SRX_ID = 5;
+			LEFT_A_TALON_SRX_ID = -1, //Set ID constants
+			LEFT_B_TALON_SRX_ID = -1, //Set ID constants
+			RIGHT_A_TALON_SRX_ID = -1, //Set ID constants
+			RIGHT_B_TALON_SRX_ID = -1; //Set ID constants
 
 			// LEFT_ENCODER_CHANNELA_ID = 6,
 			// LEFT_ENCODER_CHANNELB_ID = 7,
@@ -163,11 +157,10 @@ public final class Constants {
 
 	public static class Manipulator {
 		public static final int
-			WRIST_FIRE_TALONSRX_ID = 3,
-			ELBOW_FIRE_TALONSRX_ID = 1,
-			SHOULDER_FIRE_TALONSRX_ID = 11,
-
-			BOTTOM_INTAKE_TALONSRX_ID = 8;
+			WRIST_FIRE_TALONSRX_ID = -1, //Set ID constants
+			ELBOW_FIRE_TALONSRX_ID = -1, //Set ID constants
+			SHOULDER_FIRE_TALONSRX_ID = -1, //Set ID constants
+			BOTTOM_INTAKE_TALONSRX_ID = -1; //Set ID constants
 
 		public static final double
 			INTAKE_PERCENT_OUTPUT = 0.5;
@@ -184,21 +177,12 @@ public final class Constants {
 		public static final int
 			// ENCODER_CHANNELA_ID = 2,
 			// FRONT_ENCODER_CHANNELB_ID = 3,
-			TALONSRX_ID = 9;
+			TALONSRX_ID = -1; //Set ID constants
 		
 		// TODO: Figure out climber encoder distance per pulse
 		// public static final double CLIMBER_ENCODER_DISTANCE_PER_PULSE = SOME VALUE;
 	}
 
-	public static class Winch {
-		public static final int
-			TALONFX_ID = 12;
-	}
-
-	public static class ControlPanel {
-		public static final int
-			CONTROLSPIN_TALONSRX_ID = 7;
-	}
 
 // RIO Post Info
 // public static int[] expectedTalonIDs = {
