@@ -7,7 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class TeleopSensitivitySubsystem extends SubsystemBase {
+public class TeleopInput extends SubsystemBase {
 	public static class MacroMode {
 		private static final double	
 			moveClimberInputRate = 1.0,
@@ -35,7 +35,7 @@ public class TeleopSensitivitySubsystem extends SubsystemBase {
 
 	private boolean usingMacroSensitivity = true;
 
-	public TeleopSensitivitySubsystem() {
+	public TeleopInput() {
 		if (usingMacroSensitivity) {
 			setToMacroMode();
 		} else {
